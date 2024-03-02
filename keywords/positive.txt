@@ -1,0 +1,6 @@
+land
+lot
+lots
+vacant
+residential
+commercial

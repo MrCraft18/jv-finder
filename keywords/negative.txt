@@ -1,0 +1,9 @@
+bed
+bath
+house
+bedrooms
+bathrooms
+bedroom
+bathroom
+brick
+home

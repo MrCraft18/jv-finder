@@ -8,8 +8,10 @@ fb.login(process.env.FB_USER, process.env.FB_PASS).catch(error => console.log(er
 
         // console.log(groups)
 
-        // const posts = await fb.getGroupPosts(942846812392787, 30)
+        // const posts = await fb.getGroupPosts('dfwflips', 30)
         // console.log(posts)
+
+        let allPosts = []
 
         for (const group of groups) {
             console.log(`Grabbing 30 Posts from ${group.name}`)
@@ -18,6 +20,8 @@ fb.login(process.env.FB_USER, process.env.FB_PASS).catch(error => console.log(er
 
             console.log('Got Posts.')
 
-            fs.writeFileSync(`./scraped/${group.name}.txt`, JSON.stringify(posts, null, 4))
+            allPosts = [...posts, ...allPosts]
         }
+
+        fs.writeFileSync(`./scraped/all-posts.txt`, JSON.stringify(allPosts, null, 4))
     })

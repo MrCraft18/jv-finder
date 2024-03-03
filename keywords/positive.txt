@@ -1,6 +1,7 @@
 land
 lot
 lots
-vacant
-residential
-commercial
+plot
+plots
+flood zone
+utilities

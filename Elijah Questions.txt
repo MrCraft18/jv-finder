@@ -1,0 +1,3 @@
+What data is nesscesary for you to have? (address, price, etc)
+Do you want it to ask for any info thats not there?
+If the script gets permission to send out a deal from a person and that same person posts about another deal does it need to ask for permission again?

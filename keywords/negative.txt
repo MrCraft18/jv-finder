@@ -1,9 +1,18 @@
 bed
 bath
-house
 bedrooms
 bathrooms
 bedroom
 bathroom
-brick
-home
+kitchen
+garage
+land lord
+landlord
+remodel
+remodeled
+no wholesalers
+end buyers only
+end buyer only
+no jv
+for rent
+arv

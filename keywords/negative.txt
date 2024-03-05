@@ -1,18 +1,26 @@
 bed
 bath
-bedrooms
-bathrooms
-bedroom
-bathroom
 kitchen
 garage
-land lord
-landlord
+lord
 remodel
-remodeled
 no wholesalers
 end buyers only
 end buyer only
 no jv
 for rent
-arv
+am buying
+are buying
+am looking
+are looking
+this house
+this home
+this single family
+lot home
+lot house
+bd 
+bd/
+/1 
+i have a buyer
+we have a buyer
+open house

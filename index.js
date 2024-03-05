@@ -8,7 +8,7 @@ fb.login(process.env.FB_USER, process.env.FB_PASS).catch(error => console.log(er
 
         // console.log(groups)
 
-        // const posts = await fb.getGroupPosts('dfwflips', 30)
+        // const posts = await fb.getGroupPosts('1098785670138794', 30)
         // console.log(posts)
 
         let allPosts = []

@@ -8,7 +8,7 @@ const fb = {
                 if (!pass) return reject('Missing Password Field')
 
                 browser = await puppeteer.launch({
-                    headless: 'new',
+                    headless: false,
                     userDataDir: './browser'
                 })
 
@@ -97,9 +97,24 @@ const fb = {
                     page.waitForNavigation()
                 ])
 
+                await page.evaluate(() => {
+                    const originalWriteText = navigator.clipboard.writeText
+                    navigator.clipboard.writeText = (text) => {
+                        window.lastCopiedText = text
+                        return originalWriteText.apply(this, arguments)
+                    }
+                })
+
+                const groupName = await page.evaluate(() => {
+                    groupNameElement = document.querySelector('.x1i10hfl.xjbqb8w.x1ejq31n.xd10rxx.x1sy0etr.x17r0tee.x972fbf.xcfux6l.x1qhh985.xm0m39n.x9f619.x1ypdohk.xt0psk2.xe8uvvx.xdj266r.x11i5rnm.xat24cr.x1mh8g0r.xexx8yu.x4uap5.x18d9i69.xkhd6sd.x16tdsg8.x1hl2dhg.xggy1nq.x1a2a7pz.x1heor9g.xt0b8zv.x1xlr1w8')
+
+                    return groupNameElement.innerText
+                })
+                  
+
                 const posts = []
 
-                for (let i = 0; i < limit; i++) {
+                for (i = 0; posts.length < limit; i++) {
                     await page.waitForFunction(index => {
                         const elements = Array.from(document.querySelectorAll(`[role="feed"] > .x1yztbdb.x1n2onr6.xh8yej3.x1ja2u2z`))
                         return elements[index]
@@ -109,8 +124,21 @@ const fb = {
                     let postElement = postElements[i]
 
                     await postElement.hover()
+                    
+                    const isShortVideo = await postElement.evaluate(element => {
+                        const shortVideoElement = Array.from(element.querySelectorAll('span'))
+                            .find(element => element.innerText.includes('Short Video'))
 
-                    const [text, images, name, id, link, timestamp] = await Promise.all([
+                        return shortVideoElement ? true : false
+                    })
+
+                    if (isShortVideo) {
+                        console.log('Skipping Short Video')
+                        continue
+                    }
+
+                    const [text, images, name, authorID, timestamp, postID] = await Promise.all([
+                        //Get Post Text
                         new Promise(async resolve => {
                             //Click See More Button (if its there)
                             await postElement.evaluate(element => {
@@ -129,45 +157,35 @@ const fb = {
                             }, { polling: 'mutation' }, i)
 
                             const text = await postElement.evaluate(element => {
-                                const isShortVideo = Array.from(element.querySelectorAll('span'))
-                                    .find(element => element.textContent.includes('Short Video'))
-                                    ? true
-                                    : false
+                                const textElement = Array.from(element.querySelectorAll('[class=""]'))
+                                .find(element => element.parentNode.children.length > 1)
+                                .nextElementSibling
+                                .nextElementSibling
 
-                                if (isShortVideo) {
-                                    const textElement = element.querySelector('.xdj266r.x11i5rnm.xat24cr.x1mh8g0r.x1vvkbs.x126k92a')
-                                    return textElement ? textElement.innerText : null
-                                } else {
-                                    const textElement = Array.from(element.querySelectorAll('[class=""]'))
-                                        .find(element => element.parentNode.children.length > 1)
-                                        .nextElementSibling
-                                        .nextElementSibling
-
-                                    return textElement ? textElement.innerText : null
-                                }
+                                return textElement ? textElement.innerText : null
                             })
 
                             resolve(text)
                         }),
+                        //Get Post Images
                         postElement.evaluate(element => {
                             return Array.from(element.querySelectorAll('img')).map(element => element.src).filter(url => url.includes('scontent'))
                         }),
+                        //Get Author Name
                         postElement.evaluate(element => {
                             const nameElement = Array.from(element.querySelectorAll('a')).find(element => element.innerText && element.href.includes('user') && !element.closest('.xzueoph'))
                             return nameElement ? nameElement.innerText : null
                         }),
+                        //Get Author ID
                         postElement.evaluate(element => {
                             const anchorElement = Array.from(element.querySelectorAll('a')).find(element => element.innerText && element.href.includes('user') && !element.closest('.xzueoph'))
                             return anchorElement ? anchorElement.href.split('/')[anchorElement.href.split('/').indexOf('user') + 1] : null
                         }),
-                        postElement.evaluate(element => {
-                            const anchorElement = Array.from(element.querySelectorAll('a')).find(element => element.innerText && element.href.includes('user') && !element.closest('.xzueoph'))
-                            return anchorElement ? anchorElement.href : null
-                        }),
+                        //Get Timestamp
                         new Promise(async resolve => {
-                            const postTime = await postElement.$('.x4k7w5x.x1h91t0o.x1h9r5lt.x1jfb8zj.xv2umb2.x1beo9mf.xaigb6o.x12ejxvf.x3igimt.xarpa2k.xedcshv.x1lytzrv.x1t2pt76.x7ja8zs.x1qrby5j')
-                            await postTime.evaluate(element => element.scrollIntoView({block: 'center'}))
-                            await postTime.hover()
+                            const postTimeElement = await postElement.$('.x4k7w5x.x1h91t0o.x1h9r5lt.x1jfb8zj.xv2umb2.x1beo9mf.xaigb6o.x12ejxvf.x3igimt.xarpa2k.xedcshv.x1lytzrv.x1t2pt76.x7ja8zs.x1qrby5j')
+                            await postTimeElement.evaluate(element => element.scrollIntoView({block: 'center'}))
+                            await postTimeElement.hover()
 
                             const dateElement = await page.waitForSelector('.x193iq5w.xeuugli.x13faqbe.x1vvkbs.x10flsy6.x1nxh6w3.x1sibtaa.xo1l8bm.xzsf02u')
 
@@ -180,20 +198,30 @@ const fb = {
                             const formattedStr = strArr.join(' ')
 
                             resolve(new Date(formattedStr))
+                        }),
+                        //Get Post Link
+                        postElement.evaluate(element => {
+                            const postAnchorElement = Array.from(element.querySelectorAll('a'))
+                                .find(element => element.href.includes('/posts'))
+
+                            return postAnchorElement.href.split('/')[postAnchorElement.href.split('/').indexOf('posts') + 1]
                         })
                     ])
 
-                    // console.log(name)
+                    console.log(name)
 
                     posts.push({
                         text,
                         images,
                         timestamp,
-                        groupID,
+                        id: postID,
                         author: {
                             name,
-                            id,
-                            link
+                            id: authorID,
+                        },
+                        group: {
+                            id: groupID,
+                            name: groupName
                         }
                     })
                 }
@@ -209,33 +237,3 @@ const fb = {
 }
 
 module.exports = fb
-
-
-
-function extractDateFromPostElement(element) {
-    const seeMoreButton = Array.from(element.querySelectorAll('div')).find(element => element.innerText === 'See more' && !element.closest('.xzueoph'))
-    if (seeMoreButton) {
-        seeMoreButton.click()
-    }
-
-    const isShortVideo = Array.from(element.querySelectorAll('span')).find(element => element.textContent.includes('Short Video')) ? true : false
-    if (isShortVideo) {
-        textElement = element.querySelector('xdj266r x11i5rnm xat24cr x1mh8g0r x1vvkbs x126k92a')
-    } else {
-        textElement = Array.from(element.querySelectorAll('[class=""]')).find(element => element.parentNode.children.length > 1).nextElementSibling.nextElementSibling
-    }
-
-    imagesArray = Array.from(element.querySelectorAll('img')).map(element => element.src).filter(url => url.includes('scontent'))
-
-    authorElement = Array.from(element.querySelectorAll('a')).find(element => element.innerText && element.href.includes('user') && !element.closest('.xzueoph'))
-
-    return {
-        text: textElement.innerText,
-        images: imagesArray,
-        author: {
-            name: authorElement ? authorElement.innerText : 'Annonomous Poster',
-            id: authorElement ? authorElement.href.split('/')[authorElement.href.split('/').indexOf('user') + 1] : null,
-            link: authorElement ? authorElement.href : null
-        }
-    }
-}

@@ -26,7 +26,7 @@ async function hajimete() {
             if (includesSomePositive) console.log('INCLUDES SOME POSITIVE')
             if (!includesSomePositive) console.log('NONE POSTIVE')
 
-            const includesNoNegative = keywords.negative.every(word => !new RegExp(`\\b${word}\\b`).test(post.text.toLowerCase()))
+            const includesNoNegative = keywords.negative.every(word => !post.text.toLowerCase().includes(word))
             if (includesNoNegative) console.log('NONE NEGATIVE')
             if (!includesNoNegative) console.log('INCLUDES SOME NEGATIVE')
 
@@ -43,11 +43,15 @@ async function hajimete() {
                 scriptDecsion = false
             }
 
-            const displayStr = `${lineBreaker}\n${lineBreaker}\n${post.text}\nScript Thinks: ${scriptDecsion}\n`
+            if (scriptDecsion === true || scriptDecsion === 'maybe') {
+                const displayStr = `${lineBreaker}\n${lineBreaker}\n${post.text}\nScript Thinks: ${scriptDecsion}\n`
 
-            rl.question(displayStr, input => {
+                rl.question(displayStr, input => {
+                    resolve()
+                })
+            } else {
                 resolve()
-            })
+            }
         })
     }
 }

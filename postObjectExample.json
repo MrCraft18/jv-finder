@@ -1,0 +1,16 @@
+{
+    "text": "post-text",
+    "images": [
+        "image-link",
+        "image-link"
+    ],
+    "timestamp": "date-object",
+    "id": "post-id",
+    "author": {
+        "name": "author-name",
+        "id": "author-id"
+    },
+    "group": {
+        "id": "group-id"
+    }
+}

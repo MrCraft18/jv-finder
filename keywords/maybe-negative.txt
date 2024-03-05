@@ -3,5 +3,4 @@ rents
 home
 house
 built
-lookout
 looking

@@ -1,0 +1,5 @@
+Needed info: Price, Address, Has survey or not.
+
+Get permission EVERY time.
+
+When person says send to specific/ individual buyers put that as a note.

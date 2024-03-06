@@ -86,60 +86,63 @@ const fb = {
             }
         })
     },
-    getGroupPosts: (groupID, { limit, dateRange } = {}) => {
-        return new Promise(async (resolve, reject) => {
-            if (!limit && !dateRange) reject(new Error('Must Provide Limit or Date Range'))
-            if (dateRange && !dateRange.end) reject(new Error('Must Provide at least "End" Date for Date Range'))
+    getGroupPosts: async (groupID, { limit, dateRange, stream } = {}, callback = null) => {
+        if (!limit && !dateRange) reject(new Error('Must Provide Limit or Date Range'))
+        if (dateRange && !dateRange.end) reject(new Error('Must Provide at least "End" Date for Date Range'))
 
-            if (dateRange && !dateRange.start) dateRange.start = new Date(0)
+        if (dateRange && !dateRange.start) dateRange.start = new Date(0)
 
-            try {
-                page = await browser.newPage()
-                await page.setViewport({ width: 1920, height: 1080 })
+        page = await browser.newPage()
+        await page.setViewport({ width: 1920, height: 1080 })
 
-                await Promise.all([
-                    page.goto(`https://www.facebook.com/groups/${groupID}?sorting_setting=CHRONOLOGICAL`),
-                    page.waitForNavigation()
-                ])
+        await Promise.all([
+            page.goto(`https://www.facebook.com/groups/${groupID}?sorting_setting=CHRONOLOGICAL`),
+            page.waitForNavigation()
+        ])
 
-                groupName = await page.evaluate(() => {
-                    groupNameElement = document.querySelector('.x1i10hfl.xjbqb8w.x1ejq31n.xd10rxx.x1sy0etr.x17r0tee.x972fbf.xcfux6l.x1qhh985.xm0m39n.x9f619.x1ypdohk.xt0psk2.xe8uvvx.xdj266r.x11i5rnm.xat24cr.x1mh8g0r.xexx8yu.x4uap5.x18d9i69.xkhd6sd.x16tdsg8.x1hl2dhg.xggy1nq.x1a2a7pz.x1heor9g.xt0b8zv.x1xlr1w8')
+        groupName = await page.evaluate(() => {
+            groupNameElement = document.querySelector('.x1i10hfl.xjbqb8w.x1ejq31n.xd10rxx.x1sy0etr.x17r0tee.x972fbf.xcfux6l.x1qhh985.xm0m39n.x9f619.x1ypdohk.xt0psk2.xe8uvvx.xdj266r.x11i5rnm.xat24cr.x1mh8g0r.xexx8yu.x4uap5.x18d9i69.xkhd6sd.x16tdsg8.x1hl2dhg.xggy1nq.x1a2a7pz.x1heor9g.xt0b8zv.x1xlr1w8')
 
-                    return groupNameElement.innerText
-                })
-                  
+            return groupNameElement.innerText
+        })
 
-                const posts = []
-
-                if (limit) {
-                    for (let i = 0; posts.length < limit; i++) {
-                        const post = await grabAndExtractPost(i)
+        if (!stream) {
+            return new Promise(async (resolve, reject) => {
+                try {
+                    const posts = []
     
-                        if (post) posts.push(post)
-                    }
-                } else if (dateRange) {
-                    let lastPostDate = new Date(8640000000000000)
-
-                    for (let i = 0; dateRange.end < lastPostDate; i++) {
-                        const post = await grabAndExtractPost(i)
-
-                        if (post) {
-                            if (post.timestamp > dateRange.start && post.timestamp < dateRange.end) posts.push(post)
-
-                            lastPostDate = post.timestamp
-
-                            // console.log(lastPostDate)
+                    if (limit) {
+                        for (let i = 0; posts.length < limit; i++) {
+                            const post = await grabAndExtractPost(i)
+        
+                            if (post) posts.push(post)
+                        }
+                    } else if (dateRange) {
+                        let lastPostDate = new Date(8640000000000000)
+    
+                        for (let i = 0; dateRange.end < lastPostDate; i++) {
+                            const post = await grabAndExtractPost(i)
+    
+                            if (post) {
+                                if (post.timestamp > dateRange.start && post.timestamp < dateRange.end) posts.push(post)
+    
+                                lastPostDate = post.timestamp
+    
+                                // console.log(lastPostDate)
+                            }
                         }
                     }
+    
+                    resolve(posts)
+    
+                    // page.close()
+                } catch (error) {
+                    reject(error)
                 }
-
-                resolve(posts)
-
-                page.close()
-            } catch (error) {
-                reject(error)
-            }
-        })
+            })
+        } else {
+            
+        }
 
 
 
@@ -212,7 +215,13 @@ const fb = {
                 }),
                 //Get Timestamp
                 new Promise(async resolve => {
-                    const postTimeElement = await postElement.$('.x4k7w5x.x1h91t0o.x1h9r5lt.x1jfb8zj.xv2umb2.x1beo9mf.xaigb6o.x12ejxvf.x3igimt.xarpa2k.xedcshv.x1lytzrv.x1t2pt76.x7ja8zs.x1qrby5j')
+                    const postTimeElement = await postElement.evaluateHandle(element => {
+                        const postAnchorElement = Array.from(element.querySelectorAll('a'))
+                            .find(element => element.href.includes('/posts'))
+
+                        return postAnchorElement
+                    })
+                    
                     await postTimeElement.evaluate(element => element.scrollIntoView({block: 'center'}))
                     await postTimeElement.hover()
 
@@ -225,6 +234,8 @@ const fb = {
                     strArr.splice(strArr.indexOf('at'), 1)
 
                     const formattedStr = strArr.join(' ')
+
+                    console.log(rawStr)
 
                     resolve(new Date(formattedStr))
                 }),

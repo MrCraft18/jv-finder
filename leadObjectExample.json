@@ -1,0 +1,26 @@
+{
+    "stage": "stage-integer",
+    "post": {
+        "text": "post-text",
+        "images": [
+            "image-link",
+            "image-link"
+        ],
+        "timestamp": "date-object",
+        "id": "post-id",
+        "author": {
+            "name": "author-name",
+            "id": "author-id"
+        },
+        "group": {
+            "id": "group-id"
+        }
+    },
+    "info": {
+        "info": "Whatever info Elijah wants price, address etc."
+    },
+    "conversation": {
+        "type": "Maybe type if I use both messenger and SMS?",
+        "messages" : ["messages array"]
+    }
+}   

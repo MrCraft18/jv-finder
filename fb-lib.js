@@ -225,7 +225,7 @@ const fb = {
                     await postTimeElement.evaluate(element => element.scrollIntoView({block: 'center'}))
                     await postTimeElement.hover()
 
-                    const dateElement = await page.waitForSelector('.x193iq5w.xeuugli.x13faqbe.x1vvkbs.x10flsy6.x1nxh6w3.x1sibtaa.xo1l8bm.xzsf02u')
+                    const dateElement = await page.waitForSelector('.xj5tmjb.x1r9drvm.x16aqbuh.x9rzwcf.xjkqk3g.xms15q0.x1lliihq.xo8ld3r.xjpr12u.xr9ek0c.x86nfjv.x1ye3gou.xn6708d.xz9dl7a.xsag5q8.x1n2onr6.x19991ni.__fb-dark-mode.x1hc1fzr.xhb22t3.xls3em1')
 
                     const rawStr = await dateElement.evaluate(element => element.innerText)
 

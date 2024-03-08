@@ -86,63 +86,73 @@ const fb = {
             }
         })
     },
-    getGroupPosts: async (groupID, { limit, dateRange, stream } = {}, callback = null) => {
-        if (!limit && !dateRange) reject(new Error('Must Provide Limit or Date Range'))
-        if (dateRange && !dateRange.end) reject(new Error('Must Provide at least "End" Date for Date Range'))
+    getGroupPosts: async (groupID, { limit, dateRange, beforePost } = {}, callback = null) => {
+        return new Promise(async (resolve, reject) => {
+            if (!limit && !dateRange && !beforePost)  reject(new Error('Must Provide Limit, Date Range, or Before Post ID'))
+            if (dateRange && !dateRange.end) reject(new Error('Must Provide at least "End" Date for Date Range'))
 
-        if (dateRange && !dateRange.start) dateRange.start = new Date(0)
+            if (dateRange && !dateRange.start) dateRange.start = new Date(0)
 
-        page = await browser.newPage()
-        await page.setViewport({ width: 1920, height: 1080 })
+            page = await browser.newPage()
+            await page.setViewport({ width: 1920, height: 1080 })
 
-        await Promise.all([
-            page.goto(`https://www.facebook.com/groups/${groupID}?sorting_setting=CHRONOLOGICAL`),
-            page.waitForNavigation()
-        ])
+            await Promise.all([
+                page.goto(`https://www.facebook.com/groups/${groupID}?sorting_setting=CHRONOLOGICAL`),
+                page.waitForNavigation()
+            ])
 
-        groupName = await page.evaluate(() => {
-            groupNameElement = document.querySelector('.x1i10hfl.xjbqb8w.x1ejq31n.xd10rxx.x1sy0etr.x17r0tee.x972fbf.xcfux6l.x1qhh985.xm0m39n.x9f619.x1ypdohk.xt0psk2.xe8uvvx.xdj266r.x11i5rnm.xat24cr.x1mh8g0r.xexx8yu.x4uap5.x18d9i69.xkhd6sd.x16tdsg8.x1hl2dhg.xggy1nq.x1a2a7pz.x1heor9g.xt0b8zv.x1xlr1w8')
+            groupName = await page.evaluate(() => {
+                groupNameElement = document.querySelector('.x1i10hfl.xjbqb8w.x1ejq31n.xd10rxx.x1sy0etr.x17r0tee.x972fbf.xcfux6l.x1qhh985.xm0m39n.x9f619.x1ypdohk.xt0psk2.xe8uvvx.xdj266r.x11i5rnm.xat24cr.x1mh8g0r.xexx8yu.x4uap5.x18d9i69.xkhd6sd.x16tdsg8.x1hl2dhg.xggy1nq.x1a2a7pz.x1heor9g.xt0b8zv.x1xlr1w8')
 
-            return groupNameElement.innerText
-        })
+                return groupNameElement.innerText
+            })
 
-        if (!stream) {
-            return new Promise(async (resolve, reject) => {
-                try {
-                    const posts = []
+            try {
+                const posts = []
+
+                if (limit) {
+                    for (let i = 0; posts.length < limit; i++) {
+                        const post = await grabAndExtractPost(i)
     
-                    if (limit) {
-                        for (let i = 0; posts.length < limit; i++) {
-                            const post = await grabAndExtractPost(i)
-        
-                            if (post) posts.push(post)
-                        }
-                    } else if (dateRange) {
-                        let lastPostDate = new Date(8640000000000000)
-    
-                        for (let i = 0; dateRange.end < lastPostDate; i++) {
-                            const post = await grabAndExtractPost(i)
-    
-                            if (post) {
-                                if (post.timestamp > dateRange.start && post.timestamp < dateRange.end) posts.push(post)
-    
-                                lastPostDate = post.timestamp
-    
-                                // console.log(lastPostDate)
-                            }
+                        if (post) {
+                            if (callback) callback(post)
+                            posts.push(post)
                         }
                     }
+                } else if (dateRange) {
+                    let lastPostDate = new Date(8640000000000000)
+
+                    for (let i = 0; dateRange.end < lastPostDate; i++) {
+                        const post = await grabAndExtractPost(i)
+
+                        if (post) {
+                            if (post.timestamp > dateRange.start && post.timestamp < dateRange.end) {
+                                if (callback) callback(post)
+                                posts.push(post)
+                            }
+
+                            lastPostDate = post.timestamp
+                        }
+                    }
+                } else if (beforePost) {
+                    for (let i = 0; true; i++) {
+                        const post = await grabAndExtractPost(i)
     
-                    resolve(posts)
-    
-                    // page.close()
-                } catch (error) {
-                    reject(error)
+                        if (post && post.id === beforePost) break
+                        if (post) {
+                            if (callback) callback(post)
+                            posts.push(post)
+                        }
+                    }
                 }
-            })
-        } else {
-            
-        }
+
+                resolve(posts)
+
+                page.close()
+            } catch (error) {
+                reject(error)
+            }
+        })
 
 
 
@@ -169,7 +179,7 @@ const fb = {
                 return undefined
             }
 
-            const [text, images, name, authorID, timestamp, postID] = await Promise.all([
+            const [text, images, authorName, authorID, timestamp, postID] = await Promise.all([
                 //Get Post Text
                 new Promise(async resolve => {
                     //Click See More Button (if its there)
@@ -248,7 +258,7 @@ const fb = {
                 })
             ])
 
-            // console.log(name)
+            // console.log(authorName)
 
             return {
                 text,
@@ -256,12 +266,12 @@ const fb = {
                 timestamp,
                 id: postID,
                 author: {
-                    name,
+                    name: authorName,
                     id: authorID,
                 },
                 group: {
-                    id: groupID,
-                    name: groupName
+                    name: groupName,
+                    id: groupID
                 }
             }
         }

@@ -9,9 +9,11 @@ fb.login(process.env.FB_USER, process.env.FB_PASS).catch(error => console.log(er
 .then(async () => {
     const groups = await fb.getJoinedGroups()
 
-    const posts = await fb.getGroupPosts(groups[0].id, {limit: 30})
+    const posts = await fb.getGroupPosts(groups[0].id, {beforePost: '1114031370023866'}, post => {
+        console.log(post)
+    })
 
-    console.log(posts)
+    console.log(posts.length)
     
     //BEGIN LOOP
     // listenForNewPosts((post) => {
@@ -20,43 +22,26 @@ fb.login(process.env.FB_USER, process.env.FB_PASS).catch(error => console.log(er
 })
 
 
-function listenForNewPosts(groups, callback) {
-    //Grab posts function
+async function listenForNewPosts(groups, callback) {
+    let checkQueue = shuffleArray([...groups])
 
-    loopFunction()
+    while (true) {
+        const group = checkQueue.shift()
 
-    async function loopFunction() {
-        while (true) {
-            const posts = await grabPosts(); // Fetch new posts
-            if (posts.length > 0) {
-                callback(posts); // Callback with new posts
-            }
-            // Wait for a random time before checking again
-            const delay = getRandomDelay();
-            await new Promise(resolve => setTimeout(resolve, delay))
-        }
-    }
+        //Logic to Grab last post from group
+        const lastScrapedPost = 'a'
 
-    async function fetchNewPosts(group) {
-        let lastLeadTImestamp = await leads
-        .findOne({}, { 
-            projection: { 'post.timestamp': 1, _id: 0 },
-            sort: { 'post.timestamp': -1 }
+        const allPosts = await fb.getGroupPosts(group, { beforePost: lastScrapedPost }, post => {
+            callback(post)
         })
-        //If response is valid return timestamp
-        //If response  is null return a date 8 hours before current date
-        .then(response => response ? response.post.timestamp : new Date(Date.now() - (1000 * 60 * 60 * 8)))
 
-        shuffleArray(groups)
-
-        for (const group of groups) {
-            console.log(`Grabbing Posts from ${group.name}`)
-            const posts = await fb.getGroupPosts(group.id, {dateRange: {
-                // start: new Date('03/03/2024, 01:00:00 PM'),
-                end: lastLeadTImestamp
-            }})
-            //PROCESS POSTS
+        if (allPosts.length > 0) {
+            //Update last scraped post id for group document
         }
+
+        if (checkQueue.length === 0) checkQueue = shuffleArray([...groups])
+
+        await new Promise(resolve => setTimeout(resolve, Math.random() * (120000 - 60000) + 60000))
     }
 }
 

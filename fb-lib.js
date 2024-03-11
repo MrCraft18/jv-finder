@@ -8,7 +8,7 @@ const fb = {
                 if (!pass) return reject('Missing Password Field')
 
                 browser = await puppeteer.launch({
-                    headless: false,
+                    headless: 'new',
                     userDataDir: './browser'
                 })
 
@@ -126,7 +126,8 @@ const fb = {
                         const post = await grabAndExtractPost(i)
 
                         if (post) {
-                            if (post.timestamp > dateRange.start && post.timestamp < dateRange.end) {
+
+                            if (post.timestamp > dateRange.start && post.timestamp > dateRange.end) {
                                 if (callback) callback(post)
                                 posts.push(post)
                             }
@@ -244,8 +245,6 @@ const fb = {
                     strArr.splice(strArr.indexOf('at'), 1)
 
                     const formattedStr = strArr.join(' ')
-
-                    console.log(rawStr)
 
                     resolve(new Date(formattedStr))
                 }),

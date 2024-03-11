@@ -2,23 +2,32 @@ const fb = require('./fb-lib')
 const { MongoClient, ObjectId } = require('mongodb')
 require('dotenv').config()
 
-// const client = new MongoClient(process.env.MONGODB_URI)
-// const leads = client.db('JV-FINDER').collection('leads')
+const client = new MongoClient(process.env.MONGODB_URI)
+const leadsCollection = client.db('JV-FINDER').collection('leads')
+const groupsCollection = client.db('JV-FINDER').collection('groups')
 
 fb.login(process.env.FB_USER, process.env.FB_PASS).catch(error => console.log(error))
 .then(async () => {
     const groups = await fb.getJoinedGroups()
 
-    const posts = await fb.getGroupPosts(groups[0].id, {beforePost: '1114031370023866'}, post => {
-        console.log(post)
-    })
+    const databaseGroups = await groupsCollection
+        .find({}, { projection: { _id: 0 } })
+        .toArray()
 
-    console.log(posts.length)
+    for (const group of groups) {
+        if (!databaseGroups.find(databaseGroup => databaseGroup.id === group.id)) {
+            groupsCollection.insertOne(group)
+        }
+    }
+
+    // const posts = await fb.getGroupPosts(groups[0].id, {beforePost: '1114031370023866'}, post => {
+    //     console.log(post)
+    // })
     
     //BEGIN LOOP
-    // listenForNewPosts((post) => {
-        
-    // })
+    listenForNewPosts(groups, (post) => {
+        console.log(post)
+    })
 })
 
 
@@ -29,19 +38,36 @@ async function listenForNewPosts(groups, callback) {
         const group = checkQueue.shift()
 
         //Logic to Grab last post from group
-        const lastScrapedPost = 'a'
+        const lastScrapedPost = await groupsCollection
+            .findOne({ id: group.id }, { projection: { lastScrapedPost: 1,  _id: 0 } })
+            .then(response => response.lastScrapedPost)
 
-        const allPosts = await fb.getGroupPosts(group, { beforePost: lastScrapedPost }, post => {
-            callback(post)
-        })
+        console.log(group.name)
+
+        if (!lastScrapedPost) {
+            console.log('Grabbing Posts 1 Day Back')
+        } else {
+            console.log('Grabbing until last scraped post')
+        }
+
+        const allPosts = !lastScrapedPost ?
+            await fb.getGroupPosts(group.id, { dateRange: { end: new Date(Date.now() - (1000 * 60 * 60 * 24)) } }, post => {
+                callback(post)
+            })
+            :
+            await fb.getGroupPosts(group.id, { beforePost: lastScrapedPost }, post => {
+                callback(post)
+            })
 
         if (allPosts.length > 0) {
-            //Update last scraped post id for group document
+            await groupsCollection.updateOne({ id: group.id }, { $set: { lastScrapedPost: allPosts[0].id } })
         }
 
         if (checkQueue.length === 0) checkQueue = shuffleArray([...groups])
 
-        await new Promise(resolve => setTimeout(resolve, Math.random() * (120000 - 60000) + 60000))
+        await new Promise(resolve => setTimeout(resolve, 30000))
+
+        // await new Promise(resolve => setTimeout(resolve, Math.random() * (120000 - 60000) + 60000))
     }
 }
 

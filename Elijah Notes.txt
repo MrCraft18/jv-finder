@@ -1,4 +1,4 @@
-Needed info: Price, Address, Has survey or not.
+Needed info: Price, Address, Has survey or not, same contaact to OP.
 
 Get permission EVERY time.
 

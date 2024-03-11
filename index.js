@@ -19,14 +19,12 @@ fb.login(process.env.FB_USER, process.env.FB_PASS).catch(error => console.log(er
             groupsCollection.insertOne(group)
         }
     }
-
-    // const posts = await fb.getGroupPosts(groups[0].id, {beforePost: '1114031370023866'}, post => {
-    //     console.log(post)
-    // })
     
     //BEGIN LOOP
     listenForNewPosts(groups, (post) => {
         console.log(post)
+
+        //BEGIN THE BIG LOGIC
     })
 })
 

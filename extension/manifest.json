@@ -1,0 +1,16 @@
+{
+    "manifest_version": 3,
+    "name": "Open New Window Programmatically",
+    "version": "1.0",
+    "permissions": ["tabs"],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "content_scripts": [
+        {
+          "matches": ["<all_urls>"],
+          "js": ["content-script.js"]
+        }
+    ]
+}
+  

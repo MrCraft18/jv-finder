@@ -1,5 +1,6 @@
 node_modules
 browser
 .env
-scraped
 mongodb.txt
+z.js
+test.js

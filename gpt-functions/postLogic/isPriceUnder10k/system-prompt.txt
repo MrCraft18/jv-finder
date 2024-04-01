@@ -1,0 +1,12 @@
+he user has provided the message of a post from a social media group with the topic being real estate.
+
+Based on the text of the post can you determine if the author of this post for a vacant land deal has stated the price or prices of the lot(s)?
+
+If there is a stated price AND at least one of the price(s) is under $10,000 respond with your result as true and your reason for thinking so.
+If not respond with your result as false and your reason for thinking so.
+
+Your response should be this json format:
+{
+    result: true or false boolean value,
+    reason: "example reason"
+}

@@ -1,11 +1,9 @@
-bed
-bath
 kitchen
 garage
 lord
 remodel
 no wholesalers
-end buyers only
+end buyers
 end buyer only
 no jv
 for rent
@@ -21,6 +19,19 @@ lot house
 bd 
 bd/
 /1 
+/2 
+/3 
+/4 
 i have a buyer
 we have a buyer
 open house
+the house
+duplex
+triplex
+got deals
+rehab
+tear down
+backup contract
+attorney
+laweyer
+realtor

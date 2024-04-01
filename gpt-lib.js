@@ -1,0 +1,44 @@
+const OpenAI = require('openai')
+const fs = require('fs')
+require('dotenv').config()
+
+
+const openai = new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY
+})
+
+
+
+const gpt = {
+    postLogic: async (functionName, post) => {
+        // console.log('Calling GPT Post Logic')
+
+        const messages = [
+            {
+                role: 'system',
+                content: fs.readFileSync(`./gpt-functions/postLogic/${functionName}/system-prompt.txt`, 'utf-8')
+            },
+            {
+                role: 'user',
+                content: post.text
+            }
+        ]
+
+        // console.log(messages)
+
+        const response = await openai.chat.completions.create({
+            model: "gpt-4-turbo-preview",
+            messages,
+            temperature: 0,
+            response_format: {
+                type: 'json_object'
+            }
+        })
+
+        console.log(JSON.parse(response.choices[0].message.content))
+
+        return JSON.parse(response.choices[0].message.content)
+    }
+}
+
+module.exports = gpt

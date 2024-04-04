@@ -13,7 +13,7 @@ class Facebook {
         return new Promise(async (resolve, reject) => {
             try {
                 const browser = await puppeteer.launch({
-                    headless: true,
+                    headless: false,
                     userDataDir: './browser',
                     args: [
                         '--disable-notifications',
@@ -205,8 +205,6 @@ class Facebook {
     
     
                 async function grabAndExtractPost(index) {
-                    // await new Promise(res => setTimeout(res, 3000))
-
                     await page.waitForFunction(index => {
                         const elements = Array.from(document.querySelectorAll(`[role="feed"] > .x1yztbdb.x1n2onr6.xh8yej3.x1ja2u2z`))
                         return elements[index]
@@ -231,15 +229,12 @@ class Facebook {
                         return undefined
                     }
 
-                    await postElement.evaluate(element => {
-                        console.log(element)
-                    })
                     // await postElement.waitForSelector('use', {timeout: 10000000})
 
-                    const stupidity = await postElement.waitForSelector('span.x4k7w5x.x1h91t0o.x1h9r5lt.x1jfb8zj.xv2umb2.x1beo9mf.xaigb6o.x12ejxvf.x3igimt.xarpa2k.xedcshv.x1lytzrv.x1t2pt76.x7ja8zs.x1qrby5j > a', {visible: true})
-                    await stupidity.evaluate(element => {
-                        console.log(element)
-                    })
+                    const stupidity = await Promise.race([
+                        postElement.waitForSelector('span.x4k7w5x.x1h91t0o.x1h9r5lt.x1jfb8zj.xv2umb2.x1beo9mf.xaigb6o.x12ejxvf.x3igimt.xarpa2k.xedcshv.x1lytzrv.x1t2pt76.x7ja8zs.x1qrby5j > a[href*="post"]', {visible: true}),
+                        postElement.waitForSelector('span.x4k7w5x.x1h91t0o.x1h9r5lt.x1jfb8zj.xv2umb2.x1beo9mf.xaigb6o.x12ejxvf.x3igimt.xarpa2k.xedcshv.x1lytzrv.x1t2pt76.x7ja8zs.x1qrby5j > a[href="#"]', {visible: true})
+                    ])
 
                     await stupidity.hover()
                     await postElement.waitForSelector('a[href*="/posts/"]')
@@ -537,7 +532,7 @@ class Facebook {
 
                 await new Promise(res => setTimeout(res, 5000))
 
-                page.close()
+                await page.close()
 
                 resolve()
             } catch (error) {

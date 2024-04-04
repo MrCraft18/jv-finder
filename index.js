@@ -41,33 +41,33 @@ async function main() {
     
     //BEGIN LOOP
     listenForNewPosts(groups, async (post) => {
-        console.log(post.author.name)
+        // console.log(post.author.name)
 
-        // if (!keywordFilter(post)) return
-        // if (await isDuplicatePost(post)) return
-        // if (keywordFilter(post) === 'maybe') {
-        //     if (!await gpt.posts('isPostVacantLandDeal', post).then(response => response.result)) return
-        // }
+        if (!keywordFilter(post)) return
+        if (await isDuplicatePost(post)) return
+        if (keywordFilter(post) === 'maybe') {
+            if (!await gpt.posts('isPostVacantLandDeal', post).then(response => response.result)) return
+        }
 
-        // //POST IS A NON-DUPLICATE VACANT LAND DEAL
+        //POST IS A NON-DUPLICATE VACANT LAND DEAL
 
-        // await fb.sendMessage(post.author.id, await gpt.posts('generateOpeningMessage', post).then(response => response.result))
+        await fb.sendMessage(await gpt.posts('generateOpeningMessage', post).then(response => response.result), post.author.id)
 
-        // await leads.addItem({
-        //     'title': post.author.name,
-        //     'post-link': {
-        //         embed: await leads.createEmbed({url: `https://www.facebook.com/groups/${post.group.id}/posts/${post.id}/`}).then(embed => embed.embed_id)
-        //     },
-        //     'messenger-link': {
-        //         embed: await leads.createEmbed({url: `https://www.facebook.com/messages/t/${post.author.id}/`}).then(embed => embed.embed_id)
-        //     },
-        //     'category': 1
-        // })
-        // .catch(error => console.error(error))
+        await leads.addItem({
+            'title': post.author.name,
+            'post-link': {
+                embed: await leads.createEmbed({url: `https://www.facebook.com/groups/${post.group.id}/posts/${post.id}/`}).then(embed => embed.embed_id)
+            },
+            'messenger-link': {
+                embed: await leads.createEmbed({url: `https://www.facebook.com/messages/t/${post.author.id}/`}).then(embed => embed.embed_id)
+            },
+            'category': 1
+        })
+        .catch(error => console.error(error))
 
-        // leadsCollection.insertOne(post)
+        leadsCollection.insertOne(post)
 
-        // console.log('Got One')
+        console.log('Got One')
     })
 
 

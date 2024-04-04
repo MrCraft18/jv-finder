@@ -19,7 +19,8 @@ class Facebook {
                         '--disable-notifications',
                         `--disable-extensions-except=./extension`,
                         `--load-extension=./extension`
-                    ]
+                    ],
+                    devtools: false
                 })
             
                 const page = await browser.newPage()
@@ -141,13 +142,21 @@ class Facebook {
     
                 if (dateRange && !dateRange.start) dateRange.start = new Date(0)
     
-                const page = await this.browser.newWindowPage()
+                const page = await this.browser.newPage()
                 await page.setViewport({ width: 1920, height: 1080 })
     
                 await Promise.all([
                     page.goto(`https://www.facebook.com/groups/${groupID}?sorting_setting=CHRONOLOGICAL`),
                     page.waitForNavigation()
                 ])
+
+                // await page.evaluate(() => {
+                //     document.body.style.zoom = 0.5;
+                // })
+
+                // page.on('console', message => {
+                //     console.log('Browser Console: ', message.text())
+                // })
     
                 const groupName = await page.evaluate(() => {
                     groupNameElement = document.querySelector('.x1i10hfl.xjbqb8w.x1ejq31n.xd10rxx.x1sy0etr.x17r0tee.x972fbf.xcfux6l.x1qhh985.xm0m39n.x9f619.x1ypdohk.xt0psk2.xe8uvvx.xdj266r.x11i5rnm.xat24cr.x1mh8g0r.xexx8yu.x4uap5.x18d9i69.xkhd6sd.x16tdsg8.x1hl2dhg.xggy1nq.x1a2a7pz.x1heor9g.xt0b8zv.x1xlr1w8')
@@ -196,6 +205,8 @@ class Facebook {
     
     
                 async function grabAndExtractPost(index) {
+                    // await new Promise(res => setTimeout(res, 3000))
+
                     await page.waitForFunction(index => {
                         const elements = Array.from(document.querySelectorAll(`[role="feed"] > .x1yztbdb.x1n2onr6.xh8yej3.x1ja2u2z`))
                         return elements[index]
@@ -204,18 +215,6 @@ class Facebook {
                     const postElements = await page.$$(`[role="feed"] > .x1yztbdb.x1n2onr6.xh8yej3.x1ja2u2z`)
                     let postElement = postElements[index]
 
-                    const stupidity = await postElement.$('a[href="#"]')
-                    if (stupidity) {
-                        await stupidity.hover()
-                    }
-
-                    let fuckFacebook = true
-                    while (fuckFacebook) {
-                        if (await postElement.$('a[href*="posts"]')) {
-                            fuckFacebook = false
-                        }
-                    }
-                    
                     const isShortVideo = await postElement.evaluate(element => {
                         const shortVideoElement = Array.from(element.querySelectorAll('span'))
                             .find(element => element.innerText.includes('Short Video'))
@@ -225,8 +224,25 @@ class Facebook {
         
                     if (isShortVideo) {
                         // console.log('Skipping Short Video')
+                        await page.evaluate(() => {
+                            window.scrollTo(0, document.body.scrollHeight);
+                        })
+
                         return undefined
                     }
+
+                    await postElement.evaluate(element => {
+                        console.log(element)
+                    })
+                    // await postElement.waitForSelector('use', {timeout: 10000000})
+
+                    const stupidity = await postElement.waitForSelector('span.x4k7w5x.x1h91t0o.x1h9r5lt.x1jfb8zj.xv2umb2.x1beo9mf.xaigb6o.x12ejxvf.x3igimt.xarpa2k.xedcshv.x1lytzrv.x1t2pt76.x7ja8zs.x1qrby5j > a', {visible: true})
+                    await stupidity.evaluate(element => {
+                        console.log(element)
+                    })
+
+                    await stupidity.hover()
+                    await postElement.waitForSelector('a[href*="/posts/"]')
         
                     const [text, images, authorName, authorID, timestamp, postID] = await Promise.all([
                         //Get Post Text
@@ -280,16 +296,14 @@ class Facebook {
                         //Get Timestamp
                         new Promise(async resolve => {
                             const postTimeElement = await postElement.evaluateHandle(element => {
-                                const postAnchorElement = Array.from(element.querySelectorAll('a'))
-                                    .find(element => element.href.includes('/posts'))
-        
-                                return postAnchorElement
+                                console.log(element.querySelector('a[href*="/posts/"]'))
+                                return element.querySelector('a[href*="/posts/"]')
                             })
                             
                             await postTimeElement.evaluate(element => element.scrollIntoView({block: 'center'}))
                             await postTimeElement.hover()
         
-                            const dateElement = await page.waitForSelector('.xj5tmjb.x1r9drvm.x16aqbuh.x9rzwcf.xjkqk3g.xms15q0.x1lliihq.xo8ld3r.xjpr12u.xr9ek0c.x86nfjv.x1ye3gou.xn6708d.xz9dl7a.xsag5q8.x1n2onr6.x19991ni.__fb-dark-mode.x1hc1fzr.xhb22t3.xls3em1')
+                            const dateElement = await page.waitForSelector('.xj5tmjb.x1r9drvm.x16aqbuh.x9rzwcf.xjkqk3g.xms15q0.x1lliihq.xo8ld3r.xjpr12u.xr9ek0c.x86nfjv.x1ye3gou.xn6708d.xz9dl7a.xsag5q8.x1n2onr6.x19991ni.__fb-dark-mode.x1hc1fzr.xhb22t3.xls3em1', {timeout: 10000000})
         
                             const rawStr = await dateElement.evaluate(element => element.innerText)
         
@@ -301,10 +315,9 @@ class Facebook {
         
                             resolve(new Date(formattedStr))
                         }),
-                        //Get Post Link
+                        //Get Post ID
                         postElement.evaluate(element => {
-                            const postAnchorElement = Array.from(element.querySelectorAll('a'))
-                                .find(element => element.href.includes('/posts'))
+                            const postAnchorElement = element.querySelector('a[href*="/posts/"]')
         
                             return postAnchorElement.href.split('/')[postAnchorElement.href.split('/').indexOf('posts') + 1]
                         })
@@ -442,14 +455,14 @@ class Facebook {
 
                 await new Promise(res => setTimeout(res, 1000))
     
-                const missedMessagesAmount = await missedMessagesPage.evaluate(() => {
+                let missedMessagesAmount = await missedMessagesPage.evaluate(() => {
                     return Array.from(document.querySelectorAll('div')).filter(element => element.className === 'x78zum5 x1iyjqo2 xs83m0k xeuugli').length
                 })
 
                 //REWRITE THIS TO NOT ONLY GRAB LIMITED NUMBER OF MESSAGES AND INSTEAD LOOP UNTIL ALL ARE GONE
     
                 for (let i = 0; i < missedMessagesAmount; i++) {
-                    await new Promise(res => setTimeout(res, 1000))
+                    // await new Promise(res => setTimeout(res, 1000))
 
                     const missedMessageElement = await missedMessagesPage.evaluateHandle(index => {
                         return Array.from(document.querySelectorAll('div')).filter(element => element.className === 'x78zum5 x1iyjqo2 xs83m0k xeuugli')[index].firstChild
@@ -469,11 +482,15 @@ class Facebook {
                     }
     
                     callback(missedMessage)
+
+                    missedMessagesAmount = await missedMessagesPage.evaluate(() => {
+                        return Array.from(document.querySelectorAll('div')).filter(element => element.className === 'x78zum5 x1iyjqo2 xs83m0k xeuugli').length
+                    })
                 }
     
                 await conversationAnchorElement.hover()
     
-                const menuButton = await missedMessagesPage.waitForSelector('.x1i10hfl.x1ejq31n.xd10rxx.x1sy0etr.x17r0tee.x1ypdohk.xe8uvvx.xdj266r.x11i5rnm.xat24cr.x1mh8g0r.x16tdsg8.x1hl2dhg.xggy1nq.x87ps6o.x1lku1pv.x1a2a7pz.x6s0dn4.x14yjl9h.xudhj91.x18nykt9.xww2gxu.x972fbf.xcfux6l.x1qhh985.xm0m39n.x9f619.x78zum5.xl56j7k.xexx8yu.x4uap5.x18d9i69.xkhd6sd.x1n2onr6.xc9qbxq.x14qfxbe.x9bbmet.x10f5nwc.xi81zsa')
+                const menuButton = await missedMessagesPage.waitForSelector('[aria-label="Menu"].x1i10hfl.x1ejq31n.xd10rxx.x1sy0etr.x17r0tee.x1ypdohk.xe8uvvx.xdj266r.x11i5rnm.xat24cr.x1mh8g0r.x16tdsg8.x1hl2dhg.xggy1nq.x87ps6o.x1lku1pv.x1a2a7pz.x6s0dn4.x14yjl9h.xudhj91.x18nykt9.xww2gxu.x972fbf.xcfux6l.x1qhh985.xm0m39n.x9f619.x78zum5.xl56j7k.xexx8yu.x4uap5.x18d9i69.xkhd6sd.x1n2onr6.xc9qbxq.x14qfxbe.x9bbmet.x10f5nwc.xi81zsa')
                 await menuButton.click()
     
                 await missedMessagesPage.waitForFunction(() => {
@@ -512,7 +529,15 @@ class Facebook {
                 ])
         
                 const inputElement = await page.waitForSelector('p')
+
+                await page.keyboard.down('Shift')
                 await inputElement.type(message)
+                await page.keyboard.up('Shift')
+                await inputElement.type('\n')
+
+                await new Promise(res => setTimeout(res, 5000))
+
+                page.close()
 
                 resolve()
             } catch (error) {

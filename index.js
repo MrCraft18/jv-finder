@@ -1,4 +1,5 @@
 const Facebook = require('./fb-lib')
+const PodioApp = require('./podio-lib.js')
 const gpt = require('./gpt-lib.js')
 const { MongoClient, ObjectId } = require('mongodb')
 const fs = require('fs')
@@ -11,109 +12,125 @@ const groupsCollection = client.db('JV-FINDER').collection('groups')
 
 
 
-Facebook.login(process.env.FB_USER, process.env.FB_PASS).catch(error => console.log(error))
-.then(async fb => {
-    // const groups = await fb.getJoinedGroups()
+const leads = new PodioApp({
+    app_id: process.env.PODIO_APP_ID,
+    app_token: process.env.PODIO_APP_TOKEN,
+    client_id: process.env.PODIO_CLIENT_ID,
+    client_secret: process.env.PODIO_CLIENT_SECRET
+})
 
-    // const databaseGroups = await groupsCollection
-    //     .find({}, { projection: { _id: 0 } })
-    //     .toArray()
+async function main() {
+    const fb = await Facebook.login(process.env.FB_USER, process.env.FB_PASS).catch(error => console.log(error))
 
-    // for (const group of groups) {
-    //     if (!databaseGroups.find(databaseGroup => databaseGroup.id === group.id)) {
-    //         groupsCollection.insertOne(group)
-    //     }
-    // }
+    const groups = await fb.getJoinedGroups()
 
-    const groups = [{
-        name: 'Bruh',
-        id: '1345361228867056'
-    }]
+    const databaseGroups = await groupsCollection
+        .find({}, { projection: { _id: 0 } })
+        .toArray()
+
+    for (const group of groups) {
+        if (!databaseGroups.find(databaseGroup => databaseGroup.id === group.id)) {
+            groupsCollection.insertOne(group)
+        }
+    }
+
+    // const groups = [{
+    //     name: 'Bruh',
+    //     id: '753131472674393'
+    // }]
     
     //BEGIN LOOP
     listenForNewPosts(groups, async (post) => {
-        // console.log(post)
-        // console.log(keywordFilter(post))
-        if (!keywordFilter(post)) return
-        if (await isDuplicatePost(post)) return
-        if (keywordFilter(post) === 'maybe') {
-            if (!await gpt.postLogic('isPostVacantLandDeal', post).then(response => response.result)) return
-        }
+        console.log(post.author.name)
 
-        //POST IS A VACANT LAND DEAL
+        // if (!keywordFilter(post)) return
+        // if (await isDuplicatePost(post)) return
+        // if (keywordFilter(post) === 'maybe') {
+        //     if (!await gpt.posts('isPostVacantLandDeal', post).then(response => response.result)) return
+        // }
 
-        //Make Lead Object
-        const lead = {
-            stage: 0,
-            post,
-            conversation: {
-                type: 'messenger',
-                messages: []
-            }
-        }
+        // //POST IS A NON-DUPLICATE VACANT LAND DEAL
 
-        //Mark Post Document as stage 0 and add to leads collection
+        // await fb.sendMessage(post.author.id, await gpt.posts('generateOpeningMessage', post).then(response => response.result))
 
-        if (await gpt.postLogic('isPriceUnder10k', post).then(response => response.result)) return
-        //Maybe add to database with dropped stage and dropped reason is price under 10k before asking for details
+        // await leads.addItem({
+        //     'title': post.author.name,
+        //     'post-link': {
+        //         embed: await leads.createEmbed({url: `https://www.facebook.com/groups/${post.group.id}/posts/${post.id}/`}).then(embed => embed.embed_id)
+        //     },
+        //     'messenger-link': {
+        //         embed: await leads.createEmbed({url: `https://www.facebook.com/messages/t/${post.author.id}/`}).then(embed => embed.embed_id)
+        //     },
+        //     'category': 1
+        // })
+        // .catch(error => console.error(error))
 
-        //Send message to post author asking for details on the post(s)
+        // leadsCollection.insertOne(post)
 
-        console.log(post)
-        // console.log(keywordFilter(post))
+        // console.log('Got One')
     })
-})
 
 
-async function listenForNewPosts(groups, callback) {
-    let checkQueue = shuffleArray([...groups])
 
-    while (true) {
-        const group = checkQueue.shift()
 
-        //Logic to Grab last post from group
-        const lastScrapedPost = await groupsCollection
-            .findOne({ id: group.id }, { projection: { lastScrapedPost: 1,  _id: 0 } })
-            .then(response => response.lastScrapedPost)
 
-        console.log(group.name)
 
-        // if (!lastScrapedPost) {
-        //     console.log('Grabbing Posts 1 Day Back')
-        // } else {
-        //     console.log('Grabbing until last scraped post')
-        // }
 
-        const allPosts = !lastScrapedPost ?
-            await fb.getGroupPosts(group.id, { dateRange: { end: new Date(Date.now() - (1000 * 60 * 60 * 24)) } }, post => {
-                callback(post)
-            })
-            :
-            await fb.getGroupPosts(group.id, { beforePost: lastScrapedPost }, post => {
-                callback(post)
-            })
 
-        // if (allPosts.length > 0) {
-        //     await groupsCollection.updateOne({ id: group.id }, { $set: { lastScrapedPost: allPosts[0].id } })
-        // }
 
-        if (checkQueue.length === 0) checkQueue = shuffleArray([...groups])
 
-        await new Promise(resolve => setTimeout(resolve, 30000))
-
-        // await new Promise(resolve => setTimeout(resolve, Math.random() * (120000 - 60000) + 60000))
-    }
-
-    function shuffleArray(array) {
-        for (let i = array.length - 1; i > 0; i--) {
-            // Generate a random index from 0 to i
-            const j = Math.floor(Math.random() * (i + 1));
-            // Swap elements at indices i and j
-            [array[i], array[j]] = [array[j], array[i]];
+    async function listenForNewPosts(groups, callback) {
+        let checkQueue = shuffleArray([...groups])
+    
+        while (true) {
+            const group = checkQueue.shift()
+    
+            //Logic to Grab last post from group
+            const lastScrapedPost = await groupsCollection
+                .findOne({ id: group.id }, { projection: { lastScrapedPost: 1,  _id: 0 } })
+                .then(response => response.lastScrapedPost)
+    
+            console.log(group.name, group.id)
+    
+            let allPosts
+    
+            if (lastScrapedPost && differenceInHours(lastScrapedPost.timestamp, new Date()) < 24) {
+                allPosts = await fb.getGroupPosts(group.id, { beforePost: lastScrapedPost.id }, post => {
+                    callback(post)
+                })
+            } else if (lastScrapedPost && differenceInHours(lastScrapedPost.timestamp, new Date()) > 24 || !lastScrapedPost) {
+                allPosts = await fb.getGroupPosts(group.id, { dateRange: { end: new Date(Date.now() - (1000 * 60 * 60 * 24)) } }, post => {
+                    callback(post)
+                })
+            }
+    
+            if (allPosts.length > 0) {
+                await groupsCollection.updateOne({ id: group.id }, { $set: { lastScrapedPost: allPosts[0] } })
+            }
+    
+            if (checkQueue.length === 0) checkQueue = shuffleArray([...groups])
+    
+            await new Promise(resolve => setTimeout(resolve, 5000))
+    
+            // await new Promise(resolve => setTimeout(resolve, Math.random() * (120000 - 60000) + 60000))
         }
-        return array;
+    
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                // Generate a random index from 0 to i
+                const j = Math.floor(Math.random() * (i + 1));
+                // Swap elements at indices i and j
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+    
+        function differenceInHours(date1, date2) {
+            return Math.abs(date2 - date1) / (1000 * 60 * 60);
+        }
     }
 }
+main()
 
 
 
@@ -144,8 +161,12 @@ function keywordFilter(post) {
 
 
 async function isDuplicatePost(post) {
+    // const authorPostsCursor = leadsCollection.find({
+    //     'post.author.id': post.author.id
+    // })
+
     const authorPostsCursor = leadsCollection.find({
-        'post.author.id': post.author.id
+        'author.id': post.author.id
     })
 
     function normalizeString(str) {

@@ -10,13 +10,13 @@ const openai = new OpenAI({
 
 
 const gpt = {
-    postLogic: async (functionName, post) => {
+    posts: async (functionName, post) => {
         // console.log('Calling GPT Post Logic')
 
         const messages = [
             {
                 role: 'system',
-                content: fs.readFileSync(`./gpt-functions/postLogic/${functionName}/system-prompt.txt`, 'utf-8')
+                content: fs.readFileSync(`./gpt-functions/posts/${functionName}/system-prompt.txt`, 'utf-8')
             },
             {
                 role: 'user',

@@ -7,6 +7,8 @@ It needs to look something like one of these:
 "Can I get the details for your lot on [address]"
 "Could I get info on your lot on [address]"
 
+Don't include "TX" in your message as all of these posts are in the context of being in Texas so its irrelavent.
+
 If they have the address in the post then use the address but if not then use the city.
 
 Your response should be this json format:

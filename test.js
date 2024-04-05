@@ -29,11 +29,15 @@ const leads = new PodioApp({
 
 Facebook.login(process.env.FB_USER, process.env.FB_PASS)
 .then(async fb => {
-    fb.onMessage(data => {
-        console.log(data)
-    })
+    // fb.onMessage(data => {
+    //     console.log(data)
+    // })
 
-    // await fb.sendMessage('Ayo\nfrom js', '100006618918087')
+    fb.sendMessage('1', '100006618918087')
+    await new Promise(res => setTimeout(res, 1000))
+    fb.sendMessage('1', '100006618918087')
+    await new Promise(res => setTimeout(res, 1000))
+    fb.sendMessage('1', '100006618918087')
 
     // await fb.getGroupPosts('1345361228867056', {limit: 50}, post => {
     //     console.log("post")

@@ -13,12 +13,13 @@ class Facebook {
         return new Promise(async (resolve, reject) => {
             try {
                 const browser = await puppeteer.launch({
-                    headless: false,
+                    headless: true,
                     userDataDir: './browser',
                     args: [
                         '--disable-notifications',
                         `--disable-extensions-except=./extension`,
-                        `--load-extension=./extension`
+                        `--load-extension=./extension`,
+                        '--start-maximized'
                     ],
                     devtools: false
                 })
@@ -522,8 +523,10 @@ class Facebook {
                     page.goto(`https://www.facebook.com/messages/t/${recipientID}`),
                     page.waitForNavigation({ waitUntil: 'networkidle0' })
                 ])
-        
-                const inputElement = await page.waitForSelector('p')
+
+                const inputElement = await page.waitForSelector('div[aria-label="Message"]')
+
+                await inputElement.focus()
 
                 await page.keyboard.down('Shift')
                 await inputElement.type(message)

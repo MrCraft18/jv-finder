@@ -22,22 +22,22 @@ const leads = new PodioApp({
 async function main() {
     const fb = await Facebook.login(process.env.FB_USER, process.env.FB_PASS).catch(error => console.log(error))
 
-    // const groups = await fb.getJoinedGroups()
+    const groups = await fb.getJoinedGroups()
 
-    // const databaseGroups = await groupsCollection
-    //     .find({}, { projection: { _id: 0 } })
-    //     .toArray()
+    const databaseGroups = await groupsCollection
+        .find({}, { projection: { _id: 0 } })
+        .toArray()
 
-    // for (const group of groups) {
-    //     if (!databaseGroups.find(databaseGroup => databaseGroup.id === group.id)) {
-    //         groupsCollection.insertOne(group)
-    //     }
-    // }
+    for (const group of groups) {
+        if (!databaseGroups.find(databaseGroup => databaseGroup.id === group.id)) {
+            groupsCollection.insertOne(group)
+        }
+    }
 
-    const groups = [{
-        name: 'Bruh',
-        id: '1579306842350415'
-    }]
+    // const groups = [{
+    //     name: 'Bruh',
+    //     id: '1579306842350415'
+    // }]
     
     //BEGIN LOOP
     listenForNewPosts(groups, async (post) => {

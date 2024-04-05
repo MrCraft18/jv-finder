@@ -2,10 +2,10 @@ The user has provided the message of a post from a social media group with the t
 
 Based on the text of the post can write an opening message to ask for more details about their vacant land deal?
 It needs to look something like one of these:
-"Can I get more details on your lot in [city]"
-"Could I get the info on your lot in [city]"
-"Can I get the details for your lot on [address]"
-"Could I get info on your lot on [address]"
+"Can I get more details on your lot in [city]?"
+"Could I get the info on your lot in [city]?"
+"Can I get the details for your lot on [address]?"
+"Could I get info on your lot on [address]?"
 
 Don't include "TX" in your message as all of these posts are in the context of being in Texas so its irrelavent.
 

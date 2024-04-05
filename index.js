@@ -139,7 +139,7 @@ const keywords = {
     negative: fs.readFileSync('./keywords/negative.txt', 'utf-8').toLowerCase().split('\n'),
     maybeNegative: fs.readFileSync('./keywords/maybe-negative.txt', 'utf-8').toLowerCase().split('\n'),
     maybePostive: fs.readFileSync('./keywords/maybe-positive.txt', 'utf-8').toLowerCase().split('\n'),
-    cities: fs.readFileSync('./keywords/cities.txt', 'utf-8').toLowerCase().split('\n')
+    cities: fs.readFileSync('./keywords/cities.txt', 'utf-8').split('\n')
 }
 
 function keywordFilter(post) {
@@ -147,7 +147,7 @@ function keywordFilter(post) {
     const includesNoNegative = keywords.negative.every(word => !post.text.toLowerCase().includes(word))
     const includesSomeMaybeNegative = keywords.maybeNegative.some(word => new RegExp(`\\b${word}\\b`).test(post.text.toLowerCase()))
     const includesSomeMaybePositive = keywords.maybePostive.some(word => new RegExp(`\\b${word}\\b`).test(post.text.toLowerCase()))
-    const includesOneCity = keywords.cities.some(word => new RegExp(`\\b${word}\\b`).test(post.text.toLowerCase()))
+    const includesOneCity = keywords.cities.some(word => new RegExp(`\\b${word}\\b`).test(post.text))
     
     if (includesSomePositive && includesNoNegative && !includesSomeMaybeNegative && includesOneCity) {
         return true

@@ -95,7 +95,7 @@ async function main() {
             let allPosts
     
             if (lastScrapedPost && differenceInHours(lastScrapedPost.timestamp, new Date()) < 24) {
-                allPosts = await fb.getGroupPosts(group.id, { beforePost: lastScrapedPost.id }, post => {
+                allPosts = await fb.getGroupPosts(group.id, { dateRange: { end: lastScrapedPost.timestamp } }, post => {
                     callback(post)
                 })
             } else if (lastScrapedPost && differenceInHours(lastScrapedPost.timestamp, new Date()) > 24 || !lastScrapedPost) {
@@ -110,9 +110,9 @@ async function main() {
     
             if (checkQueue.length === 0) checkQueue = shuffleArray([...groups])
     
-            await new Promise(resolve => setTimeout(resolve, 5000))
+            // await new Promise(resolve => setTimeout(resolve, 5000))
     
-            // await new Promise(resolve => setTimeout(resolve, Math.random() * (120000 - 60000) + 60000))
+            await new Promise(resolve => setTimeout(resolve, Math.random() * (120000 - 60000) + 60000))
         }
     
         function shuffleArray(array) {
@@ -139,7 +139,7 @@ const keywords = {
     negative: fs.readFileSync('./keywords/negative.txt', 'utf-8').toLowerCase().split('\n'),
     maybeNegative: fs.readFileSync('./keywords/maybe-negative.txt', 'utf-8').toLowerCase().split('\n'),
     maybePostive: fs.readFileSync('./keywords/maybe-positive.txt', 'utf-8').toLowerCase().split('\n'),
-    cities: fs.readFileSync('./keywords/cities.txt', 'utf-8').toLowerCase().split('\n')
+    cities: fs.readFileSync('./keywords/cities.txt', 'utf-8').split('\n')
 }
 
 function keywordFilter(post) {
@@ -147,7 +147,7 @@ function keywordFilter(post) {
     const includesNoNegative = keywords.negative.every(word => !post.text.toLowerCase().includes(word))
     const includesSomeMaybeNegative = keywords.maybeNegative.some(word => new RegExp(`\\b${word}\\b`).test(post.text.toLowerCase()))
     const includesSomeMaybePositive = keywords.maybePostive.some(word => new RegExp(`\\b${word}\\b`).test(post.text.toLowerCase()))
-    const includesOneCity = keywords.cities.some(word => new RegExp(`\\b${word}\\b`).toLowerCase().test(post.text))
+    const includesOneCity = keywords.cities.some(word => new RegExp(`\\b${word}\\b`).test(post.text))
     
     if (includesSomePositive && includesNoNegative && !includesSomeMaybeNegative && includesOneCity) {
         return true

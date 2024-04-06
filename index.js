@@ -23,63 +23,63 @@ const podioLeads = new PodioApp({
 async function main() {
     const fb = await Facebook.login(process.env.FB_USER, process.env.FB_PASS).catch(error => console.log(error))
 
-    const groups = await fb.getJoinedGroups()
+    // const groups = await fb.getJoinedGroups()
 
-    const databaseGroups = await groupsCollection
-        .find({}, { projection: { _id: 0 } })
-        .toArray()
+    // const databaseGroups = await groupsCollection
+    //     .find({}, { projection: { _id: 0 } })
+    //     .toArray()
 
-    for (const group of groups) {
-        if (!databaseGroups.find(databaseGroup => databaseGroup.id === group.id)) {
-            groupsCollection.insertOne(group)
-        }
-    }
+    // for (const group of groups) {
+    //     if (!databaseGroups.find(databaseGroup => databaseGroup.id === group.id)) {
+    //         groupsCollection.insertOne(group)
+    //     }
+    // }
 
-    // const groups = [{
-    //     name: 'Bruh',
-    //     id: '1579306842350415'
-    // }]
+    const groups = [{
+        name: 'Bruh',
+        id: 'texasoffmarketproperties'
+    }]
     
     //BEGIN LOOP
     listenForNewPosts(groups, async (post) => {
-        // console.log(post.author.name)
+        console.log(post.author.name)
 
-        if (!keywordFilter(post)) return
-        if (await isDuplicatePost(post)) return
-        if (keywordFilter(post) === 'maybe') {
-            if (!await gpt.posts('isPostVacantLandDeal', post).then(response => response.result)) return
-        }
+        // if (!keywordFilter(post)) return
+        // if (await isDuplicatePost(post)) return
+        // if (keywordFilter(post) === 'maybe') {
+        //     if (!await gpt.posts('isPostVacantLandDeal', post).then(response => response.result)) return
+        // }
 
         //POST IS A NON-DUPLICATE VACANT LAND DEAL
 
-        const openingMessage = await gpt.posts('generateOpeningMessage', post).then(response => response.result)
+        // const openingMessage = await gpt.posts('generateOpeningMessage', post).then(response => response.result)
 
-        await fb.sendMessage(openingMessage, post.author.id)
+        // await fb.sendMessage(openingMessage, post.author.id)
 
-        await fb.groupPostComment('DM Sent', post.group.id, post.id)
+        // await fb.groupPostComment('DM Sent', post.group.id, post.id)
 
-        await podioLeads.addItem({
-            'title': post.author.name,
-            'post-link': {
-                embed: await podioLeads.createEmbed({url: `https://www.facebook.com/groups/${post.group.id}/posts/${post.id}/`}).then(embed => embed.embed_id)
-            },
-            'messenger-link': {
-                embed: await podioLeads.createEmbed({url: `https://www.facebook.com/messages/t/${post.author.id}/`}).then(embed => embed.embed_id)
-            },
-            'images': await Promise.all(post.images.map(async imageURL => {
-                const imageName = imageURL.split('?')[0].split('/').at(-1)
+        // await podioLeads.addItem({
+        //     'title': post.author.name,
+        //     'post-link': {
+        //         embed: await podioLeads.createEmbed({url: `https://www.facebook.com/groups/${post.group.id}/posts/${post.id}/`}).then(embed => embed.embed_id)
+        //     },
+        //     'messenger-link': {
+        //         embed: await podioLeads.createEmbed({url: `https://www.facebook.com/messages/t/${post.author.id}/`}).then(embed => embed.embed_id)
+        //     },
+        //     'images': await Promise.all(post.images.map(async imageURL => {
+        //         const imageName = imageURL.split('?')[0].split('/').at(-1)
     
-                return await leads.uploadFile(await axios.get(imageURL, {responseType: 'stream'}).then(response => response.data), imageName)
-                .then(response => response.file_id)
-                .catch(error => console.error(error))
-            })),
-            'category': 1
-        })
-        .catch(error => console.error(error))
+        //         return await leads.uploadFile(await axios.get(imageURL, {responseType: 'stream'}).then(response => response.data), imageName)
+        //         .then(response => response.file_id)
+        //         .catch(error => console.error(error))
+        //     })),
+        //     'category': 1
+        // })
+        // .catch(error => console.error(error))
 
-        leadsCollection.insertOne(post)
+        // leadsCollection.insertOne(post)
 
-        console.log('Got One: ', {author: post.author.name, message: openingMessage})
+        // console.log('Got One: ', {author: post.author.name, message: openingMessage})
     })
 
 

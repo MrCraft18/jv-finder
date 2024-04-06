@@ -13,7 +13,7 @@ class Facebook {
         return new Promise(async (resolve, reject) => {
             try {
                 const browser = await puppeteer.launch({
-                    headless: true,
+                    headless: false,
                     userDataDir: './browser',
                     args: [
                         '--disable-notifications',
@@ -212,6 +212,7 @@ class Facebook {
     
                 async function grabAndExtractPost(index) {
                     await page.waitForFunction(index => {
+                        window.scrollBy(0, 100)
                         const elements = Array.from(document.querySelectorAll(`[role="feed"] > .x1yztbdb.x1n2onr6.xh8yej3.x1ja2u2z`))
                         return elements[index]
                     }, { polling: 'mutation' }, index)
@@ -323,6 +324,10 @@ class Facebook {
                             return postAnchorElement.href.split('/')[postAnchorElement.href.split('/').indexOf('posts') + 1]
                         })
                     ])
+
+                    // await postElement.evaluate(element => {
+                    //     window.scrollTo(0, element.scrollHeight);
+                    // })
         
                     // console.log(authorName)
         

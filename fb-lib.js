@@ -13,7 +13,7 @@ class Facebook {
         return new Promise(async (resolve, reject) => {
             try {
                 const browser = await puppeteer.launch({
-                    headless: true,
+                    headless: false,
                     userDataDir: './browser',
                     args: [
                         '--disable-notifications',
@@ -538,11 +538,44 @@ class Facebook {
                 await page.keyboard.up('Shift')
                 await inputElement.type('\n')
 
-                await new Promise(res => setTimeout(res, 5000))
+                resolve()
 
+                await new Promise(res => setTimeout(res, 5000))
                 await page.close()
+            } catch (error) {
+                reject(error)
+            }
+        })
+    }
+
+
+
+    async groupPostComment(text, groupID, postID) {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const page = await this.browser.newWindowPage()
+                await page.setViewport({ width: 1920, height: 800 })
+                await Promise.all([
+                    page.goto(`https://www.facebook.com/groups/${groupID}/posts/${postID}/`),
+                    page.waitForNavigation({ waitUntil: 'networkidle0' })
+                ])
+
+                const commentButton = await page.waitForSelector('[aria-label="Leave a comment"]')
+                await commentButton.click()
+
+                const inputElement = await page.waitForSelector('[aria-label="Write a comment…"]')
+
+                await page.keyboard.down('Shift')
+                await inputElement.type(text)
+                await page.keyboard.up('Shift')
+
+                const sendButton = await page.waitForSelector('[aria-label="Comment"]')
+                await sendButton.click()
 
                 resolve()
+
+                await new Promise(res => setTimeout(res, 5000))
+                await page.close()
             } catch (error) {
                 reject(error)
             }

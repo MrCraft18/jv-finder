@@ -14,45 +14,41 @@ const leads = new PodioApp({
     client_secret: process.env.PODIO_CLIENT_SECRET
 })
 
-async function dumb() {
-    const lastScrapedPost = await groupsCollection
-    .findOne({ id: '1784712795095551' }, { projection: { lastScrapedPost: 1,  _id: 0 } })
-    .then(response => response.lastScrapedPost)
+// async function dumb() {
+//     const lastScrapedPost = await groupsCollection
+//     .findOne({ id: '1784712795095551' }, { projection: { lastScrapedPost: 1,  _id: 0 } })
+//     .then(response => response.lastScrapedPost)
 
-    console.log(lastScrapedPost)
-
-
-
-    // const embed = await leads.createEmbed({url: 'https://www.google.com'}).catch(error => console.error(error))
-
-    // await leads.addItem({
-    //     'title': '1304 Shalimar Dr',
-    //     'post-link': {embed: embed.embed_id},
-    //     'messenger-link': {embed: embed.embed_id},
-    //     'category': 1
-    // })
-    // .catch(error => console.error(error))
-}
-dumb()
+//     console.log(lastScrapedPost)
 
 
 
+//     // const embed = await leads.createEmbed({url: 'https://www.google.com'}).catch(error => console.error(error))
 
-
-
-// Facebook.login(process.env.FB_USER, process.env.FB_PASS)
-// .then(async fb => {
-//     // fb.onMessage(data => {
-//     //     console.log(data)
+//     // await leads.addItem({
+//     //     'title': '1304 Shalimar Dr',
+//     //     'post-link': {embed: embed.embed_id},
+//     //     'messenger-link': {embed: embed.embed_id},
+//     //     'category': 1
 //     // })
+//     // .catch(error => console.error(error))
+// }
+// dumb()
 
-//     fb.sendMessage('1', '100006618918087')
-//     await new Promise(res => setTimeout(res, 1000))
-//     fb.sendMessage('1', '100006618918087')
-//     await new Promise(res => setTimeout(res, 1000))
-//     fb.sendMessage('1', '100006618918087')
 
-//     // await fb.getGroupPosts('1345361228867056', {limit: 50}, post => {
-//     //     console.log("post")
-//     // }).catch(error => console.error(error))
-// }).catch(error => console.error(error))
+
+
+
+
+Facebook.login(process.env.FB_USER, process.env.FB_PASS)
+.then(async fb => {
+    // fb.onMessage(data => {
+    //     console.log(data)
+    // })
+
+    await fb.groupPostComment('DM Sent', 587104139383261, 1129995655094104)
+
+    // await fb.getGroupPosts('1345361228867056', {limit: 50}, post => {
+    //     console.log("post")
+    // }).catch(error => console.error(error))
+}).catch(error => console.error(error))

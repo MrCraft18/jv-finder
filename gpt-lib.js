@@ -35,7 +35,7 @@ const gpt = {
             }
         })
 
-        console.log(JSON.parse(response.choices[0].message.content))
+        // console.log(JSON.parse(response.choices[0].message.content))
 
         return JSON.parse(response.choices[0].message.content)
     }

@@ -4,6 +4,8 @@ Based on the text of the post can you determine if this is a posting for a vacan
 Sometimes there are posts where people are looking for vacant land deals and list parameters of what they want, make sure not to consider those as vacant land deals.
 Sometimes the posts will be a listing and include a beds and bath count and say "House". If the count for beds or baths is 0 it might be a vacant land deal but it also might not so keep an eye out for that.
 
+Also a vacant land deal is not a lot that has a home or structure on it that will need to be removed or torn down.
+
 If so respond with your result as true and your reason for thinking so.
 If not respond with your result as false and your reason for thinking so.
 

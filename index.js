@@ -51,7 +51,11 @@ async function main() {
 
         //POST IS A NON-DUPLICATE VACANT LAND DEAL
 
-        await fb.sendMessage(await gpt.posts('generateOpeningMessage', post).then(response => response.result), post.author.id)
+        const openingMessage = await gpt.posts('generateOpeningMessage', post).then(response => response.result)
+
+        await fb.sendMessage(openingMessage, post.author.id)
+
+        await fb.groupPostComment('DM Sent', post.group.id, post.id)
 
         await leads.addItem({
             'title': post.author.name,
@@ -67,7 +71,7 @@ async function main() {
 
         leadsCollection.insertOne(post)
 
-        console.log('Got One')
+        console.log('Got One: ', {author: post.author.name, message: openingMessage})
     })
 
 

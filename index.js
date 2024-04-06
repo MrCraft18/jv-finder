@@ -3,6 +3,7 @@ const PodioApp = require('./podio-lib.js')
 const gpt = require('./gpt-lib.js')
 const { MongoClient, ObjectId } = require('mongodb')
 const fs = require('fs')
+const axios = require('axios')
 require('dotenv').config()
 
 
@@ -12,7 +13,7 @@ const groupsCollection = client.db('JV-FINDER').collection('groups')
 
 
 
-const leads = new PodioApp({
+const podioLeads = new PodioApp({
     app_id: process.env.PODIO_APP_ID,
     app_token: process.env.PODIO_APP_TOKEN,
     client_id: process.env.PODIO_CLIENT_ID,
@@ -57,14 +58,21 @@ async function main() {
 
         await fb.groupPostComment('DM Sent', post.group.id, post.id)
 
-        await leads.addItem({
+        await podioLeads.addItem({
             'title': post.author.name,
             'post-link': {
-                embed: await leads.createEmbed({url: `https://www.facebook.com/groups/${post.group.id}/posts/${post.id}/`}).then(embed => embed.embed_id)
+                embed: await podioLeads.createEmbed({url: `https://www.facebook.com/groups/${post.group.id}/posts/${post.id}/`}).then(embed => embed.embed_id)
             },
             'messenger-link': {
-                embed: await leads.createEmbed({url: `https://www.facebook.com/messages/t/${post.author.id}/`}).then(embed => embed.embed_id)
+                embed: await podioLeads.createEmbed({url: `https://www.facebook.com/messages/t/${post.author.id}/`}).then(embed => embed.embed_id)
             },
+            'images': await Promise.all(post.images.map(async imageURL => {
+                const imageName = imageURL.split('?')[0].split('/').at(-1)
+    
+                return await leads.uploadFile(await axios.get(imageURL, {responseType: 'stream'}).then(response => response.data), imageName)
+                .then(response => response.file_id)
+                .catch(error => console.error(error))
+            })),
             'category': 1
         })
         .catch(error => console.error(error))

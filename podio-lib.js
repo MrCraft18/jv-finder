@@ -3,6 +3,7 @@ const axios = require('axios').create({
     withCredentials: true,
     baseURL: 'https://api.podio.com/'
 })
+const FormData = require('form-data')
 
 // axios.post('oauth/token/v2', {
 //     grant_type: 'refresh_token',
@@ -48,7 +49,7 @@ class PodioApp {
             } else {
                 console.error({
                     message: 'Access Token Error',
-                    error: error
+                    error
                 })
             }
         })
@@ -75,7 +76,7 @@ class PodioApp {
                 } else {
                     reject({
                         message: 'Get App Error',
-                        error: error
+                        error
                     })
                 }
             })
@@ -102,7 +103,7 @@ class PodioApp {
                 } else {
                     reject({
                         message: 'Create Embed Error',
-                        error: error
+                        error
                     })
                 }
             })
@@ -132,10 +133,45 @@ class PodioApp {
                 } else {
                     reject({
                         message: 'Add Item Error',
-                        error: error
+                        error
                     })
                 }
             })
+        })
+    }
+
+
+
+    async uploadFile(imageData, fileName) {
+        return new Promise(async (resolve, reject) => {
+            try {
+                await this.getAccessToken()
+
+                const formData = new FormData()
+                formData.append('source', imageData)
+                formData.append('filename', fileName)
+
+                const response = await axios.post('/file/', formData, {
+                    headers: {
+                        ...formData.getHeaders(),
+                        "Authorization": `Bearer ${this.accessToken}`
+                    }
+                })
+
+                resolve(response.data)
+            } catch (error) {
+                if (error.response.data) {
+                    reject({
+                        message: 'Add Item Error',
+                        error: error.response.data
+                    })
+                } else {
+                    reject({
+                        message: 'Add Item Error',
+                        error
+                    })
+                }
+            }
         })
     }
 }

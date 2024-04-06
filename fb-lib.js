@@ -13,7 +13,7 @@ class Facebook {
         return new Promise(async (resolve, reject) => {
             try {
                 const browser = await puppeteer.launch({
-                    headless: false,
+                    headless: true,
                     userDataDir: './browser',
                     args: [
                         '--disable-notifications',

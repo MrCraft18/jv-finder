@@ -151,10 +151,6 @@ class Facebook {
                     page.waitForNavigation()
                 ])
 
-                // await page.evaluate(() => {
-                //     document.body.style.zoom = 0.5;
-                // })
-
                 // page.on('console', message => {
                 //     console.log('Browser Console: ', message.text())
                 // })
@@ -163,12 +159,6 @@ class Facebook {
                     .then(async element => await element.evaluate(element => {
                         return element.innerText
                     }))
-    
-                // const groupName = await page.evaluate(() => {
-                //     groupNameElement = document.querySelector('.x1i10hfl.xjbqb8w.x1ejq31n.xd10rxx.x1sy0etr.x17r0tee.x972fbf.xcfux6l.x1qhh985.xm0m39n.x9f619.x1ypdohk.xt0psk2.xe8uvvx.xdj266r.x11i5rnm.xat24cr.x1mh8g0r.xexx8yu.x4uap5.x18d9i69.xkhd6sd.x16tdsg8.x1hl2dhg.xggy1nq.x1a2a7pz.x1heor9g.xt0b8zv.x1xlr1w8')
-    
-                //     return groupNameElement.innerText
-                // })
     
                 const posts = []
     
@@ -230,48 +220,51 @@ class Facebook {
                     if (isShortVideo) {
                         // console.log('Skipping Short Video')
                         await page.evaluate(() => {
-                            window.scrollTo(0, document.body.scrollHeight);
+                            window.scrollTo(0, document.body.scrollHeight)
                         })
 
                         return undefined
                     }
 
-                    // await postElement.waitForSelector('use', {timeout: 10000000})
-
-                    const stupidity = await Promise.race([
-                        postElement.waitForSelector('span.x4k7w5x.x1h91t0o.x1h9r5lt.x1jfb8zj.xv2umb2.x1beo9mf.xaigb6o.x12ejxvf.x3igimt.xarpa2k.xedcshv.x1lytzrv.x1t2pt76.x7ja8zs.x1qrby5j > a[href*="post"]', {visible: true}),
-                        postElement.waitForSelector('span.x4k7w5x.x1h91t0o.x1h9r5lt.x1jfb8zj.xv2umb2.x1beo9mf.xaigb6o.x12ejxvf.x3igimt.xarpa2k.xedcshv.x1lytzrv.x1t2pt76.x7ja8zs.x1qrby5j > a[href="#"]', {visible: true})
-                    ])
+                    const stupidity = await postElement.waitForSelector('a[class="x1i10hfl xjbqb8w x1ejq31n xd10rxx x1sy0etr x17r0tee x972fbf xcfux6l x1qhh985 xm0m39n x9f619 x1ypdohk xt0psk2 xe8uvvx xdj266r x11i5rnm xat24cr x1mh8g0r xexx8yu x4uap5 x18d9i69 xkhd6sd x16tdsg8 x1hl2dhg xggy1nq x1a2a7pz x1heor9g xt0b8zv xo1l8bm"]')
 
                     await stupidity.hover()
+
+                    const loopInterval = setInterval(async () => {
+                        await postElement.hover()
+                        await stupidity.hover()
+                    }, 1500)
+
                     await postElement.waitForSelector('a[href*="/posts/"]')
+
+                    clearInterval(loopInterval)
         
                     const [text, images, authorName, authorID, timestamp, postID] = await Promise.all([
                         //Get Post Text
                         new Promise(async resolve => {
                             //Click See More Button (if its there)
                             await postElement.evaluate(element => {
-                                const seeMoreButtons = Array.from(element.querySelectorAll('div')).filter(element => element.innerText === 'See more' && !element.closest('.xzueoph'))
+                                seeMoreButtons = Array.from(element.querySelectorAll('div')).filter(element => element.innerText === 'See more' && !element.closest('.xzueoph'))
                                 if (seeMoreButtons) seeMoreButtons.forEach(element => element.click())
                             })
                         
                             //Wait until all Text is loaded
                             await page.waitForFunction(index => {
-                                const elements = Array.from(document.querySelectorAll(`[role="feed"] > .x1yztbdb.x1n2onr6.xh8yej3.x1ja2u2z`))
-                                const postElement = elements[index]
+                                elements = Array.from(document.querySelectorAll(`[role="feed"] > .x1yztbdb.x1n2onr6.xh8yej3.x1ja2u2z`))
+                                postElement = elements[index]
                             
-                                const seeMoreButton = Array.from(postElement.querySelectorAll('div')).find(element => element.innerText === 'See more' && !element.closest('.xzueoph'))
+                                seeMoreButton = Array.from(postElement.querySelectorAll('div')).find(element => element.innerText === 'See more' && !element.closest('.xzueoph'))
                                 if (seeMoreButton) return false
                                 if (!seeMoreButton) return true
                             }, { polling: 'mutation' }, index)
         
                             const text = await postElement.evaluate(element => {
-                                const textElement = Array.from(element.querySelectorAll('[class=""]'))
+                                textElement = Array.from(element.querySelectorAll('[class=""]'))
                                 .find(element => element.parentNode.children.length > 1)
                                 .nextElementSibling
                                 .nextElementSibling
         
-                                const listingElement = element.querySelector('.x1i10hfl.x1ypdohk.xe8uvvx.xdj266r.x11i5rnm.xat24cr.x1mh8g0r.x16tdsg8.x1hl2dhg.xggy1nq.x1o1ewxj.x3x9cwd.x1e5q0jg.x13rtm0m.x87ps6o.x1a2a7pz.x6s0dn4.xmjcpbm.x1exxf4d.x1y71gwh.x1nb4dca.xu1343h.x13fuv20.xu3j5b3.x1q0q8m5.x26u7qi.x972fbf.xcfux6l.xso031l.xm0m39n.x9f619.x78zum5.x1q0g3np.x1nhvcw1.x1wxaq2x.xsag5q8.x1pi30zi.x1swvt13.x1n2onr6.x1lku1pv')
+                                listingElement = element.querySelector('.x1i10hfl.x1ypdohk.xe8uvvx.xdj266r.x11i5rnm.xat24cr.x1mh8g0r.x16tdsg8.x1hl2dhg.xggy1nq.x1o1ewxj.x3x9cwd.x1e5q0jg.x13rtm0m.x87ps6o.x1a2a7pz.x6s0dn4.xmjcpbm.x1exxf4d.x1y71gwh.x1nb4dca.xu1343h.x13fuv20.xu3j5b3.x1q0q8m5.x26u7qi.x972fbf.xcfux6l.xso031l.xm0m39n.x9f619.x78zum5.x1q0g3np.x1nhvcw1.x1wxaq2x.xsag5q8.x1pi30zi.x1swvt13.x1n2onr6.x1lku1pv')
                                 if (listingElement) {
                                     return textElement ? textElement.innerText.replace(listingElement.innerText, '') : null
                                 } else {
@@ -287,12 +280,12 @@ class Facebook {
                         }),
                         //Get Author Name
                         postElement.evaluate(element => {
-                            const nameElement = Array.from(element.querySelectorAll('a')).find(element => element.innerText && element.href.includes('user') && !element.closest('.xzueoph'))
+                            nameElement = Array.from(element.querySelectorAll('a')).find(element => element.innerText && element.href.includes('user') && !element.closest('.xzueoph'))
                             return nameElement ? nameElement.innerText : null
                         }),
                         //Get Author ID
                         postElement.evaluate(element => {
-                            const anchorElement = Array.from(element.querySelectorAll('a')).find(element => element.innerText && element.href.includes('user') && !element.closest('.xzueoph'))
+                            anchorElement = Array.from(element.querySelectorAll('a')).find(element => element.innerText && element.href.includes('user') && !element.closest('.xzueoph'))
                             return anchorElement ? anchorElement.href.split('/')[anchorElement.href.split('/').indexOf('user') + 1] : null
                         }),
                         //Get Timestamp
@@ -301,12 +294,24 @@ class Facebook {
                                 console.log(element.querySelector('a[href*="/posts/"]'))
                                 return element.querySelector('a[href*="/posts/"]')
                             })
-                            
-                            await postTimeElement.evaluate(element => element.scrollIntoView({block: 'center'}))
-                            await postTimeElement.hover()
+
+                            const loopInterval = setInterval(async () => {
+                                await postTimeElement.evaluate(element => element.scrollIntoView({block: 'center'}))
+                                await postTimeElement.hover()
+                            }, 250)
         
-                            const dateElement = await page.waitForSelector('.xj5tmjb.x1r9drvm.x16aqbuh.x9rzwcf.xjkqk3g.xms15q0.x1lliihq.xo8ld3r.xjpr12u.xr9ek0c.x86nfjv.x1ye3gou.xn6708d.xz9dl7a.xsag5q8.x1n2onr6.x19991ni.__fb-dark-mode.x1hc1fzr.xhb22t3.xls3em1', {timeout: 10000000})
+                            const dateElement = await page.waitForSelector('.xj5tmjb.x1r9drvm.x16aqbuh.x9rzwcf.xjkqk3g.xms15q0.x1lliihq.xo8ld3r.xjpr12u.xr9ek0c.x86nfjv.x1ye3gou.xn6708d.xz9dl7a.xsag5q8.x1n2onr6.x19991ni.__fb-dark-mode.x1hc1fzr.xhb22t3.xls3em1')
         
+                            clearInterval(loopInterval)
+
+                            const loopInterval2 = setInterval(async () => {
+                                await postElement.hover()
+                            }, 250)
+
+                            await page.waitForSelector('.xj5tmjb.x1r9drvm.x16aqbuh.x9rzwcf.xjkqk3g.xms15q0.x1lliihq.xo8ld3r.xjpr12u.xr9ek0c.x86nfjv.x1ye3gou.xn6708d.xz9dl7a.xsag5q8.x1n2onr6.x19991ni.__fb-dark-mode.x1hc1fzr.xhb22t3.xls3em1', {hidden: true})
+
+                            clearInterval(loopInterval2)
+
                             const rawStr = await dateElement.evaluate(element => element.innerText)
         
                             const strArr = rawStr.split(' ')
@@ -319,23 +324,67 @@ class Facebook {
                         }),
                         //Get Post ID
                         postElement.evaluate(element => {
-                            const postAnchorElement = element.querySelector('a[href*="/posts/"]')
+                            postAnchorElement = element.querySelector('a[href*="/posts/"]')
         
                             return postAnchorElement.href.split('/')[postAnchorElement.href.split('/').indexOf('posts') + 1]
                         })
                     ])
-
-                    // await postElement.evaluate(element => {
-                    //     window.scrollTo(0, element.scrollHeight);
-                    // })
         
                     // console.log(authorName)
-        
+
+                    const comments = await (async () => {
+                        const hasComments = await postElement.evaluate(element => {
+                            const commentsElements = Array.from(element.querySelectorAll('.xzueoph > *'))
+                            .filter(element => element.className === '')
+    
+                            return commentsElements.length > 0 ? true : false
+                        })
+
+                        if (!hasComments) return [] //Maybe if "x comments" button hover it and see if it says "No Visible Comments"
+
+                        const moreCommentsButton = await postElement.$('div.xzueoph > div.xdj266r.xktsk01.xat24cr.x1d52u69')
+
+                        const viewReplyButton = await postElement.$('.x1n2onr6.x46jau6')
+
+                        const commentElements = await (async () => {
+                            if (moreCommentsButton || viewReplyButton) {
+
+                                if (moreCommentsButton) {
+                                    await moreCommentsButton.click()
+                                } else {
+                                    await viewReplyButton.click()
+                                }
+
+                                await page.waitForSelector('[class="x169t7cy x19f6ikt"] > [class="x1n2onr6"] a[href*="/posts/"]')
+    
+                                const commentElements = await page.$$('[class="x169t7cy x19f6ikt"] > [class="x1n2onr6"]')
+
+                                return commentElements
+                            } else {
+                                const commentElements = await postElement.$$('.xzueoph div:not([class]) [class="x1n2onr6"]')
+
+                                return commentElements
+                            }
+                        })()
+
+                        const comments = []
+
+                        for (const commentElement of commentElements) {
+                            comments.push(await extractCommentData(commentElement))
+                        }
+
+                        const closeButton = await page.$('[aria-label="Close"]')
+                        if (closeButton) await closeButton.click()
+
+                        return comments
+                    })()
+
                     return {
                         text,
                         images,
                         timestamp,
                         id: postID,
+                        comments,
                         author: {
                             name: authorName,
                             id: authorID,
@@ -344,6 +393,139 @@ class Facebook {
                             name: groupName,
                             id: groupID
                         }
+                    }
+                }
+
+                
+
+                async function extractCommentData(commentElementData) {
+                    await commentElementData.evaluate(element => console.log(element))
+
+                    const [commentTimestamp, commentText, commentAuthorName, commentAuthorID, commentImages] = await Promise.all([
+                        //timestamp
+                        new Promise(async resolve => {
+                            await commentElementData.evaluate(element => console.log(element))
+                            const commentTimeElement = await commentElementData.waitForSelector('a[href*="/posts/"]')
+                        
+                            const loopInterval = setInterval(async () => {
+                                await commentTimeElement.evaluate(element => element.scrollIntoView({block: 'center'}))
+                                await commentTimeElement.hover()
+                            }, 250)
+        
+                            const dateElement = await page.waitForSelector('.xj5tmjb.x1r9drvm.x16aqbuh.x9rzwcf.xjkqk3g.xms15q0.x1lliihq.xo8ld3r.xjpr12u.xr9ek0c.x86nfjv.x1ye3gou.xn6708d.xz9dl7a.xsag5q8.x1n2onr6.x19991ni.__fb-dark-mode.x1hc1fzr.xhb22t3.xls3em1', {timeout: 30000})
+        
+                            clearInterval(loopInterval)
+
+                            await commentElementData.hover()
+
+                            await page.waitForSelector('.xj5tmjb.x1r9drvm.x16aqbuh.x9rzwcf.xjkqk3g.xms15q0.x1lliihq.xo8ld3r.xjpr12u.xr9ek0c.x86nfjv.x1ye3gou.xn6708d.xz9dl7a.xsag5q8.x1n2onr6.x19991ni.__fb-dark-mode.x1hc1fzr.xhb22t3.xls3em1', {hidden: true})
+                            
+                            const rawStr = await dateElement.evaluate(element => element.innerText)
+        
+                            const strArr = rawStr.split(' ')
+                            strArr.shift()
+                            strArr.splice(strArr.indexOf('at'), 1)
+        
+                            const formattedStr = strArr.join(' ')
+    
+                            resolve(new Date(formattedStr))
+                        }),
+                        //text
+                        new Promise(async resolve => {
+                            const textElement = await commentElementData.$('[class="xdj266r x11i5rnm xat24cr x1mh8g0r x1vvkbs"]')
+
+                            if (textElement) {
+                                const text = await textElement.evaluate(element => element.innerText)
+                                resolve(text)
+                            } else {
+                                resolve(null)
+                            }
+                        }),
+                        //authorName
+                        new Promise(async resolve => {
+                            const authorName = await commentElementData.evaluate(element => {
+                                nameElement =  Array.from(element.querySelectorAll('a[href*="/user/"]')).find(element => element.innerText)
+                                return nameElement ? nameElement.innerText : null
+                            })
+
+                            resolve(authorName)
+                        }),
+                        //authorID
+                        new Promise(async resolve => {
+                            const authorID = await commentElementData.evaluate(element => {
+                                anchorElement = Array.from(element.querySelectorAll('a[href*="/user/"]')).find(element => element.innerText)
+                                return anchorElement ? anchorElement.href.split('/')[anchorElement.href.split('/').indexOf('user') + 1] : null
+                            })
+
+                            resolve(authorID)
+                        }),
+                        //images
+                        new Promise(async resolve => {
+                            const imageElements = await commentElementData.$$(':scope img[class="xz74otr"]')
+                            const imageLinks = await Promise.all(imageElements.map(async element => {
+                                return await element.evaluate(element => element.src)
+                            }))
+                            .then(urlArray => urlArray.filter(url => url.includes('scontent')))
+
+                            resolve(imageLinks)
+                        })
+                    ])
+
+                    const commentReplies = await (async () => {
+                        const commentSibling = await commentElementData.evaluateHandle(element => element.nextElementSibling)
+                        if (await commentSibling.jsonValue() === null) return []
+
+                        const blankSibling = await commentSibling.evaluate(element => element.childNodes.length === 0)
+
+                        if (blankSibling) {
+                            return []
+                        } else {
+                            const showReplyButtons = await commentSibling.$$('[class="x78zum5 x1w0mnb xeuugli"]')
+                            if (showReplyButtons.length > 0) {
+                                for (const showReplyButton of showReplyButtons) {
+                                    await showReplyButton.click()
+                                }
+                            }
+
+                            await commentSibling.waitForSelector('a[href*="/posts/"]', {timeout: 10000})
+                            .catch(error => {
+                                if (error.message.includes('TimeoutError')) {
+                                    return []
+                                } else {
+                                    throw error
+                                }
+                            })
+
+                            const secondNestedElements = await commentSibling.$$('[class="x1n2onr6 x46jau6"]')
+                            const thirdNestedElements = await commentSibling.$$('[class="x1n2onr6 x1xb5h2r"]')
+
+                            // console.log(secondNestedElements)
+                            // console.log(thirdNestedElements)
+
+                            const replyElements = (() => {
+                                if (secondNestedElements.length > 0) return secondNestedElements
+                                return thirdNestedElements
+                            })()
+
+                            const replies = []
+                            
+                            for (const replyElement of replyElements) {
+                                replies.push(await extractCommentData(replyElement))
+                            }
+
+                            return replies
+                        }
+                    })()
+
+                    return {
+                        text: commentText,
+                        author: {
+                            name: commentAuthorName,
+                            id: commentAuthorID
+                        },
+                        timestamp: commentTimestamp,
+                        images: commentImages,
+                        replies: commentReplies
                     }
                 }
             } catch (error) {

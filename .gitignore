@@ -1,5 +1,6 @@
 node_modules
 browser
+browser-2
 .env
 mongodb.txt
 test.js

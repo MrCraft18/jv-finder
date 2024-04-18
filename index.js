@@ -35,10 +35,10 @@ async function main() {
     //     }
     // }
 
-    const groups = [{
-        name: 'Bruh',
-        id: 'texasoffmarketproperties'
-    }]
+    // const groups = [{
+    //     name: 'Bruh',
+    //     id: 'texasoffmarketproperties'
+    // }]
     
     //BEGIN LOOP
     listenForNewPosts(groups, async (post) => {

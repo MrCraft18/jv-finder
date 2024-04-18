@@ -23,17 +23,17 @@ const podioLeads = new PodioApp({
 async function main() {
     const fb = await Facebook.login(process.env.FB_USER, process.env.FB_PASS).catch(error => console.log(error))
 
-    // const groups = await fb.getJoinedGroups()
+    const groups = await fb.getJoinedGroups()
 
-    // const databaseGroups = await groupsCollection
-    //     .find({}, { projection: { _id: 0 } })
-    //     .toArray()
+    const databaseGroups = await groupsCollection
+        .find({}, { projection: { _id: 0 } })
+        .toArray()
 
-    // for (const group of groups) {
-    //     if (!databaseGroups.find(databaseGroup => databaseGroup.id === group.id)) {
-    //         groupsCollection.insertOne(group)
-    //     }
-    // }
+    for (const group of groups) {
+        if (!databaseGroups.find(databaseGroup => databaseGroup.id === group.id)) {
+            groupsCollection.insertOne(group)
+        }
+    }
 
     // const groups = [{
     //     name: 'Bruh',
@@ -42,44 +42,49 @@ async function main() {
     
     //BEGIN LOOP
     listenForNewPosts(groups, async (post) => {
-        console.log(post.author.name)
+        // console.log(post.author.name)
 
-        // if (!keywordFilter(post)) return
-        // if (await isDuplicatePost(post)) return
-        // if (keywordFilter(post) === 'maybe') {
-        //     if (!await gpt.posts('isPostVacantLandDeal', post).then(response => response.result)) return
-        // }
+        if (!keywordFilter(post)) return
+        if (await isDuplicatePost(post)) return
+        if (keywordFilter(post) === 'maybe') {
+            if (!await gpt.posts('isPostVacantLandDeal', post).then(response => response.result)) return
+        }
 
-        //POST IS A NON-DUPLICATE VACANT LAND DEAL
+        if (post.author.name.toLowerCase() === 'kelli epperson') {
+            console.log('BLACKLISTED AUTHOR')
+            return
+        }
 
-        // const openingMessage = await gpt.posts('generateOpeningMessage', post).then(response => response.result)
+        // POST IS A NON-DUPLICATE VACANT LAND DEAL
 
-        // await fb.sendMessage(openingMessage, post.author.id)
+        const openingMessage = await gpt.posts('generateOpeningMessage', post).then(response => response.result)
 
-        // await fb.groupPostComment('DM Sent', post.group.id, post.id)
+        await fb.sendMessage(openingMessage, post.author.id)
 
-        // await podioLeads.addItem({
-        //     'title': post.author.name,
-        //     'post-link': {
-        //         embed: await podioLeads.createEmbed({url: `https://www.facebook.com/groups/${post.group.id}/posts/${post.id}/`}).then(embed => embed.embed_id)
-        //     },
-        //     'messenger-link': {
-        //         embed: await podioLeads.createEmbed({url: `https://www.facebook.com/messages/t/${post.author.id}/`}).then(embed => embed.embed_id)
-        //     },
-        //     'images': await Promise.all(post.images.map(async imageURL => {
-        //         const imageName = imageURL.split('?')[0].split('/').at(-1)
+        await fb.groupPostComment('DM Sent', post.group.id, post.id)
+
+        await podioLeads.addItem({
+            'title': post.author.name,
+            'post-link': {
+                embed: await podioLeads.createEmbed({url: `https://www.facebook.com/groups/${post.group.id}/posts/${post.id}/`}).then(embed => embed.embed_id)
+            },
+            'messenger-link': {
+                embed: await podioLeads.createEmbed({url: `https://www.facebook.com/messages/t/${post.author.id}/`}).then(embed => embed.embed_id)
+            },
+            'images': await Promise.all(post.images.map(async imageURL => {
+                const imageName = imageURL.split('?')[0].split('/').at(-1)
     
-        //         return await leads.uploadFile(await axios.get(imageURL, {responseType: 'stream'}).then(response => response.data), imageName)
-        //         .then(response => response.file_id)
-        //         .catch(error => console.error(error))
-        //     })),
-        //     'category': 1
-        // })
-        // .catch(error => console.error(error))
+                return await podioLeads.uploadFile(await axios.get(imageURL, {responseType: 'stream'}).then(response => response.data), imageName)
+                .then(response => response.file_id)
+                .catch(error => console.error(error))
+            })),
+            'category': 1
+        })
+        .catch(error => console.error(error))
 
-        // leadsCollection.insertOne(post)
+        await leadsCollection.insertOne(post)
 
-        // console.log('Got One: ', {author: post.author.name, message: openingMessage})
+        console.log('Got One: ', {author: post.author.name, message: openingMessage})
     })
 
 
@@ -116,22 +121,20 @@ async function main() {
                 })
             }
     
-            if (allPosts.length > 0) {
-                await groupsCollection.updateOne({ id: group.id }, { $set: { lastScrapedPost: allPosts[0] } })
-            }
-    
             if (checkQueue.length === 0) checkQueue = shuffleArray([...groups])
     
             // await new Promise(resolve => setTimeout(resolve, 5000))
     
-            await new Promise(resolve => setTimeout(resolve, Math.random() * (120000 - 60000) + 60000))
+            await new Promise(resolve => setTimeout(resolve, Math.random() * (60000 - 30000) + 30000))
+
+            if (allPosts.length > 0) {
+                await groupsCollection.updateOne({ id: group.id }, { $set: { lastScrapedPost: allPosts[0] } })
+            }
         }
     
         function shuffleArray(array) {
             for (let i = array.length - 1; i > 0; i--) {
-                // Generate a random index from 0 to i
                 const j = Math.floor(Math.random() * (i + 1));
-                // Swap elements at indices i and j
                 [array[i], array[j]] = [array[j], array[i]];
             }
             return array;
@@ -182,7 +185,7 @@ async function isDuplicatePost(post) {
     })
 
     function normalizeString(str) {
-        return str.toLowerCase().trim().replace(/[^\w\s]|_/g, "");
+        return str.toLowerCase().trim().replaceAll(' ', '').replaceAll('\n', '')
     }
 
     for await (const previousPost of authorPostsCursor) {

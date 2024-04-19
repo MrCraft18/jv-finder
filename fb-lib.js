@@ -13,7 +13,7 @@ class Facebook {
         return new Promise(async (resolve, reject) => {
             try {
                 const browser = await puppeteer.launch({
-                    headless: true,
+                    headless: false,
                     userDataDir: './browser',
                     args: [
                         '--disable-notifications',
@@ -493,14 +493,17 @@ class Facebook {
                                 }
                             }
 
-                            await commentSibling.waitForSelector('a[href*="/posts/"]', {timeout: 10000})
-                            .catch(error => {
+                            try {
+                                await commentSibling.waitForSelector('a[href*="/posts/"]', {timeout: 10000})
+                            } catch (error) {
+                                console.log(error.message.slice(0, 12))
+
                                 if (error.message.includes('TimeoutError')) {
                                     return []
                                 } else {
                                     throw error
-                                }
-                            })
+                                }   
+                            }
 
                             const secondNestedElements = await commentSibling.$$('[class="x1n2onr6 x46jau6"]')
                             const thirdNestedElements = await commentSibling.$$('[class="x1n2onr6 x1xb5h2r"]')

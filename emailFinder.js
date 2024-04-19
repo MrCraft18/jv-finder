@@ -20,8 +20,14 @@ async function main() {
         console.log('Here we go...')
     
         for (const group of groups) {
+            let count = 0
+
             const posts = await fb.getGroupPosts(group.id, {dateRange: { end: currentDate.setMonth(currentDate.getMonth() - 3) }}, post => {
                 console.log(post.author, new Date(post.timestamp).toLocaleString())
+
+                count++
+
+                console.log(count)
             })
     
             const previousPosts = JSON.parse(fs.readFileSync('./posts.txt', 'utf-8'))

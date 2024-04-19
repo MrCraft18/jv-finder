@@ -104,25 +104,48 @@ class Facebook {
                     page.waitForNavigation()
                 ])
 
-                const groups = await page.evaluate(() => {
-                    const span = Array.from(document.querySelectorAll('span'))
+                const joinedGroupsHeadElement = await page.evaluateHandle(() => {
+                    return Array.from(document.querySelectorAll('[class="x1n2onr6 x1ja2u2z x9f619 x78zum5 xdt5ytf x2lah0s x193iq5w xjkvuk6 x1cnzs8"]'))
                     .find(element => element.innerText.includes("All groups you've joined"))
-
-                    const bigParent = span.closest('.x9f619.x1gryazu.xkrivgy.x1ikqzku.x1h0ha7o.xg83lxy.xh8yej3')
-
-                    const listParent = Array.from(bigParent.querySelectorAll('*'))
-                    .find(element => element.matches('.x8gbvx8.x78zum5.x1q0g3np.x1a02dak.x1nhvcw1.x1rdy4ex.xcud41i.x4vbgl9.x139jcc6'))
-                    
-                    const anchorElements = Array.from(listParent.querySelectorAll('a.x1i10hfl.xjbqb8w.x1ejq31n.xd10rxx.x1sy0etr.x17r0tee.x972fbf.xcfux6l.x1qhh985.xm0m39n.x9f619.x1ypdohk.xt0psk2.xe8uvvx.xdj266r.x11i5rnm.xat24cr.x1mh8g0r.xexx8yu.x4uap5.x18d9i69.xkhd6sd.x16tdsg8.x1hl2dhg.xggy1nq.x1a2a7pz.x1heor9g.xt0b8zv.x1s688f'))
-
-                    groupObjects = anchorElements.map(element => ({
-                        name: element.innerText,
-                        id: element.href.split('/').at(-2),
-                        link: element.href
-                    }))
-
-                    return groupObjects
                 })
+
+                const joinedNumber = await joinedGroupsHeadElement.evaluate(element => parseInt(element.innerText.match(/\((\d+)\)/)[1], 10))
+
+                const joinedGroupsParent = await joinedGroupsHeadElement.evaluateHandle(element => element.parentNode)
+
+                const groups = []
+
+                for (let i = 0; i < joinedNumber; i++) {
+                    await page.waitForFunction((index, joinedGroupsParent) => {
+                        const elements = Array.from(joinedGroupsParent.querySelectorAll(`[role="listitem"]`))
+                            .filter(element => element.childNodes.length > 0)
+                        
+                        if (elements[index] && elements[index].querySelector('a')) {
+                            return true
+                        } else {
+                            window.scrollBy(0, 100)
+                            return false
+                        }
+                    }, { polling: 'mutation' }, i, joinedGroupsParent)
+
+                    const groupElements = await joinedGroupsParent.$$(`[role="listitem"]`)
+                    const groupElement = groupElements[i]
+
+                    const group = await groupElement.evaluate(element => {
+                        console.log(element)
+                        const anchor = element.querySelector('a[class="x1i10hfl xjbqb8w x1ejq31n xd10rxx x1sy0etr x17r0tee x972fbf xcfux6l x1qhh985 xm0m39n x9f619 x1ypdohk xt0psk2 xe8uvvx xdj266r x11i5rnm xat24cr x1mh8g0r xexx8yu x4uap5 x18d9i69 xkhd6sd x16tdsg8 x1hl2dhg xggy1nq x1a2a7pz x1heor9g xt0b8zv x1s688f"]')
+
+                        window.scrollBy(0, 100)
+
+                        return {
+                            name: anchor.innerText,
+                            id: anchor.href.split('/').at(-2),
+                            link: anchor.href
+                        }
+                    })
+
+                    groups.push(group)
+                }
 
                 resolve(groups)
 
@@ -231,7 +254,8 @@ class Facebook {
                     await stupidity.hover()
 
                     const loopInterval = setInterval(async () => {
-                        await postElement.hover()
+                        const otherElement = await postElement.$('a[href*="/user/"]')
+                        await otherElement.hover()
                         await stupidity.hover()
                     }, 1500)
 
@@ -295,10 +319,15 @@ class Facebook {
                                 return element.querySelector('a[href*="/posts/"]')
                             })
 
+                            await postTimeElement.evaluate(element => element.scrollIntoView({block: 'center'}))
+                            await postTimeElement.hover()
+
                             const loopInterval = setInterval(async () => {
+                                const otherElement = await postElement.$('a[href*="/user/"')
+                                await otherElement.hover()
                                 await postTimeElement.evaluate(element => element.scrollIntoView({block: 'center'}))
                                 await postTimeElement.hover()
-                            }, 250)
+                            }, 1250)
         
                             const dateElement = await page.waitForSelector('.xj5tmjb.x1r9drvm.x16aqbuh.x9rzwcf.xjkqk3g.xms15q0.x1lliihq.xo8ld3r.xjpr12u.xr9ek0c.x86nfjv.x1ye3gou.xn6708d.xz9dl7a.xsag5q8.x1n2onr6.x19991ni.__fb-dark-mode.x1hc1fzr.xhb22t3.xls3em1')
         
@@ -404,13 +433,17 @@ class Facebook {
                     const [commentTimestamp, commentText, commentAuthorName, commentAuthorID, commentImages] = await Promise.all([
                         //timestamp
                         new Promise(async resolve => {
-                            await commentElementData.evaluate(element => console.log(element))
-                            const commentTimeElement = await commentElementData.waitForSelector('a[href*="/posts/"]')
+                            const commentTimeElement = await commentElementData.waitForSelector('a[href*="/posts/"]', {timeout: 100000000})
+
+                            await commentTimeElement.evaluate(element => element.scrollIntoView({block: 'center'}))
+                            await commentTimeElement.hover()
                         
                             const loopInterval = setInterval(async () => {
+                                const otherElement = await commentElementData.$('a[href*="/user/"')
+                                await otherElement.hover()
                                 await commentTimeElement.evaluate(element => element.scrollIntoView({block: 'center'}))
                                 await commentTimeElement.hover()
-                            }, 250)
+                            }, 1250)
         
                             const dateElement = await page.waitForSelector('.xj5tmjb.x1r9drvm.x16aqbuh.x9rzwcf.xjkqk3g.xms15q0.x1lliihq.xo8ld3r.xjpr12u.xr9ek0c.x86nfjv.x1ye3gou.xn6708d.xz9dl7a.xsag5q8.x1n2onr6.x19991ni.__fb-dark-mode.x1hc1fzr.xhb22t3.xls3em1', {timeout: 30000})
         
@@ -493,12 +526,13 @@ class Facebook {
                                 }
                             }
 
+                            await commentSibling.waitForSelector('[class="x78zum5 x1w0mnb xeuugli"]', {hidden: true})
+
                             try {
                                 await commentSibling.waitForSelector('a[href*="/posts/"]', {timeout: 10000})
                             } catch (error) {
-                                console.log(error.message.slice(0, 12))
 
-                                if (error.message.includes('TimeoutError')) {
+                                if (error.message.includes('10000ms exceeded')) {
                                     return []
                                 } else {
                                     throw error

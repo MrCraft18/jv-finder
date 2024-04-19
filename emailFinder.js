@@ -9,8 +9,6 @@ const soldEmailsCollection = client.db('EMAIL-FINDER').collection('soldEmails')
 
 fs.writeFileSync('./posts.txt', '[]')
 
-const currentDate = new Date()
-
 async function main() {
     try {
         const fb = await Facebook.login(process.env.FB_USER, process.env.FB_PASS)
@@ -20,10 +18,12 @@ async function main() {
         console.log('Here we go...')
     
         for (const group of groups) {
+            const currentDate = new Date()
+
             let count = 0
 
-            const posts = await fb.getGroupPosts(group.id, {dateRange: { end: currentDate.setMonth(currentDate.getMonth() - 3) }}, post => {
-                console.log(post.author, new Date(post.timestamp).toLocaleString())
+            const posts = await fb.getGroupPosts(group.id, {dateRange: { end: currentDate.setDate(currentDate.getDate() - 3) }}, post => {
+                console.log(post.author, post.group.name, new Date(post.timestamp).toLocaleString())
 
                 count++
 

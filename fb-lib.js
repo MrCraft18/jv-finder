@@ -384,6 +384,34 @@ class Facebook {
                                     await viewReplyButton.click()
                                 }
 
+                                const commentsCategoryElement = await page.waitForSelector('[class="x78zum5 x1n2onr6 x1nhvcw1"] span')
+                                await commentsCategoryElement.click()
+
+                                const allCommentsButton = await page.waitForSelector(':scope >>> ::-p-text("All comments")')
+                                await allCommentsButton.click()
+
+                                await page.waitForFunction(() => {
+                                    return new Promise(resolve => {
+                                        const observer = new MutationObserver(mutations => {
+                                            for (const mutation of mutations) {
+                                                if (mutation.type === 'childList' || mutation.type === 'attributes') {
+                                                    console.log('MUTATION')
+                                                    resolve(true)
+                                                    observer.disconnect()
+                                                }
+                                            }
+                                        })
+
+                                        const target = document.querySelector('[class="x1gslohp"]')
+    
+                                        observer.observe(target, {
+                                            attributes: true,
+                                            childList: true,
+                                            subtree: true
+                                        })
+                                    })
+                                })
+
                                 await page.waitForSelector('[class="x169t7cy x19f6ikt"] > [class="x1n2onr6"] a[href*="/posts/"]')
     
                                 const commentElements = await page.$$('[class="x169t7cy x19f6ikt"] > [class="x1n2onr6"]')
@@ -433,10 +461,10 @@ class Facebook {
                     const [commentTimestamp, commentText, commentAuthorName, commentAuthorID, commentImages] = await Promise.all([
                         //timestamp
                         new Promise(async resolve => {
-                            const commentTimeElement = await commentElementData.waitForSelector('a[href*="/posts/"]', {timeout: 100000000})
+                            const commentTimeElement = await commentElementData.waitForSelector('a[href*="/posts/"]')
 
                             await commentTimeElement.evaluate(element => element.scrollIntoView({block: 'center'}))
-                            await commentTimeElement.hover()
+                            await commentTimeElement.hover().catch(error => console.log(error))
                         
                             const loopInterval = setInterval(async () => {
                                 const otherElement = await commentElementData.$('a[href*="/user/"')
@@ -511,8 +539,10 @@ class Facebook {
                     ])
 
                     const commentReplies = await (async () => {
-                        const commentSibling = await commentElementData.evaluateHandle(element => element.nextElementSibling)
+                        let commentSibling = await commentElementData.evaluateHandle(element => element.nextElementSibling)
                         if (await commentSibling.jsonValue() === null) return []
+                        
+                        await commentSibling.evaluate(element => console.log(element))
 
                         const blankSibling = await commentSibling.evaluate(element => element.childNodes.length === 0)
 
@@ -528,12 +558,15 @@ class Facebook {
 
                             await commentSibling.waitForSelector('[class="x78zum5 x1w0mnb xeuugli"]', {hidden: true})
 
+                            commentSibling = await commentElementData.evaluateHandle(element => element.nextElementSibling)
+
                             try {
                                 await commentSibling.waitForSelector('a[href*="/posts/"]', {timeout: 10000})
                             } catch (error) {
 
                                 if (error.message.includes('10000ms exceeded')) {
-                                    return []
+                                    console.log('Skipping Reply: No Timestamp Element Found')
+                                    // return []
                                 } else {
                                     throw error
                                 }   

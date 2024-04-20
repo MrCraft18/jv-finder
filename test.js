@@ -63,10 +63,10 @@ const leads = new PodioApp({
 // Facebook.login('8176737349', 'mario1018')
 Facebook.login(process.env.FB_USER, process.env.FB_PASS)
 .then(async fb => {
-    const groups = await fb.getJoinedGroups()
+    // const groups = await fb.getJoinedGroups()
 
-    console.log(groups)
-    console.log(groups.length)
+    // console.log(groups)
+    // console.log(groups.length)
 
     // fb.onMessage(data => {
     //     console.log(data)
@@ -74,13 +74,15 @@ Facebook.login(process.env.FB_USER, process.env.FB_PASS)
 
     // await fb.groupPostComment('DM Sent', 587104139383261, 1129995655094104)
 
-    // let count = 0
+    let count = 0
 
-    // const posts = await fb.getGroupPosts('2328098604145675', {limit: 30}, post => {
-    //     console.log(post.author, post.group.name, new Date(post.timestamp).toLocaleString())
+    const posts = await fb.getGroupPosts('587104139383261', {limit: 10}, post => {
+        console.log(post.author, post.group.name, new Date(post.timestamp).toLocaleString())
 
-    //     count++
+        count++
 
-    //     console.log(count)
-    // }).catch(error => console.error(error))
+        console.log(count)
+    }).catch(error => console.error(error))
+
+    // console.log(posts)
 }).catch(error => console.error(error))

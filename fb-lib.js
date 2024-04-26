@@ -9,11 +9,11 @@ class Facebook {
 
 
 
-    static login(user, pass) {
+    static login(user, pass, config = {}) {
         return new Promise(async (resolve, reject) => {
             try {
                 const browser = await puppeteer.launch({
-                    headless: false,
+                    headless: config.headless === undefined ? true : config.headless,
                     userDataDir: './browser',
                     args: [
                         '--disable-notifications',
@@ -96,7 +96,7 @@ class Facebook {
     async getJoinedGroups() {
         return new Promise(async (resolve, reject) => {
             try {
-                const page = await this.browser.newWindowPage()
+                const page = await this.browser.newPage()
                 await page.setViewport({ width: 1920, height: 1080 })
 
                 await Promise.all([
@@ -158,15 +158,17 @@ class Facebook {
 
 
 
-    async getGroupPosts(groupID, { limit, dateRange, beforePost } = {}, callback = null) {
+    async getGroupPosts(groupID, { limit = 999999, dateRange, beforePost } = {}, callback = null) {
         return new Promise(async (resolve, reject) => {
             try {
                 if (!limit && !dateRange && !beforePost)  reject(new Error('Must Provide Limit, Date Range, or Before Post ID'))
                 if (dateRange && !dateRange.end) reject(new Error('Must Provide at least "End" Date for Date Range'))
     
-                if (dateRange && !dateRange.start) dateRange.start = new Date(0)
+                if (dateRange && !dateRange.start) dateRange.start = new Date(8640000000000000)
     
                 const page = await this.browser.newPage()
+                const client = await page.target().createCDPSession()
+                await client.send('HeapProfiler.enable')
                 await page.setViewport({ width: 1920, height: 1080 })
     
                 await Promise.all([
@@ -185,25 +187,30 @@ class Facebook {
     
                 const posts = []
     
-                if (limit) {
+                if (limit && !dateRange) {
                     for (let i = 0; posts.length < limit; i++) {
                         const post = await grabAndExtractPost(i)
     
                         if (post) {
                             if (callback) callback(post)
                             posts.push(post)
+                            if (posts.length % 50 === 0) await client.send('HeapProfiler.collectGarbage')
                         }
                     }
                 } else if (dateRange) {
-                    let lastPostDate = new Date(8640000000000000)
-                    for (let i = 0; dateRange.end < lastPostDate; i++) {
+                    let extraCheckCount = 0
+
+                    for (let i = 0; extraCheckCount < 5 && posts.length < limit; i++) {
                         const post = await grabAndExtractPost(i)
                         if (post) {
-                            if (post.timestamp > dateRange.start && post.timestamp > dateRange.end) {
+                            if (post.timestamp < dateRange.start && post.timestamp > dateRange.end) {
                                 if (callback) callback(post)
                                 posts.push(post)
+                                if (posts.length % 50 === 0) await client.send('HeapProfiler.collectGarbage')
+                                extraCheckCount = 0
+                            } else if (post.timestamp <= dateRange.end && extraCheckCount < 5) {
+                                extraCheckCount++
                             }
-                            lastPostDate = post.timestamp
                         }
                     }
                 } else if (beforePost) {
@@ -214,10 +221,14 @@ class Facebook {
                         if (post) {
                             if (callback) callback(post)
                             posts.push(post)
+                            if (posts.length % 50 === 0) await client.send('HeapProfiler.collectGarbage')
                         }
                     }
                 }
                 resolve(posts)
+
+                await client.send('HeapProfiler.collectGarbage')
+                await client.send('HeapProfiler.disable')
     
                 page.close()
     
@@ -235,7 +246,7 @@ class Facebook {
 
                     const isShortVideo = await postElement.evaluate(element => {
                         const shortVideoElement = Array.from(element.querySelectorAll('span'))
-                            .find(element => element.innerText.includes('Short Video'))
+                            .find(element => element.innerText.includes('Reels') || element.innerText.includes('Short Video'))
         
                         return shortVideoElement ? true : false
                     })
@@ -249,17 +260,15 @@ class Facebook {
                         return undefined
                     }
 
-                    const stupidity = await postElement.waitForSelector('a[class="x1i10hfl xjbqb8w x1ejq31n xd10rxx x1sy0etr x17r0tee x972fbf xcfux6l x1qhh985 xm0m39n x9f619 x1ypdohk xt0psk2 xe8uvvx xdj266r x11i5rnm xat24cr x1mh8g0r xexx8yu x4uap5 x18d9i69 xkhd6sd x16tdsg8 x1hl2dhg xggy1nq x1a2a7pz x1heor9g xt0b8zv xo1l8bm"]')
-
+                    const stupidity = await postElement.waitForSelector('a.x1i10hfl.xjbqb8w.x1ejq31n.xd10rxx.x1sy0etr.x17r0tee.x972fbf.xcfux6l.x1qhh985.xm0m39n.x9f619.x1ypdohk.xt0psk2.xe8uvvx.xdj266r.x11i5rnm.xat24cr.x1mh8g0r.xexx8yu.x4uap5.x18d9i69.xkhd6sd.x16tdsg8.x1hl2dhg.xggy1nq.x1a2a7pz.xt0b8zv.xi81zsa')
                     await stupidity.hover()
 
                     const loopInterval = setInterval(async () => {
-                        const otherElement = await postElement.$('a[href*="/user/"]')
-                        await otherElement.hover()
+                        await moveMouseRandom(page)
                         await stupidity.hover()
-                    }, 1500)
+                    }, 10000)
 
-                    await postElement.waitForSelector('a[href*="/posts/"]')
+                    await postElement.waitForSelector('a[href*="posts"]', {timeout: 120000})
 
                     clearInterval(loopInterval)
         
@@ -323,18 +332,19 @@ class Facebook {
                             await postTimeElement.hover()
 
                             const loopInterval = setInterval(async () => {
-                                const otherElement = await postElement.$('a[href*="/user/"')
-                                await otherElement.hover()
+                                await moveMouseRandom(page)
                                 await postTimeElement.evaluate(element => element.scrollIntoView({block: 'center'}))
                                 await postTimeElement.hover()
-                            }, 1250)
+                            }, 3000)
         
                             const dateElement = await page.waitForSelector('.xj5tmjb.x1r9drvm.x16aqbuh.x9rzwcf.xjkqk3g.xms15q0.x1lliihq.xo8ld3r.xjpr12u.xr9ek0c.x86nfjv.x1ye3gou.xn6708d.xz9dl7a.xsag5q8.x1n2onr6.x19991ni.__fb-dark-mode.x1hc1fzr.xhb22t3.xls3em1')
         
                             clearInterval(loopInterval)
 
+                            await moveMouseRandom(page, 1)
+
                             const loopInterval2 = setInterval(async () => {
-                                await postElement.hover()
+                                await moveMouseRandom(page, 1)
                             }, 250)
 
                             await page.waitForSelector('.xj5tmjb.x1r9drvm.x16aqbuh.x9rzwcf.xjkqk3g.xms15q0.x1lliihq.xo8ld3r.xjpr12u.xr9ek0c.x86nfjv.x1ye3gou.xn6708d.xz9dl7a.xsag5q8.x1n2onr6.x19991ni.__fb-dark-mode.x1hc1fzr.xhb22t3.xls3em1', {hidden: true})
@@ -384,11 +394,22 @@ class Facebook {
                                     await viewReplyButton.click()
                                 }
 
-                                const commentsCategoryElement = await page.waitForSelector('[class="x78zum5 x1n2onr6 x1nhvcw1"] span')
-                                await commentsCategoryElement.click()
+                                const commentsCategoryElement = await page.waitForSelector('[class="x78zum5 x1n2onr6 x1nhvcw1"] span[class="x193iq5w xeuugli x13faqbe x1vvkbs x10flsy6 x1lliihq x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x4zkp8e x41vudc x6prxxf xvq8zen x1s688f xi81zsa"]')
+                                
+                                let allCommentsIsButtonClicked = false
+                                while (!allCommentsIsButtonClicked) {
+                                    await commentsCategoryElement.hover()
+                                    await commentsCategoryElement.evaluate(element => element.click())
 
-                                const allCommentsButton = await page.waitForSelector(':scope >>> ::-p-text("All comments")')
-                                await allCommentsButton.click()
+                                    try {
+                                        const allCommentsButton = await page.waitForSelector(':scope >>> ::-p-text("All comments")', {timeout: 2000})
+                                        await allCommentsButton.click()
+
+                                        allCommentsIsButtonClicked = true
+                                    } catch (error) {
+
+                                    }
+                                }
 
                                 await page.waitForFunction(() => {
                                     return new Promise(resolve => {
@@ -461,26 +482,31 @@ class Facebook {
                     const [commentTimestamp, commentText, commentAuthorName, commentAuthorID, commentImages] = await Promise.all([
                         //timestamp
                         new Promise(async resolve => {
+                            const isPending = await commentElementData.evaluate(element => {
+                                return Array.from(element.querySelectorAll('span')).find(element => element.innerText === 'Pending') ? true : false
+                            })
+                            
+                            if (isPending) return resolve('Pending')
+
                             const commentTimeElement = await commentElementData.waitForSelector('a[href*="/posts/"]')
 
                             await commentTimeElement.evaluate(element => element.scrollIntoView({block: 'center'}))
                             await commentTimeElement.hover().catch(error => console.log(error))
                         
                             const loopInterval = setInterval(async () => {
-                                const otherElement = await commentElementData.$('a[href*="/user/"')
-                                await otherElement.hover()
+                                await moveMouseRandom(page)
                                 await commentTimeElement.evaluate(element => element.scrollIntoView({block: 'center'}))
                                 await commentTimeElement.hover()
-                            }, 1250)
+                            }, 3000)
         
                             const dateElement = await page.waitForSelector('.xj5tmjb.x1r9drvm.x16aqbuh.x9rzwcf.xjkqk3g.xms15q0.x1lliihq.xo8ld3r.xjpr12u.xr9ek0c.x86nfjv.x1ye3gou.xn6708d.xz9dl7a.xsag5q8.x1n2onr6.x19991ni.__fb-dark-mode.x1hc1fzr.xhb22t3.xls3em1', {timeout: 30000})
         
                             clearInterval(loopInterval)
 
-                            await commentElementData.hover()
+                            await moveMouseRandom(page, 1)
 
                             const loopInterval2 = setInterval(async () => {
-                                await commentElementData.hover()
+                                await moveMouseRandom(page, 1)
                             }, 250)
 
                             await page.waitForSelector('.xj5tmjb.x1r9drvm.x16aqbuh.x9rzwcf.xjkqk3g.xms15q0.x1lliihq.xo8ld3r.xjpr12u.xr9ek0c.x86nfjv.x1ye3gou.xn6708d.xz9dl7a.xsag5q8.x1n2onr6.x19991ni.__fb-dark-mode.x1hc1fzr.xhb22t3.xls3em1', {hidden: true})
@@ -826,7 +852,10 @@ class Facebook {
                 const commentButton = await page.waitForSelector('[aria-label="Leave a comment"]')
                 await commentButton.click()
 
-                const inputElement = await page.waitForSelector('[aria-label="Write a comment…"]')
+                const inputElement = await Promise.race([
+                    page.waitForSelector('[aria-label*="Write"]'),
+                    page.waitForSelector('[aria-label*="Submit"]')
+                ])
 
                 await page.keyboard.down('Shift')
                 await inputElement.type(text)
@@ -890,4 +919,34 @@ const parseDateString = (input) => {
     }
   
     throw new Error('Unrecognized date format')
+}
+
+
+
+async function moveMouseRandom(page, moveTimes = 4) {
+    const viewportSize = await page.evaluate(() => {
+        return {
+            width: window.innerWidth,
+            height: window.innerHeight
+        }
+    })
+
+    for (let i = 0; i < moveTimes; i++) {
+        const x = getRandomBetween(1, viewportSize.width)
+        const y = getRandomBetween(1, viewportSize.height)
+
+        await page.mouse.move(x, y, 10)
+
+        if (!i === moveTimes - 1) {
+            await new Promise(res => setTimeout(res, 250))
+        }
+    }
+
+    function getRandomBetween(min, max) {
+        if (min > max) {
+            [min, max] = [max, min]
+        }
+
+        return Math.floor(Math.random() * (max - min + 1)) + min
+    }
 }

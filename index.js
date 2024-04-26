@@ -21,7 +21,7 @@ const podioLeads = new PodioApp({
 })
 
 async function main() {
-    const fb = await Facebook.login(process.env.FB_USER, process.env.FB_PASS).catch(error => console.log(error))
+    const fb = await Facebook.login(process.env.FB_USER, process.env.FB_PASS, {headless: true}).catch(error => console.log(error))
 
     const groups = await fb.getJoinedGroups()
 
@@ -37,7 +37,7 @@ async function main() {
 
     // const groups = [{
     //     name: 'Bruh',
-    //     id: 'texasoffmarketproperties'
+    //     id: '2496735613945968'
     // }]
     
     //BEGIN LOOP

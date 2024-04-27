@@ -158,7 +158,7 @@ class PodioApp {
                     }
                 })
 
-                resolve(response.data)
+                resolve(response.data.item_id)
             } catch (error) {
                 if (error.response.data) {
                     reject({
@@ -168,6 +168,36 @@ class PodioApp {
                 } else {
                     reject({
                         message: 'Add Item Error',
+                        error
+                    })
+                }
+            }
+        })
+    }
+
+
+
+    async createTask(body) {
+        return new Promise(async (resolve, reject) => {
+            try {
+                await this.getAccessToken()
+
+                const response = await axios.post('/task/', body, {
+                    headers: {
+                        "Authorization": `Bearer ${this.accessToken}`
+                    }
+                })
+
+                resolve(response.data.task_id)
+            } catch (error) {
+                if (error.response.data) {
+                    reject({
+                        message: 'Create Task Error',
+                        error: error.response.data
+                    })
+                } else {
+                    reject({
+                        message: 'Create Task Error',
                         error
                     })
                 }

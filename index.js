@@ -42,49 +42,58 @@ async function main() {
     
     //BEGIN LOOP
     listenForNewPosts(groups, async (post) => {
-        // console.log(post.author.name)
+        try {
+            // console.log(post.author.name)
 
-        if (!keywordFilter(post)) return
-        if (await isDuplicatePost(post)) return
-        if (keywordFilter(post) === 'maybe') {
-            if (!await gpt.posts('isPostVacantLandDeal', post).then(response => response.result)) return
+            if (!keywordFilter(post)) return
+            if (await isDuplicatePost(post)) return
+            if (keywordFilter(post) === 'maybe') {
+                if (!await gpt.posts('isPostVacantLandDeal', post).then(response => response.result)) return
+            }
+
+            // if (post.author.name.toLowerCase() === 'kelli epperson') {
+            //     console.log('BLACKLISTED AUTHOR')
+            //     return
+            // }
+
+            // POST IS A NON-DUPLICATE VACANT LAND DEAL
+
+            // const openingMessage = await gpt.posts('generateOpeningMessage', post).then(response => response.result)
+
+            // await fb.sendMessage(openingMessage, post.author.id)
+
+            // await fb.groupPostComment('DM Sent', post.group.id, post.id)
+
+            const itemID = await podioLeads.addItem({
+                'title': post.author.name,
+                'post-link': {
+                    embed: await podioLeads.createEmbed({url: `https://www.facebook.com/groups/${post.group.id}/posts/${post.id}/`}).then(embed => embed.embed_id)
+                },
+                'messenger-link': {
+                    embed: await podioLeads.createEmbed({url: `https://www.facebook.com/messages/t/${post.author.id}/`}).then(embed => embed.embed_id)
+                },
+                'images': await Promise.all(post.images.map(async imageURL => {
+                    const imageName = imageURL.split('?')[0].split('/').at(-1)
+                
+                    return await podioLeads.uploadFile(await axios.get(imageURL, {responseType: 'stream'}).then(response => response.data), imageName)
+                    .then(response => response.file_id)
+                })),
+                'category': 1
+            })
+
+            await podioLeads.createTask({
+                text: 'Review New Lead',
+                responsible : 19756250,
+                ref_type: 'item',
+                ref_id: itemID
+            })
+
+            await leadsCollection.insertOne(post)
+
+            console.log('Got One: ', {author: post.author.name, text: post.text})
+        } catch (error) {
+            console.error(error)
         }
-
-        // if (post.author.name.toLowerCase() === 'kelli epperson') {
-        //     console.log('BLACKLISTED AUTHOR')
-        //     return
-        // }
-
-        // POST IS A NON-DUPLICATE VACANT LAND DEAL
-
-        // const openingMessage = await gpt.posts('generateOpeningMessage', post).then(response => response.result)
-
-        // await fb.sendMessage(openingMessage, post.author.id)
-
-        // await fb.groupPostComment('DM Sent', post.group.id, post.id)
-
-        await podioLeads.addItem({
-            'title': post.author.name,
-            'post-link': {
-                embed: await podioLeads.createEmbed({url: `https://www.facebook.com/groups/${post.group.id}/posts/${post.id}/`}).then(embed => embed.embed_id)
-            },
-            'messenger-link': {
-                embed: await podioLeads.createEmbed({url: `https://www.facebook.com/messages/t/${post.author.id}/`}).then(embed => embed.embed_id)
-            },
-            'images': await Promise.all(post.images.map(async imageURL => {
-                const imageName = imageURL.split('?')[0].split('/').at(-1)
-    
-                return await podioLeads.uploadFile(await axios.get(imageURL, {responseType: 'stream'}).then(response => response.data), imageName)
-                .then(response => response.file_id)
-                .catch(error => console.error(error))
-            })),
-            'category': 1
-        })
-        .catch(error => console.error(error))
-
-        await leadsCollection.insertOne(post)
-
-        console.log('Got One: ', {author: post.author.name, text: post.text})
     })
 
 

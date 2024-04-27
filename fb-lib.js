@@ -109,7 +109,7 @@ class Facebook {
                     .find(element => element.innerText.includes("All groups you've joined"))
                 })
 
-                const joinedNumber = await joinedGroupsHeadElement.evaluate(element => parseInt(element.innerText.match(/\((\d+)\)/)[1], 10))
+                const joinedNumber = await joinedGroupsHeadElement.evaluate(element => parseInt(element.innerText.match(/\((\d+)\)/)[1], 10)).catch(error => console.log(error))
 
                 const joinedGroupsParent = await joinedGroupsHeadElement.evaluateHandle(element => element.parentNode)
 

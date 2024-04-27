@@ -50,18 +50,18 @@ async function main() {
             if (!await gpt.posts('isPostVacantLandDeal', post).then(response => response.result)) return
         }
 
-        if (post.author.name.toLowerCase() === 'kelli epperson') {
-            console.log('BLACKLISTED AUTHOR')
-            return
-        }
+        // if (post.author.name.toLowerCase() === 'kelli epperson') {
+        //     console.log('BLACKLISTED AUTHOR')
+        //     return
+        // }
 
         // POST IS A NON-DUPLICATE VACANT LAND DEAL
 
-        const openingMessage = await gpt.posts('generateOpeningMessage', post).then(response => response.result)
+        // const openingMessage = await gpt.posts('generateOpeningMessage', post).then(response => response.result)
 
-        await fb.sendMessage(openingMessage, post.author.id)
+        // await fb.sendMessage(openingMessage, post.author.id)
 
-        await fb.groupPostComment('DM Sent', post.group.id, post.id)
+        // await fb.groupPostComment('DM Sent', post.group.id, post.id)
 
         await podioLeads.addItem({
             'title': post.author.name,
@@ -84,7 +84,7 @@ async function main() {
 
         await leadsCollection.insertOne(post)
 
-        console.log('Got One: ', {author: post.author.name, message: openingMessage})
+        console.log('Got One: ', {author: post.author.name, text: post.text})
     })
 
 

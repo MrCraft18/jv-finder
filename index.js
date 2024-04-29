@@ -1,10 +1,11 @@
-const Facebook = require('./fb-lib')
-const PodioApp = require('./podio-lib.js')
-const gpt = require('./gpt-lib.js')
-const { MongoClient, ObjectId } = require('mongodb')
-const fs = require('fs')
-const axios = require('axios')
-require('dotenv').config()
+import Facebook from 'facebook.js'
+import PodioApp from './podio-lib.js'
+import { MongoClient, ObjectId } from 'mongodb'
+import gpt from './gpt-lib.js'
+import fs from 'fs'
+import axios from 'axios'
+import { config } from 'dotenv'
+config()
 
 
 const client = new MongoClient(process.env.MONGODB_URI)
@@ -21,28 +22,30 @@ const podioLeads = new PodioApp({
 })
 
 async function main() {
-    const fb = await Facebook.login(process.env.FB_USER, process.env.FB_PASS, {headless: true}).catch(error => console.log(error))
+    try {
+        const fb = await Facebook.login(process.env.FB_USER, process.env.FB_PASS, {headless: true}).catch(error => console.log(error))
 
-    const groups = await fb.getJoinedGroups()
-
-    const databaseGroups = await groupsCollection
-        .find({}, { projection: { _id: 0 } })
-        .toArray()
-
-    for (const group of groups) {
-        if (!databaseGroups.find(databaseGroup => databaseGroup.id === group.id)) {
-            groupsCollection.insertOne(group)
-        }
-    }
-
-    // const groups = [{
-    //     name: 'Bruh',
-    //     id: '2496735613945968'
-    // }]
+        const groups = await fb.getJoinedGroups()
     
-    //BEGIN LOOP
-    listenForNewPosts(groups, async (post) => {
-        try {
+        const databaseGroups = await groupsCollection
+            .find({}, { projection: { _id: 0 } })
+            .toArray()
+    
+        for (const group of groups) {
+            if (!databaseGroups.find(databaseGroup => databaseGroup.id === group.id)) {
+                groupsCollection.insertOne(group)
+            }
+        }
+    
+        // const groups = [{
+        //     name: 'Bruh',
+        //     id: '2496735613945968'
+        // }]
+
+        console.log('It Begins')
+        
+        //BEGIN LOOP
+        listenForNewPosts(groups, async (post) => {
             // console.log(post.author.name)
 
             if (!keywordFilter(post)) return
@@ -67,34 +70,31 @@ async function main() {
             const itemID = await podioLeads.addItem({
                 'title': post.author.name,
                 'post-link': {
-                    embed: await podioLeads.createEmbed({url: `https://www.facebook.com/groups/${post.group.id}/posts/${post.id}/`}).then(embed => embed.embed_id)
+                    embed: await podioLeads.createEmbed({ url: `https://www.facebook.com/groups/${post.group.id}/posts/${post.id}/` }).then(embed => embed.embed_id)
                 },
                 'messenger-link': {
-                    embed: await podioLeads.createEmbed({url: `https://www.facebook.com/messages/t/${post.author.id}/`}).then(embed => embed.embed_id)
+                    embed: await podioLeads.createEmbed({ url: `https://www.facebook.com/messages/t/${post.author.id}/` }).then(embed => embed.embed_id)
                 },
                 'images': await Promise.all(post.images.map(async imageURL => {
                     const imageName = imageURL.split('?')[0].split('/').at(-1)
-                
-                    return await podioLeads.uploadFile(await axios.get(imageURL, {responseType: 'stream'}).then(response => response.data), imageName)
-                    .then(response => response.file_id)
+
+                    return await podioLeads.uploadFile(await axios.get(imageURL, { responseType: 'stream' }).then(response => response.data), imageName)
+                        .then(response => response.file_id)
                 })),
                 'category': 1
             })
 
             await podioLeads.createTask({
-                text: 'Review New Lead',
-                responsible : 19756250,
+                text: `Review New Lead: ${post.author.name}`,
+                responsible: 19756250,
                 ref_type: 'item',
                 ref_id: itemID
             })
 
             await leadsCollection.insertOne(post)
 
-            console.log('Got One: ', {author: post.author.name, text: post.text})
-        } catch (error) {
-            console.error(error)
-        }
-    })
+            console.log('Got One: ', { author: post.author.name, text: post.text })
+        })
 
 
 
@@ -105,53 +105,68 @@ async function main() {
 
 
 
-    async function listenForNewPosts(groups, callback) {
-        let checkQueue = shuffleArray([...groups])
-    
-        while (true) {
-            const group = checkQueue.shift()
-    
-            //Logic to Grab last post from group
-            const lastScrapedPost = await groupsCollection
-                .findOne({ id: group.id }, { projection: { lastScrapedPost: 1,  _id: 0 } })
-                .then(response => response.lastScrapedPost)
-    
-            console.log(group.name, group.id)
-    
-            let allPosts
-    
-            if (lastScrapedPost && differenceInHours(lastScrapedPost.timestamp, new Date()) < 24) {
-                allPosts = await fb.getGroupPosts(group.id, { dateRange: { end: lastScrapedPost.timestamp } }, post => {
-                    callback(post)
-                })
-            } else if (lastScrapedPost && differenceInHours(lastScrapedPost.timestamp, new Date()) > 24 || !lastScrapedPost) {
-                allPosts = await fb.getGroupPosts(group.id, { dateRange: { end: new Date(Date.now() - (1000 * 60 * 60 * 24)) } }, post => {
-                    callback(post)
-                })
+
+
+
+
+
+
+
+
+        async function listenForNewPosts(groups, callback) {
+            let checkQueue = shuffleArray([...groups])
+        
+            while (true) {
+                try {
+                    const group = checkQueue.shift()
+        
+                    //Logic to Grab last post from group
+                    const lastScrapedPost = await groupsCollection
+                        .findOne({ id: group.id }, { projection: { lastScrapedPost: 1,  _id: 0 } })
+                        .then(response => response.lastScrapedPost)
+            
+                    console.log(JSON.stringify(group))
+            
+                    let allPosts
+            
+                    if (lastScrapedPost && differenceInHours(lastScrapedPost.timestamp, new Date()) < 24) {
+                        allPosts = await fb.getGroupPosts(group.id, { dateRange: { endAfter: lastScrapedPost.timestamp }, sorting: 'new' }, post => {
+                            callback(post)
+                        })
+                    } else if (lastScrapedPost && differenceInHours(lastScrapedPost.timestamp, new Date()) > 24 || !lastScrapedPost) {
+                        allPosts = await fb.getGroupPosts(group.id, { dateRange: { endAfter: new Date(Date.now() - (1000 * 60 * 60 * 24)) }, sorting: 'new' }, post => {
+                            callback(post)
+                        })
+                    }
+            
+                    if (checkQueue.length === 0) checkQueue = shuffleArray([...groups])
+            
+                    // await new Promise(resolve => setTimeout(resolve, 5000))
+            
+                    await new Promise(resolve => setTimeout(resolve, Math.random() * (60000 - 30000) + 30000))
+        
+                    if (allPosts.length > 0) {
+                        await groupsCollection.updateOne({ id: group.id }, { $set: { lastScrapedPost: allPosts[0] } })
+                    }
+                } catch (error) {
+                    console.error(error)
+                }
             }
-    
-            if (checkQueue.length === 0) checkQueue = shuffleArray([...groups])
-    
-            // await new Promise(resolve => setTimeout(resolve, 5000))
-    
-            await new Promise(resolve => setTimeout(resolve, Math.random() * (60000 - 30000) + 30000))
-
-            if (allPosts.length > 0) {
-                await groupsCollection.updateOne({ id: group.id }, { $set: { lastScrapedPost: allPosts[0] } })
+        
+            function shuffleArray(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
+                return array;
+            }
+        
+            function differenceInHours(date1, date2) {
+                return Math.abs(date2 - date1) / (1000 * 60 * 60);
             }
         }
-    
-        function shuffleArray(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
-            }
-            return array;
-        }
-    
-        function differenceInHours(date1, date2) {
-            return Math.abs(date2 - date1) / (1000 * 60 * 60);
-        }
+    } catch (error) {
+        console.error(error)
     }
 }
 main()

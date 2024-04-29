@@ -1,8 +1,9 @@
-const Facebook = require('./fb-lib.js')
-const PodioApp = require('./podio-lib.js')
-const { MongoClient, ObjectId } = require('mongodb')
-const axios = require('axios')
-require('dotenv').config()
+import Facebook from 'facebook.js'
+import PodioApp from './podio-lib.js'
+import { MongoClient, ObjectId } from 'mongodb'
+// const axios = require('axios')
+import { config } from 'dotenv'
+config()
 
 const client = new MongoClient(process.env.MONGODB_URI)
 const leadsCollection = client.db('JV-FINDER').collection('leads')
@@ -61,9 +62,11 @@ const leads = new PodioApp({
 
 
 // Facebook.login('8176737349', 'mario1018')
-Facebook.login(process.env.FB_USER, process.env.FB_PASS, {headless: false})
+Facebook.login(process.env.FB_USER, process.env.FB_PASS, {headless: true})
 .then(async fb => {
-    // const groups = await fb.getJoinedGroups()
+    const groups = await fb.getJoinedGroups()
+
+    console.log(groups)
 
     // console.log(groups.map(group => group.id))
     // console.log(groups.length)
@@ -76,7 +79,7 @@ Facebook.login(process.env.FB_USER, process.env.FB_PASS, {headless: false})
 
     let count = 0
 
-    const posts = await fb.getGroupPosts('commercialrealestateintexas', {limit: 85}, post => {
+    const posts = await fb.getGroupPosts('commercialrealestateintexas', {limit: 20, sorting: 'activity'}, post => {
         count++
 
         console.log(count, post.author, post.group.name, new Date(post.timestamp).toLocaleString())

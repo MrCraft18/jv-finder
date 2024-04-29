@@ -1,6 +1,7 @@
-const OpenAI = require('openai')
-const fs = require('fs')
-require('dotenv').config()
+import OpenAI from 'openai'
+import fs from 'fs'
+import { config } from 'dotenv'
+config()
 
 
 const openai = new OpenAI({
@@ -41,4 +42,4 @@ const gpt = {
     }
 }
 
-module.exports = gpt
+export default gpt

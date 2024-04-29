@@ -1,9 +1,7 @@
-require('dotenv').config()
-const axios = require('axios').create({
-    withCredentials: true,
-    baseURL: 'https://api.podio.com/'
-})
-const FormData = require('form-data')
+import axios from 'axios'
+import FormData from 'form-data'
+import { config } from 'dotenv'
+config()
 
 // axios.post('oauth/token/v2', {
 //     grant_type: 'refresh_token',
@@ -22,7 +20,12 @@ const FormData = require('form-data')
 //     }
 // })
 
-class PodioApp {
+const axiosInstance = axios.create({
+    withCredentials: true,
+    baseURL: 'https://api.podio.com/'
+})
+
+export default class PodioApp {
     constructor(parameters) {
         Object.keys(parameters).forEach(key => {
             this[key] = parameters[key]
@@ -30,7 +33,7 @@ class PodioApp {
     }
 
     async getAccessToken() {
-        await axios.post('oauth/token/v2', {
+        await axiosInstance.post('oauth/token/v2', {
             grant_type: 'app',
             app_id: this.app_id,
             app_token: this.app_token,
@@ -61,7 +64,7 @@ class PodioApp {
         return new Promise(async (resolve, reject) => {
             await this.getAccessToken()
 
-            axios.get(`/app/${this.app_id}`, {
+            axiosInstance.get(`/app/${this.app_id}`, {
                 headers: {
                     "Authorization": `Bearer ${this.accessToken}`
                 }
@@ -88,7 +91,7 @@ class PodioApp {
         return new Promise(async (resolve, reject) => {
             await this.getAccessToken()
 
-            await axios.post('/embed/', parameters, {
+            await axiosInstance.post('/embed/', parameters, {
                 headers: {
                     "Authorization": `Bearer ${this.accessToken}`
                 }
@@ -116,13 +119,13 @@ class PodioApp {
         return new Promise(async (resolve, reject) => {
             await this.getAccessToken()
 
-            axios.post(`/item/app/${this.app_id}/`, {fields}, {
+            axiosInstance.post(`/item/app/${this.app_id}/`, {fields}, {
                 headers: {
                     "Authorization": `Bearer ${this.accessToken}`
                 }
             })
             .then(response => {
-                resolve(response.data)
+                resolve(response.data.item_id)
             })
             .catch(error => {
                 if (error.response.data) {
@@ -151,14 +154,14 @@ class PodioApp {
                 formData.append('source', imageData)
                 formData.append('filename', fileName)
 
-                const response = await axios.post('/file/', formData, {
+                const response = await axiosInstance.post('/file/', formData, {
                     headers: {
                         ...formData.getHeaders(),
                         "Authorization": `Bearer ${this.accessToken}`
                     }
                 })
 
-                resolve(response.data.item_id)
+                resolve(response.data)
             } catch (error) {
                 if (error.response.data) {
                     reject({
@@ -182,7 +185,7 @@ class PodioApp {
             try {
                 await this.getAccessToken()
 
-                const response = await axios.post('/task/', body, {
+                const response = await axiosInstance.post('/task/', body, {
                     headers: {
                         "Authorization": `Bearer ${this.accessToken}`
                     }
@@ -205,5 +208,3 @@ class PodioApp {
         })
     }
 }
-
-module.exports = PodioApp

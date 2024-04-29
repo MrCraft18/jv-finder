@@ -46,7 +46,7 @@ async function main() {
         
         //BEGIN LOOP
         listenForNewPosts(groups, async (post) => {
-            // console.log(post.author.name)
+            console.log(post.author, post.group.name, new Date(post.timestamp).toLocaleString())
 
             if (!keywordFilter(post)) return
             if (await isDuplicatePost(post)) return
@@ -141,9 +141,9 @@ async function main() {
             
                     if (checkQueue.length === 0) checkQueue = shuffleArray([...groups])
             
-                    // await new Promise(resolve => setTimeout(resolve, 5000))
+                    await new Promise(resolve => setTimeout(resolve, 5000))
             
-                    await new Promise(resolve => setTimeout(resolve, Math.random() * (60000 - 30000) + 30000))
+                    // await new Promise(resolve => setTimeout(resolve, Math.random() * (60000 - 30000) + 30000))
         
                     if (allPosts.length > 0) {
                         await groupsCollection.updateOne({ id: group.id }, { $set: { lastScrapedPost: allPosts[0] } })
@@ -182,6 +182,8 @@ const keywords = {
 }
 
 function keywordFilter(post) {
+    if (!post.text) return false
+
     const includesSomePositive = keywords.positive.some(word => new RegExp(`\\b${word}\\b`).test(post.text.toLowerCase()))
     const includesNoNegative = keywords.negative.every(word => !post.text.toLowerCase().includes(word))
     const includesSomeMaybeNegative = keywords.maybeNegative.some(word => new RegExp(`\\b${word}\\b`).test(post.text.toLowerCase()))

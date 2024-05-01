@@ -68,7 +68,7 @@ Facebook.login(process.env.FB_USER, process.env.FB_PASS, {headless: true})
 
     console.log(groups)
 
-    // console.log(groups.map(group => group.id))
+    // console.log(groups.map(group => group.id))a
     // console.log(groups.length)
 
     // fb.onMessage(data => {

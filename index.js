@@ -46,7 +46,7 @@ async function main() {
         
         //BEGIN LOOP
         listenForNewPosts(groups, async (post) => {
-            console.log(post.author, post.group.name, new Date(post.timestamp).toLocaleString())
+            // console.log(post.author, post.group.name, new Date(post.timestamp).toLocaleString())
 
             if (!keywordFilter(post)) return
             if (await isDuplicatePost(post)) return
@@ -125,7 +125,7 @@ async function main() {
                         .findOne({ id: group.id }, { projection: { lastScrapedPost: 1,  _id: 0 } })
                         .then(response => response.lastScrapedPost)
             
-                    console.log(JSON.stringify(group))
+                    console.log(JSON.stringify(group), new Date().toLocaleString())
             
                     let allPosts
             
@@ -141,9 +141,9 @@ async function main() {
             
                     if (checkQueue.length === 0) checkQueue = shuffleArray([...groups])
             
-                    await new Promise(resolve => setTimeout(resolve, 5000))
+                    // await new Promise(resolve => setTimeout(resolve, 5000))
             
-                    // await new Promise(resolve => setTimeout(resolve, Math.random() * (60000 - 30000) + 30000))
+                    await new Promise(resolve => setTimeout(resolve, Math.random() * (60000 - 30000) + 30000))
         
                     if (allPosts.length > 0) {
                         await groupsCollection.updateOne({ id: group.id }, { $set: { lastScrapedPost: allPosts[0] } })

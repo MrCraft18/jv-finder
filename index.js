@@ -54,6 +54,34 @@ async function main() {
                 if (!await gpt.posts('isPostVacantLandDeal', post).then(response => response.result)) return
             }
 
+            //EMAILS STUFF
+
+            const uniqueEmailsMap = new Map()
+
+            if (post.text) extractEmails(post.text).forEach(email => uniqueEmailsMap.set(email, post))
+
+            if (post.attachedPost.text) extractEmails(post.attachedPost.text).forEach(email => uniqueEmailsMap.set(email, post))
+
+            if (post.comments) {
+                post.comments.forEach(comment => {
+                    extractEmails(comment.text).forEach(email => uniqueEmailsMap.set(email, post))
+        
+                    processReplies(comment.replies)
+        
+                    function processReplies(replies) {
+                        replies.forEach(reply => {
+                            extractEmails(reply.text).forEach(email => uniqueEmailsMap.set(email, post))
+                
+                            processReplies(reply.replies)
+                        })
+                    }
+                })
+            }
+
+            const emailsData = Array.from(uniqueEmailsMap, ([email, post]) => ({email, post, sold: false}))
+
+            await addEmailsToDatabase(emailsData)
+
             // if (post.author.name.toLowerCase() === 'kelli epperson') {
             //     console.log('BLACKLISTED AUTHOR')
             //     return
@@ -221,4 +249,28 @@ async function isDuplicatePost(post) {
     }
 
     return false
+}
+
+
+
+function extractEmails(string) {
+    const emailPattern = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/g
+
+    if (string) {
+        return string.toLowerCase().match(emailPattern) ? string.toLowerCase().match(emailPattern) : []
+    } else {
+        return []
+    }
+}
+
+async function addEmailsToDatabase(emailDataArr) {
+    for (const emailData of emailDataArr) {
+        const existingEmailQuery = await emailsCollection.findOne({email: emailData.email})
+
+        if (!existingEmailQuery) {
+            await emailsCollection.insertOne(emailData)
+        } else {
+            console.log('Email', emailData.email, 'Already Exists!!!')
+        }
+    }
 }

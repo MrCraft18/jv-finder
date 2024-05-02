@@ -1,0 +1,1404 @@
+[
+    {
+        "text": "# **SHOWING FRIDAY 12PM! MESSAGE FOR DETAILS!**\n## **OFF-MARKET BRICK HOME IN SAGINAW, TX 76169 **🐎\n\n3 bed • 2 bath • 1,575 sqft • 1977 build\n\n2 car garage • 9,793 lot sqft\n## **NOTES:**\n\n- **Estimated ARV:** $315,000\n\n- 8-10 year old roof\n\n- 8-10 year old hvac\n\n- Slight Foundation work (quote coming soon)\n\n- Plumbing & electrical working fine\n\n- Cosmetic updating needed\n\n- **Closing:** 3/14/24\n\n- **Leaseback:** One Month (06/14/24)\n\n- **Leaseback Terms:** $5,000 deposit with $100 hold over\n## **RSVP FOR SHOWING DETAILS! MESSAGE FOR MORE INFO!**\n## **ASKING PRICE: $225,000 OR BEST OFFER**",
+        "images": [
+            "https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/440424600_1118076036134580_1128771842348728361_n.jpg?stp=cp6_dst-jpg&_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=qqoMPjMtxZcQ7kNvgFZMQTU&_nc_ht=scontent-dfw5-1.xx&cb_e2o_trans=t&oh=00_AfBQI9IbxYlOBHVXr6K-wNcQDTJzXAdv0_dPdfeMHZigGQ&oe=66398D55",
+            "https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/440436649_1118076049467912_3330771411489993321_n.jpg?stp=cp6_dst-jpg&_nc_cat=108&ccb=1-7&_nc_sid=5f2048&_nc_ohc=qHQvO4r8_h0Q7kNvgERXHh3&_nc_ht=scontent-dfw5-2.xx&cb_e2o_trans=t&oh=00_AfACuQwgCmJ82sCI5XONx8Mjd5kKy6ZK1krjZFDx1e2qyQ&oe=6639911F",
+            "https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/440740060_1118076069467910_6066420800108137461_n.jpg?stp=cp6_dst-jpg&_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=Cz_ZDu2AMFoQ7kNvgGMCGY9&_nc_ht=scontent-dfw5-1.xx&cb_e2o_trans=t&oh=00_AfA0Rn66nXm2_q3MTew3oAL2XhctojhlgMX-J9JJpZVdLg&oe=6639A9A4"
+        ],
+        "timestamp": "2024-05-02T16:39:32.000Z",
+        "id": "3391701837794190",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Bryan Lynch",
+            "id": "100037965817011"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "North Riverside Estates-Fort Worth\nPurchase: 162,500\nRehab: 60k for flip\nARV: 295k\n3/2 1794sqft\nCall me for more info! (815) 451-8893",
+        "images": [
+            "https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/440607156_2127742557592102_2644443053603835081_n.jpg?stp=cp6_dst-jpg_p180x540&_nc_cat=106&ccb=1-7&_nc_sid=5f2048&_nc_ohc=SN2-sNLmNqgQ7kNvgFyjoGF&_nc_ht=scontent-dfw5-2.xx&cb_e2o_trans=t&oh=00_AfDXDWCwQN7XrPf6PAnghjYSUqxQxjxr-Dkn9JKZat-0OQ&oe=6639A522"
+        ],
+        "timestamp": "2024-05-02T16:22:18.000Z",
+        "id": "3391685864462454",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Brianna Szczebak",
+            "id": "100010691352664"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": null,
+        "images": [],
+        "timestamp": "2024-05-02T15:49:13.000Z",
+        "id": "3391673417797032",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Felipe Soares",
+            "id": "1649020232"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "Wholesalers- I’m an end buyer looking for an off market deal with an ARV under $300k. Prefer 3 bedrooms. Anywhere in the DFW area. DM me your deals!",
+        "images": [],
+        "timestamp": "2024-05-02T14:34:40.000Z",
+        "id": "3391630151134692",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Gabe Rodriguez",
+            "id": "708736865"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "Off-Market 6 HOUSE PACKAGE in Longview, TX. Mid $300k's...Who needs a major investment opportunity?\nLARGE SPREAD, drop your info.",
+        "images": [],
+        "timestamp": "2024-05-02T15:19:09.000Z",
+        "id": "3391646717799702",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Connor Limpert",
+            "id": "100001886130453"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "**Celeste, Tx. 75423**\nOff Market Property Available \n\nSFH: 3Bed-2bath sqft 1,744\nRehab: Average Flip 55-60k \nRoof replaced in 2018. \nARV $277,000\nAsking $135,000\nMessage me for more details.",
+        "images": [
+            "https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/440409201_873023867867606_2897583676913008003_n.jpg?stp=dst-jpg_p526x296&_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_ohc=iAASKXZCxaUQ7kNvgFYue_p&_nc_ht=scontent-dfw5-2.xx&cb_e2o_trans=t&oh=00_AfDhkXay6leRxpJTDDbZwM8BhFsqXyb7DogC8ovr1G9Z8g&oe=6639847D"
+        ],
+        "timestamp": "2024-05-02T15:19:08.000Z",
+        "id": "3391651811132526",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Alexis McHenry",
+            "id": "100054800033516"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": null,
+        "images": [
+            "https://scontent-dfw5-2.xx.fbcdn.net/v/t45.5328-9/438079819_1099116238059907_5610136026500672253_n.jpg?stp=c13.44.500.261a_dst-jpg_p526x296&_nc_cat=102&ccb=1-7&_nc_sid=b8e0be&_nc_ohc=F6pvUnj9pxMQ7kNvgG86Xqp&_nc_ht=scontent-dfw5-2.xx&cb_e2o_trans=t&oh=00_AfBKfMSXOEMDU-IISPWKpTNdYvMhoAS9v9t44fIqQPffbg&oe=66398256"
+        ],
+        "timestamp": "2024-05-02T15:19:06.000Z",
+        "id": "3391657197798654",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Dayton Steele",
+            "id": "100006943206204"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": null,
+        "images": [],
+        "timestamp": "2024-05-02T15:09:01.000Z",
+        "id": "3391651051132602",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Felipe Soares",
+            "id": "1649020232"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "**Celeste, Tx. 75423**\nOff Market Property Available \n\nSFH: 3Bed-2bath sqft 1,744\nRehab: Average Flip 55-60k \nRoof replaced in 2018. \nARV $277,000\nAsking $135,000\nMessage me for more details.",
+        "images": [],
+        "timestamp": "2024-05-01T14:58:50.000Z",
+        "id": "3390967537867620",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Alexis McHenry",
+            "id": "100054800033516"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "# Garland Deal Available in 75041 \n\n4bd/3ba  |  3,138 SqFt  |  .588 Acres \n\nASK $370k / ARV $520k   CALL 832-270-5772 for info \n\nRehab: Cosmetic flip and needs new HVAC. May need foundation looked at.",
+        "images": [
+            "https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/440582177_3619958411588781_6608549830706332637_n.jpg?stp=cp6_dst-jpg_p180x540&_nc_cat=103&ccb=1-7&_nc_sid=5f2048&_nc_ohc=OvBSKJ24VfQQ7kNvgE3JIj9&_nc_ht=scontent-dfw5-1.xx&cb_e2o_trans=t&oh=00_AfChmshgo_IVSfQpvx5SDyv4_VGeRY1JXTGAMszlwoE7VA&oe=66399F56"
+        ],
+        "timestamp": "2024-05-02T14:51:22.000Z",
+        "id": "3391636347800739",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Matthew Zamarripa",
+            "id": "100007239724881"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "3 properties in Fort Worth, TX 76105, priced at $360,000 for the bundle. \n\nThese properties will be available for viewing tomorrow starting from 10:30 AM. \n\nFor those interested in viewing, please call 817-822-4567.\n1. 2 bedrooms / 1.5 bathrooms\n1. 2 bedrooms / 1 bathroom\n1. 2 one-bedroom apartments / 1 bathroom each\n\nPlease note:\n* Please email for photos.\n* They must be sold together.\n* All properties are in need of repairs.\n* Assignment of contract.",
+        "images": [
+            "https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/440818652_7622730681119222_4582433290334162225_n.jpg?stp=cp6_dst-jpg_s960x960&_nc_cat=102&ccb=1-7&_nc_sid=5f2048&_nc_ohc=y1z8gKI-q7wQ7kNvgEu3Cby&_nc_ht=scontent-dfw5-2.xx&cb_e2o_trans=t&oh=00_AfB1fLxPUSYvxLnucuPvLAPWC15Ydne1yHtjRjsZLYl4iQ&oe=6639A295"
+        ],
+        "timestamp": "2024-04-30T21:36:50.000Z",
+        "id": "3390487277915646",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Abraham Mercado",
+            "id": "100001470986132"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "👋 Calling All DFW Real Estate Professionals!\n\n🏠 I'm looking to buy SUBTOS:\n* Locations: Anywhere in DFW\n* Type: Single Family Homes\n* Must Haves: 3+ bedrooms, 2+ bathrooms, 1200+ sq ft\n* Year Built: After 1980\n* Investment Criteria: Entry fee <9%, Interest <4.5%\n\n📩 Contact me here or via email at mike.jackson@re-vitalized.com if you have a property that fits the bill. Ready to act swiftly for the right deal!\n\n🌐 Feel free to share this post or tag someone who could help!",
+        "images": [
+            "https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/440972653_10114139043994316_5972677213584066630_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=5f2048&_nc_ohc=zscH1lkvqnsQ7kNvgHDFK9E&_nc_ht=scontent-dfw5-2.xx&cb_e2o_trans=t&oh=00_AfBmag_nZty9cRxDJLgIRHAb9dJpPKh7ns1xp6-0Pd1vIw&oe=66398B4C"
+        ],
+        "timestamp": "2024-05-02T14:18:41.000Z",
+        "id": "3391619674469073",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Mike Jackson",
+            "id": "2518947"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "Got a cosmetic flip in Waxachie. PM me if interested.   End buyers only, no New Western.  \n\nAddress: Waxahachie, TX 75165\nAsking $115,000\nARV: $220,000\n3 Bed 2 bath\nLiving area: 1,058sqft (per tax records)\nLot Size: 3,746sqft",
+        "images": [
+            "https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/440969566_758283759802504_2094180687808649108_n.jpg?stp=dst-jpg_p180x540&_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_ohc=6xS2epg9pvsQ7kNvgGMmXu-&_nc_ht=scontent-dfw5-1.xx&cb_e2o_trans=t&oh=00_AfAWdj83x2jh2p6JuI-iIIISUK1XjqOIPa9TgWYManynag&oe=663986F1"
+        ],
+        "timestamp": "2024-04-30T18:47:59.000Z",
+        "id": "3390411737923200",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Bradley Kovach",
+            "id": "100068626596464"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "Dallas, TX 75216🎯\n8440 sqft\nNo Survey\nHas All Utilities on the street.\nAsking : $59,000 or OBO\nFor more details Call / Text : 972-798-7255",
+        "images": [],
+        "timestamp": "2024-05-01T17:27:06.000Z",
+        "id": "3391051964525844",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Salman Mohammad",
+            "id": "100053643580209"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "🔥New Deals🔥\n\nI have 3 lots under contract in Granbury Tx \n\n0.13 acre lot for sale in Granbury Tx 76048 $33k \n0.16 acre lot for sale in Granbury Tx 76048 $33k \n0.17 acre lot for sale in Granbury Tx 76048 $33k\n\nCash or hard money only \nBuyer pays all closing costs \nPM me if interested!",
+        "images": [],
+        "timestamp": "2024-05-02T13:04:48.000Z",
+        "id": "3391578937806480",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Jaliya Jackson",
+            "id": "61558812100713"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "Dallas TX,75216.\n8440 sqft , \nHas All utilities on the street....\nAsking:$59,000 or OBO.\nCall/text:972-767-8309",
+        "images": [],
+        "timestamp": "2024-05-02T12:51:29.000Z",
+        "id": "3391572127807161",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Amy Amena",
+            "id": "100072178935431"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "❤️‍🔥South Fort Worth TX. Zip Code: 76104❤️‍🔥\n\n3 Beds | 1 Bath | Year: 1958 | Living: 1,016 sf | Lot: 6000 sf\n\nShowing Thursday 05/02\n\n**ASKING : $120k | ARV : 215k**",
+        "images": [
+            "https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/440955959_10161627510494558_7172388981262104935_n.jpg?stp=cp6_dst-jpg&_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_ohc=2muV5Gt-e1QQ7kNvgFWJA9S&_nc_oc=AdhvjxaoxsS-9DkHy6JCjmdVoNQYnB8zY2fAPZVttGdtCrXpliKsyi0CEADBrtgnWf8PI69g2Ph6kpEaVIoFnSje&_nc_ht=scontent-dfw5-1.xx&cb_e2o_trans=t&oh=00_AfCNWjIgYJynniVukLiIQLyMZ6ZcyZzPZ6yBCWj_yal5og&oe=66399C91",
+            "https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/440965331_10161627510554558_8697715613038058699_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=5f2048&_nc_ohc=KRPqMgxvarIQ7kNvgGMD0tT&_nc_oc=AdjMmOGyqrzKGNGFsbZOPdVLRVty81HMqU8BujGnLBG1pimQ-Ez8H6TYSc0_6R1VXXT-awyIucJJUBkOaTXaL8_P&_nc_ht=scontent-dfw5-2.xx&cb_e2o_trans=t&oh=00_AfBRE-tYElCX7xA0X33Q6KARhhRoWpONJsM3hjf8jIuctA&oe=66399729",
+            "https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/440964962_10161627510519558_4716711982152352993_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_ohc=XDV-ieR2orMQ7kNvgEu5kts&_nc_ht=scontent-dfw5-1.xx&cb_e2o_trans=t&oh=00_AfDTuFqOc7Kri5vhMNTZ3aIrvLtkPCW9bKAQZI-NDooD5A&oe=6639AB28"
+        ],
+        "timestamp": "2024-05-01T14:33:52.000Z",
+        "id": "3390958444535196",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Leila Hassan-Chavez",
+            "id": "713194557"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "🔥🔥**New Deals**🔥🔥\n\n**I have 2 deals under contract across DFW.**\n\n**Greenville Flip/Rental 75401**\n\n4/2/0 | 1,539 sqft\n\nPrice: 127k | ARV: 230k | Repair: 57k\n\n**Fort Worth Flip/Rental 76105**\n\n3/1/0 | 1,251 sqft\n\nPrice: 99k | ARV: 220K | Repair 70k\n\n**Call/Text for more info 214-417-4458**",
+        "images": [],
+        "timestamp": "2024-05-01T16:58:39.000Z",
+        "id": "3391035177860856",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Pierce O'Dell",
+            "id": "1456073536"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "new hot deal in DeSoto!\n4 bed \n3 bath\n3 car garage\n3163 sq ft\n1987 build\nvacant\nAsking: 310,000\nPM ME FOR INFO! NO JV OR WHOLESELLERS",
+        "images": [
+            "https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/440985332_122140345628108302_3161520521072773945_n.jpg?stp=dst-jpg_p180x540&_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_ohc=182cQvFcbEIQ7kNvgHh9S1T&_nc_ht=scontent-dfw5-1.xx&cb_e2o_trans=t&oh=00_AfDN5s8sazfRcXpkaBhTN7ResTTZ7kt5oibL0IVSpW8C0A&oe=6639ACFA"
+        ],
+        "timestamp": "2024-05-01T15:58:08.000Z",
+        "id": "3390992887865085",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Harold Ewunes",
+            "id": "61553249075877"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "Looking for Ready to build lots In Dallas/Fort Worth Texas👇🏾\nMust be: Platted, Cleared, utilities, and NO floodzone.\n5000+ sqft \nunder 70k",
+        "images": [],
+        "timestamp": "2024-05-02T03:58:46.000Z",
+        "id": "3391340204497020",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Corey Rogers",
+            "id": "100008252291023"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "📍Carrollton, TX property opportunity! \n4 bed 3.5 bath 3373 sq ft, built in 2001\nStarting price $545k\nEST ARV $750k, rent $3600\n\nCall or text 972 400 5469 for more info",
+        "images": [
+            "https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/440754085_3612754789037751_492157937665562621_n.jpg?stp=cp6_dst-jpg&_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_ohc=xfgU4TDCU9kQ7kNvgGOIGHo&_nc_ht=scontent-dfw5-1.xx&cb_e2o_trans=t&oh=00_AfBxVHZojyzSorvqjl8rtl4nh-vShPAL4GJ3wrjAiSsfKA&oe=66398CFE",
+            "https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/440744638_3612754805704416_4778021472659917376_n.jpg?stp=cp6_dst-jpg&_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_ohc=wmhVZ9IT1ekQ7kNvgEp2BmI&_nc_ht=scontent-dfw5-1.xx&cb_e2o_trans=t&oh=00_AfC6dG69oNruqIjAnF2OFuY9R1PSfMIgtc9naeaZ24mnug&oe=663990F6",
+            "https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/440756043_3612754895704407_6501460220166314369_n.jpg?stp=cp6_dst-jpg&_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_ohc=EAbL1lx1FfIQ7kNvgGJqL5L&_nc_ht=scontent-dfw5-1.xx&cb_e2o_trans=t&oh=00_AfB3XsszgIn5pOwcJhZuQzkFZbKWMRcxEvMlEZ32uDlMqA&oe=66399090",
+            "https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/440776041_3612754825704414_4896472582470601939_n.jpg?stp=cp6_dst-jpg&_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_ohc=lon8XjAjhWkQ7kNvgH4MHxt&_nc_ht=scontent-dfw5-2.xx&cb_e2o_trans=t&oh=00_AfC5GgRpCSSm6vlNPeJwds_yAg6z0A9YzKjHrmZi0Hzfrw&oe=6639A189",
+            "https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/440752060_3612754812371082_4787011459056699703_n.jpg?stp=cp6_dst-jpg&_nc_cat=108&ccb=1-7&_nc_sid=5f2048&_nc_ohc=0K9lqpivfg0Q7kNvgHmxCgn&_nc_ht=scontent-dfw5-2.xx&cb_e2o_trans=t&oh=00_AfA4nKict77dnUBx1sF9ITECi4xBkJWE2JHdhMYa8_4HUQ&oe=663990C3"
+        ],
+        "timestamp": "2024-04-30T22:16:26.000Z",
+        "id": "3390457904585250",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Marissa Woods",
+            "id": "100009097956014"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "Great flip opportunity in Fort Worth, TX 76110. \nThis property has so much potential! \n5 bed, 2 bath, 2712 sq ft on a large lot. \nStarting price $158k\nEST ARV $340k, rent $2200\n\nCall or text 972 400 5469 for more info!",
+        "images": [
+            "https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/438914230_3612964849016745_3017405947854673618_n.jpg?stp=cp6_dst-jpg&_nc_cat=108&ccb=1-7&_nc_sid=5f2048&_nc_ohc=xIjlMtRXE6kQ7kNvgETuexo&_nc_ht=scontent-dfw5-2.xx&cb_e2o_trans=t&oh=00_AfAOuiY8Gro74ZbS8Qpfi6OiIcJeyd_d1zZf46m9DXA8NA&oe=66398AC0",
+            "https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/440749442_3612965035683393_6106080316570615337_n.jpg?stp=cp6_dst-jpg&_nc_cat=102&ccb=1-7&_nc_sid=5f2048&_nc_ohc=gbZJa_NXitgQ7kNvgGoiNyy&_nc_ht=scontent-dfw5-2.xx&cb_e2o_trans=t&oh=00_AfDyYg6dm0GBH9GWQJVuqf5Uccj4GENvi642IWCs59WbkA&oe=66398214",
+            "https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/440855554_3612964982350065_8669213949448775977_n.jpg?stp=cp6_dst-jpg&_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=BBe8YsshNlsQ7kNvgHPr_UR&_nc_ht=scontent-dfw5-1.xx&cb_e2o_trans=t&oh=00_AfDOvdTS843YwvN7drB6K8UGsTqqdX1yTZlyDPFR2SFC9Q&oe=6639ACAB",
+            "https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/440783817_3612964892350074_2800914732794734198_n.jpg?stp=cp6_dst-jpg&_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_ohc=7vaUQbNc8bUQ7kNvgFBwwZL&_nc_ht=scontent-dfw5-1.xx&cb_e2o_trans=t&oh=00_AfCSLHWwy2IXWVpmgVtTuBEhRFs_lzwiPsqCVDPFPJRfEA&oe=66398358",
+            "https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/440773470_3612964939016736_3069362657147165866_n.jpg?stp=cp6_dst-jpg&_nc_cat=103&ccb=1-7&_nc_sid=5f2048&_nc_ohc=FCuM3xCRGqsQ7kNvgEW-DjA&_nc_ht=scontent-dfw5-1.xx&cb_e2o_trans=t&oh=00_AfCWuhgNWzJ4SCuw0v-I5AGf2e5IhL4CpDt3ccnERYz_Hg&oe=66399A88"
+        ],
+        "timestamp": "2024-05-01T03:59:48.000Z",
+        "id": "3390646081233099",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Marissa Woods",
+            "id": "100009097956014"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "END BUYERS I have 19 off market properties perfect for flips or rentals, available in the greater dallas area.  Selling for cash or hard money. No obligation, no sign up fees. call or text 469 408-7341",
+        "images": [
+            "https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/440582873_122140228274107386_1137360146075574270_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=5f2048&_nc_ohc=Tb0up1h39kAQ7kNvgF0FsB5&_nc_ht=scontent-dfw5-2.xx&cb_e2o_trans=t&oh=00_AfC2xd9TPgAFm6YfpWlSrp3h2quvLxKfdGtgu6hFNs33wg&oe=66397DC9"
+        ],
+        "timestamp": "2024-04-30T18:38:29.000Z",
+        "id": "3390403191257388",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Robert Pierce",
+            "id": "61553221581343"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "Before and after from another happy investor. Found this deal near Casa View at a good discount for him and he was able to finish rehab in a couple of months. Stunning work! \n\nNow hitting the market and looking for his next deal. Build those relationships and Keep going \n\nBusy season is here, if you’re looking for your next flip or renal opportunity reach out. I’ll go to work and find it for you to save you time. \n\nZtorres@myershomebuyers.com",
+        "images": [
+            "https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/438299206_7547817431960445_7328726062809680222_n.jpg?stp=cp6_dst-jpg&_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_ohc=itlIfVhwjwMQ7kNvgGDZZef&_nc_ht=scontent-dfw5-1.xx&cb_e2o_trans=t&oh=00_AfAK2VW1HZIHV7Ub1tLORBUh5acmNI4CWhuCg6l3bTTVpQ&oe=6639B334",
+            "https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/438254871_7547817481960440_4127476238797942130_n.jpg?stp=cp6_dst-jpg&_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_ohc=6_wNNtrsMBsQ7kNvgGjRqlx&_nc_ht=scontent-dfw5-1.xx&cb_e2o_trans=t&oh=00_AfDqQ3L9-UI-mhUx8dWMNiFyv3fCS_QSmw25Hh_a2THIsQ&oe=6639A435"
+        ],
+        "timestamp": "2024-05-01T22:44:06.000Z",
+        "id": "3391194841178223",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Zach Torres",
+            "id": "100001967906042"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "HOT TERRELL FLIP OPPORTUNITY! \n3/2 1424sf...15,000' LOT......$139,999pp/$255k+ARV\nHit me up for access and more info! 469-642-7171",
+        "images": [
+            "https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/438082589_10159726112500925_5937498050100158326_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_ohc=ZqrCksnDzo8Q7kNvgHdRxbF&_nc_oc=AdhV6yAx_9tGNdC8iZEO_1tr4LSId5Yj8oRyidr_pHVoHsD5KyAVrssY_C8UmtMvXn3qiJd4EhN6rVTmIMyDkb1H&_nc_ht=scontent-dfw5-1.xx&cb_e2o_trans=t&oh=00_AfAp6hA6_vxqoaKJ-64xD4cpE4qyPezjJwBSkYj0FZG8CQ&oe=663994E6",
+            "https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/438165756_10159726112525925_3372048673200442727_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_ohc=_hOgGNHTYNIQ7kNvgGHHaXP&_nc_ht=scontent-dfw5-1.xx&cb_e2o_trans=t&oh=00_AfBbuL_BJ8iX4BO7FDHB5Znq5dr0LnLnPa1s63a5nHNi-A&oe=66398E4A",
+            "https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/438832991_10159726112530925_898731891755149080_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_ohc=vWBGAPsLuZ8Q7kNvgHyM7H3&_nc_ht=scontent-dfw5-1.xx&cb_e2o_trans=t&oh=00_AfC0WEAbc_OLnBO-GUzOtTdGWVI_di3_wJWBMBs-N7Yr_A&oe=663999EB"
+        ],
+        "timestamp": "2024-05-01T17:16:14.000Z",
+        "id": "3391045081193199",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Bucky Thrash",
+            "id": "581370924"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "Off Market FCFS FT Worth 76105\n3/1\n99k PRICE\nARV 220k\n$1,660 Rents\n1,251 sqft\n5/21 CLOSE DATE\n7,500 EMD\nCALL 972-922-8325 FOR MORE INFO",
+        "images": [],
+        "timestamp": "2024-04-30T20:17:04.000Z",
+        "id": "3390452484585792",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "T.j. Mutcherson",
+            "id": "100000575066888"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": null,
+        "images": [],
+        "timestamp": "2024-05-01T23:44:34.000Z",
+        "id": "3391219871175720",
+        "translation": null,
+        "attachedPost": {
+            "text": "🚨New Deal Alert In Kaufman County Zip code (75143)🚨Exclusive and off market! Considering all cash offers! Please PM for more info🤝\n\nProperty Information: \nPlease PM for exact address and property ID\nDistressed 2 story Mobile Home on 4 lots- 1 property ID!\nProperty Specs: Year Built Unknown But Old! ﻿2Bed / 1Bath ~1,250 SqFt ﻿﻿\n﻿Lot Details: 3,485 SqFt ~0.08 Acre -EST Dimension: 50 X 60\n﻿Needs: Full Renovation, New Roof, Electrical & Plumbing, HVAC, Roof\n﻿NO HOA- Oak Tree Estates- Little to no restrictions! Buyer Must Verify!\n﻿Property Pics Available\n﻿Asking Price: $60,000 OBO\n\nAccess must be scheduled in advance! Please PM for more info!",
+            "images": [
+                "https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/438302357_2486725271512617_8471938112175396620_n.jpg?stp=dst-jpg_p526x296&_nc_cat=108&ccb=1-7&_nc_sid=5f2048&_nc_ohc=NxQweXHdzzYQ7kNvgE9sU_5&_nc_ht=scontent-dfw5-2.xx&cb_e2o_trans=t&oh=00_AfABuNMbrtfC08QPo37V15QmKBfeenrnhnFt_dICwCLT3A&oe=66397E89"
+            ],
+            "timestamp": "2024-05-01T23:18:43.000Z",
+            "translation": null,
+            "author": {
+                "name": "Edward Arellano",
+                "id": "100005255045703"
+            }
+        },
+        "author": {
+            "name": "Edward Arellano",
+            "id": "100005255045703"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "Investor special on 1 acre with large potential upside! This is a great area and neighborhood, this house just needs some TLC.  Get in early on this booming area.\n$265,000\n3/2\n2,383 sq. ft.",
+        "images": [],
+        "timestamp": "2024-04-30T17:46:52.000Z",
+        "id": "3390376841260023",
+        "translation": null,
+        "attachedPost": {
+            "text": "Investor special on 1 acre with large potential upside! This is a great area and neighborhood, this house just needs some TLC.  Get in early on this booming area.\n$265,000\n3/2\n2,383 sq. ft.\nKathy Serie - (817) 662-4816",
+            "images": [
+                "https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/438241417_772624108308616_5702196621046401446_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_ohc=DPfNb4MNG38Q7kNvgE3S8mK&_nc_ht=scontent-dfw5-2.xx&cb_e2o_trans=t&oh=00_AfA0W0_kVfLLzl2XoSin_0be20Jyhu06ftZ2IVfmEG8HeQ&oe=66398FCE",
+                "https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/438215966_772623954975298_9186591213914868997_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_ohc=ZpIAe0qAoQAQ7kNvgHbOjkC&_nc_ht=scontent-dfw5-1.xx&cb_e2o_trans=t&oh=00_AfBPT66nHwtBk7Gi_vR2bH1EmOF6Xvah12nD0q6flERYEw&oe=6639B01A",
+                "https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/438242800_772623984975295_7615190190686895710_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=5f2048&_nc_ohc=ITWSAvOqFJ0Q7kNvgG3VYor&_nc_ht=scontent-dfw5-2.xx&cb_e2o_trans=t&oh=00_AfAfkXrC4fXI5B1rDLbKjhOpukcydAGJOaU1-wYdmNP92A&oe=663989AC",
+                "https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/438231147_772623994975294_7983168595533731964_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=5f2048&_nc_ohc=zQFV1caI-BkQ7kNvgHrxOLA&_nc_ht=scontent-dfw5-2.xx&cb_e2o_trans=t&oh=00_AfCB_XddOM8Ss8Nlg9Czx45TCmhVbR-9O6hYjb1nFztFNQ&oe=66399950",
+                "https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/438252972_772623934975300_5015218961666627185_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_ohc=LlNl1CE24asQ7kNvgEBHqDk&_nc_ht=scontent-dfw5-1.xx&cb_e2o_trans=t&oh=00_AfAT1le6xJtgvYHMKBqUOkU7gFUueWHDG1IIa5P8Cx3_aA&oe=66399C95"
+            ],
+            "timestamp": "2024-04-30T16:51:41.000Z",
+            "translation": null,
+            "author": {
+                "name": "Ace Realty Partners",
+                "id": "100066831005933"
+            }
+        },
+        "author": {
+            "name": "Ace Realty Partners",
+            "id": "100066831005933"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "Off Market **Dallas, TX 75227. **\n\nGreat flip/Rental opportunity\n\nThis 2/2/1 Half Duplex will need cosmetic \n\nComps are selling around $200k. Similar rent comps are leasing for $1,600 a month!",
+        "images": [
+            "https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/439929555_2770736586440561_7698877455860528634_n.jpg?stp=cp6_dst-jpg&_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=cJmKvr-GMY4Q7kNvgE2XtK5&_nc_ht=scontent-dfw5-1.xx&cb_e2o_trans=t&oh=00_AfBK1zgC17ALzT5GGHhSuxEDys9Uek-PsWTi8C3_752G4A&oe=6639B101",
+            "https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/440346956_2770736569773896_6611478858176679102_n.jpg?stp=cp6_dst-jpg&_nc_cat=102&ccb=1-7&_nc_sid=5f2048&_nc_ohc=H9ktK8-e8V4Q7kNvgGp_aXu&_nc_ht=scontent-dfw5-2.xx&cb_e2o_trans=t&oh=00_AfB1hAxFSDhA-OVPK-H1HTy7Ai1o9StxR78ZbcZ-QbU4BQ&oe=6639854F",
+            "https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/440336255_2770736573107229_1630766191135341601_n.jpg?stp=cp6_dst-jpg&_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_ohc=Aaw92G67hUcQ7kNvgE5XGg6&_nc_ht=scontent-dfw5-1.xx&cb_e2o_trans=t&oh=00_AfAPytDoZcJWHIBFTJzHvNlwZ3ZR7Lqzc3a4uwnE-ttEwA&oe=6639AFB0",
+            "https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/440336397_2770736633107223_1308297635989451206_n.jpg?stp=cp6_dst-jpg&_nc_cat=106&ccb=1-7&_nc_sid=5f2048&_nc_ohc=MpdPNGqgFwsQ7kNvgFJXn7p&_nc_ht=scontent-dfw5-2.xx&cb_e2o_trans=t&oh=00_AfCVEqwFKRc9rZEsIsyh9k7nJlMGh7KTPze1Kedo9Z5bNQ&oe=6639921B",
+            "https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/441328681_2770736636440556_539749838287690867_n.jpg?stp=cp6_dst-jpg&_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_ohc=U9BilmHrXB4Q7kNvgHKouqi&_nc_ht=scontent-dfw5-1.xx&cb_e2o_trans=t&oh=00_AfCdZODwJb_mNhZxYdgpjmfB3oESSR1_ShGv0SRik08QDA&oe=6639A140"
+        ],
+        "timestamp": "2024-05-01T19:19:38.000Z",
+        "id": "3391099957854378",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Jenette Feliciano",
+            "id": "100005127394339"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "OFF Market, Granbury TX, 76048\n1 Mobile Home \n2 vacant lots \nEach Lot Sqft-5,000\n3beds 2 baths 1din area\nSqFt:  1,368\nYr Built: 2015\n\nDM If interested.",
+        "images": [],
+        "timestamp": "2024-05-01T22:58:42.000Z",
+        "id": "3391200104511030",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Evelyn Jones",
+            "id": "61558876772352"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "OFF Market, Granbury TX, 76048\n1 Mobile Home \n2 vacant lots \nEach Lot Sqft-5,000\n3beds 2 baths 1din area\nSqFt:  1,368\nYr Built: 2015\n\nDM If interested.",
+        "images": [],
+        "timestamp": "2024-05-01T21:44:26.000Z",
+        "id": "3391172234513817",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Evelyn Jones",
+            "id": "61558876772352"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "Off market Carrollton Tx 75007 zip code. Close to Josey Ln, Frankford Rd, Rosemead Parkway, Kelly Blvd.\n\n1973 yb, 7,500 square feet lot.\n\n3/2/2 just under 1800 square feet rentals solid at $2,800.\n\nComps $420-440k, **Asking $300k**. Needs minor foundation and cosmetics. Open Thursday 5/2/24",
+        "images": [],
+        "timestamp": "2024-05-01T03:38:45.000Z",
+        "id": "3390635877900786",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Mark Maginnis",
+            "id": "1270760308"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "**📍 3.35 Acres + SFR For Sale in Dawson, TX!**\n\n4 bed | 2 bath | 1700 sqft | 1993 Build\n\n**3.35 acres:**\n* Septic in good condition\n* City water\n* Pasture is fenced\n\n$245,000 ARV\n\n$135,000 Asking Price\n\nPM me for more details! 📩",
+        "images": [
+            "https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/439880657_10233196602123925_8154197261396693405_n.jpg?stp=dst-jpg_p180x540&_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_ohc=-D0cXHY3Vl8Q7kNvgFvI2FV&_nc_ht=scontent-dfw5-1.xx&cb_e2o_trans=t&oh=00_AfDToTuxqW8Hv2J5NHmqlQSzKT9TdIhcyKctim5z1LdFSA&oe=663996A2"
+        ],
+        "timestamp": "2024-05-01T20:59:54.000Z",
+        "id": "3391153634515677",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Sophia Acevedo",
+            "id": "1436801604"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "GREENVILLE, TX 75402\n2 Residential-Vacant LOTS\nLot Size: 0.88 ACRES\nUtilities Available\nAsking price: 126,000.00\nCall/text: 817-383-0611",
+        "images": [
+            "https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/438162536_413523734809790_231334729223673563_n.jpg?stp=dst-jpg_p180x540&_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_ohc=mG6l1dJU3-cQ7kNvgFeElqv&_nc_ht=scontent-dfw5-1.xx&cb_e2o_trans=t&oh=00_AfAXk3nwV6PTC4GwLQ_CeTz0367jOiL6FzX7hWICNLk9Eg&oe=66399E04"
+        ],
+        "timestamp": "2024-05-01T20:24:31.000Z",
+        "id": "3391138624517178",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Billy Lopez",
+            "id": "100084565009653"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "DFW Flip Opportunity! For all Cash Buyers/Investors/Flippers \n2 bed/1bath at 945 sqft\nNeeds rehab interior and exterior\nPM me if you have any questions or interest! Thank you",
+        "images": [
+            "https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/441214236_388085544215685_2436974912210629271_n.jpg?stp=dst-jpg_p180x540&_nc_cat=106&ccb=1-7&_nc_sid=5f2048&_nc_ohc=FK4olZMcLr4Q7kNvgF71Ize&_nc_ht=scontent-dfw5-2.xx&cb_e2o_trans=t&oh=00_AfDxX4yaCxEYWOTw2DrtEqe7JmyY407Fdg3VugzsWUTNWA&oe=66399228"
+        ],
+        "timestamp": "2024-05-01T20:11:09.000Z",
+        "id": "3391131504517890",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Will Jetton",
+            "id": "100090427266230"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "Dallas Tx 🎯\n8440 sqft lot for sale utilities on the street Asking $59 k obo\nCall/text 469-277-7159📞",
+        "images": [],
+        "timestamp": "2024-05-01T18:39:06.000Z",
+        "id": "3391088447855529",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Ashy Na",
+            "id": "100072794499579"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "Rental Buyers!!! Ft Worth, Tx 76104\n167k PRICE\n270K ARV\n15K Repairs\n5/2\n1,600sqft\nClose Date 5/16\nEMD 7,500\nCALL 972-922-8325 FOR MORE INFO",
+        "images": [],
+        "timestamp": "2024-05-01T18:21:00.000Z",
+        "id": "3391078611189846",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "T.j. Mutcherson",
+            "id": "100000575066888"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "⁉️ Azle TX. Zip Code: 76020 ⁉️\n\nBUILDER OPPORTUNITY!!!\n\n40 minutes outside of Fort Worth\n\n7 LOTS TOTAL ALL ON SAME STREET\n\nLot: 26,990 sf (total) | Vacant\n\n**ASKING : $105k**",
+        "images": [
+            "https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/440875598_10161627769619558_6949206119171426906_n.jpg?stp=cp6_dst-jpg&_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_ohc=4HyciBIsBBIQ7kNvgHT4_lj&_nc_ht=scontent-dfw5-1.xx&cb_e2o_trans=t&oh=00_AfDpD-ss1eu9O_5fon50nqmLrnYkkVq-nktDhBp17OLx_Q&oe=6639AFD6",
+            "https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/440941495_10161627769589558_1690864396155991477_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=5f2048&_nc_ohc=F-hNdyygyuAQ7kNvgEplcIJ&_nc_ht=scontent-dfw5-2.xx&cb_e2o_trans=t&oh=00_AfBC1EZD0hPwt8ugycvhmKEEU2VC-b9Xpn6oySpibg8Riw&oe=663983E2"
+        ],
+        "timestamp": "2024-05-01T18:00:05.000Z",
+        "id": "3391073007857073",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Leila Hassan-Chavez",
+            "id": "713194557"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "Dallas TX,75216.\n8440 sqft , \nHas All utilities on the street....\nAsking:$59,000 or OBO.\nCall/text:972-767-8309",
+        "images": [],
+        "timestamp": "2024-05-01T17:56:14.000Z",
+        "id": "3391065251191182",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Amy Amena",
+            "id": "100072178935431"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "🔥🔥🔥🔥 Westlake, Texas 🔥🔥🔥🔥\n\n   🌟🌟🌟🌟 Price Reduction 🌟🌟🌟🌟\n\n💫💫💫 NEW For Lease 16,999 $ 💫💫💫\n               ✨✨✨ Luxury House  For Rent 🏠 @ Westlake ✨✨✨\n                                 MLS #20282813\n\nLUXURY HOUSE 🏠 AVAILABLE July 1th \n‏🏡 siting at 2 Acres , At westlake Tx \n‏OVER 7302 SQFT \n‏Stunning 6 bedroom 🛌 ✅\n‏6.5 Bath 🛀 ✅\n‏5 car 🚗 Garage ✅\n‏Great Pool 🏊‍♀️ Enjoy Summer✅ \n‏ONE BED 🛌 apartment with private entrance ✅\n‏Great location at westlake \n‏Westlake academy school district \n‏Beautiful neighborhood \n‏10 minutes to airport and Southlake and major shopping \n‏Ready July 1th \nMonthly: 16,999$ \nDeposit : one month \nPet : call 📱 \n‏Serious inquiries only \n\n‏Text me 214 917 0000\n‏For private showing 48 hrs in advance required\n‏Realtor you are welcome\nLink for listing:\n\nhttps://www.realtor.com/realestateandhomes-detail/19-Wyck-Hill-Ln_Westlake_TX_76262_M74089-94275",
+        "images": [],
+        "timestamp": "2024-05-01T17:27:09.000Z",
+        "id": "3391048177859556",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Wayl Samir",
+            "id": "100068330794517"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "Any Plano **end buyers** actively looking for a flip or BRRRR in the 75203? Cash buyers only 469 408-7341",
+        "images": [],
+        "timestamp": "2024-05-01T16:49:38.000Z",
+        "id": "3391029581194749",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Robert Pierce",
+            "id": "61553221581343"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "Showing Friday 11-12pm \n\n….St., Fort Worth, TX 76110 \n5/2 built in 1946 with 2712 ft.²\nASK 158K ARV 340K RENT 2200 \n\nUnique property. Sellers added onto the house and it was permitted inspected. \nThe detached garage is huge with a bathroom built in. You can finish it out and make a nice mother-in-law suite with a kitchenette to push higher ARV. \n\nRoof needs to be replaced. Foundation movement noticed. HVAC will need a new unit.\n\nOffers due 5/3 @12:30pm \n\nZach \nztorres@myershomebuyers.com",
+        "images": [
+            "https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/438300853_7542943482447840_2058686648503103663_n.jpg?stp=cp6_dst-jpg&_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=7AoiawIDu-wQ7kNvgFHDDWB&_nc_oc=Adi8db-wpMPlZ86RSt4A_AWt5ZSlgn3w84rlvfoHiwLLFG8qXGcKecDIZli-Ylacla-1n9n59-FI_43EO_tHm1bO&_nc_ht=scontent-dfw5-1.xx&cb_e2o_trans=t&oh=00_AfAzaymQ96yL17w5oo7d2w6m3YvqtT8gE87wQwrkUrHsbw&oe=6639B17A",
+            "https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/438241742_7542943502447838_7953323833632331085_n.jpg?stp=cp6_dst-jpg&_nc_cat=106&ccb=1-7&_nc_sid=5f2048&_nc_ohc=5sriEoEdfTIQ7kNvgE-KpLw&_nc_ht=scontent-dfw5-2.xx&cb_e2o_trans=t&oh=00_AfCGB3o7rXEuoxcQtrEQXu7CstrseP6IwXWOZiKUFTHa0w&oe=6639AB68",
+            "https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/438254221_7542943652447823_1789491052489405498_n.jpg?stp=cp6_dst-jpg&_nc_cat=108&ccb=1-7&_nc_sid=5f2048&_nc_ohc=tRmxhvX018UQ7kNvgHLklHX&_nc_ht=scontent-dfw5-2.xx&cb_e2o_trans=t&oh=00_AfDmt-cmUZaEYKWSj7bRfhaaJmC0-dVM7pPUZSXEne6Wwg&oe=6639902F",
+            "https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/438302245_7542943575781164_7157201722529765746_n.jpg?stp=cp6_dst-jpg&_nc_cat=107&ccb=1-7&_nc_sid=5f2048&_nc_ohc=f_DRA79aHMsQ7kNvgEeer3I&_nc_ht=scontent-dfw5-2.xx&cb_e2o_trans=t&oh=00_AfCN72dx91UyUXAch7mhpfTQ0cpMf8XcFaxKu-5H6F0qhw&oe=66398135",
+            "https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/438304586_7542943709114484_6728409175649856907_n.jpg?stp=cp6_dst-jpg&_nc_cat=100&ccb=1-7&_nc_sid=5f2048&_nc_ohc=6fWMJsk9ORYQ7kNvgGUooim&_nc_ht=scontent-dfw5-2.xx&cb_e2o_trans=t&oh=00_AfBFsrl9ZEX0m6BtKMy51P1Rad-iZERAvS1opvhZii9aaw&oe=66398CD6"
+        ],
+        "timestamp": "2024-04-30T21:59:26.000Z",
+        "id": "3390495924581448",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Zach Torres",
+            "id": "100001967906042"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "Got an easy flip in Fort Worth.  PM me if you are interested.\nEnd Buyers only. No New Western     \n\nAddress: Fort Worth, TX 76110\nAsking $350,000\nARV: $525,000\n3 Bed 2 bath\nLiving area: 1,662sqft (per tax records)\nLot Size: 8,756sqft\nBuilt: 1926",
+        "images": [
+            "https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/440946440_758831429747737_4977831891918023373_n.jpg?stp=dst-jpg_p843x403&_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_ohc=v83HZg_yJxIQ7kNvgFG7kx5&_nc_ht=scontent-dfw5-1.xx&cb_e2o_trans=t&oh=00_AfA1MFBSYXnGWOyNokB0zzbxvx6xB6SPZirGRDE9vhdTTg&oe=6639AFE4"
+        ],
+        "timestamp": "2024-05-01T16:28:08.000Z",
+        "id": "3391019344529106",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Bradley Kovach",
+            "id": "100068626596464"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "Cheap 4/2 in Greenville Tx 75401\n127K\n230K ARV\n1,539sqft\nLot size 10,454sqft\n5/14 CLOSE DATE\n$7,500 EMD\nCALL 972-922-8325 FOR MORE INFO",
+        "images": [],
+        "timestamp": "2024-05-01T16:19:08.000Z",
+        "id": "3391015111196196",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "T.j. Mutcherson",
+            "id": "100000575066888"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": null,
+        "images": [],
+        "timestamp": "2024-05-01T15:57:58.000Z",
+        "id": "3390995967864777",
+        "translation": null,
+        "attachedPost": {
+            "text": "New Listing Price: $230,000\n934 Muncie Avenue, Dallas, TX 75212 is a fantastic property with 2 bedrooms and 1.0 bathrooms.\nSee more here: https://margaritaresto.refindrealtygroup.com/d8qymfah",
+            "images": [
+                "https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/440879728_951936166939935_3233384762176906507_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_ohc=h8RPn0pReE8Q7kNvgEmPoLW&_nc_ht=scontent-dfw5-1.xx&cb_e2o_trans=t&oh=00_AfDnTgpu8TogSLoIT7ZmRbeOuu9k2buY9LzF6KggbugZnQ&oe=66399D97",
+                "https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/440850538_951936213606597_2995371880277532690_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=5f2048&_nc_ohc=oyYwiVTDPOsQ7kNvgEoeqZ-&_nc_ht=scontent-dfw5-2.xx&cb_e2o_trans=t&oh=00_AfDptUs0ZFKcympUBEJKtvi-lvmKDiVdOzQsWx4rAF2kgg&oe=66398D96",
+                "https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/440873806_951936260273259_8636964966115909119_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_ohc=P-fHKH5vZioQ7kNvgGy9eDn&_nc_ht=scontent-dfw5-2.xx&cb_e2o_trans=t&oh=00_AfDPXHv2jpl5-M1FMrndrKTym_DuV-zpYfc54FyUQPfWHA&oe=6639918F",
+                "https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/440870275_951936296939922_3955709635987663495_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=5f2048&_nc_ohc=yAmPEu91ZaUQ7kNvgEAFdo7&_nc_ht=scontent-dfw5-2.xx&cb_e2o_trans=t&oh=00_AfARgb6VQ9UrvzkNkkKZiIdjdj6PuSz3pkbd4nWbf5ulGQ&oe=66397FB8"
+            ],
+            "timestamp": "2024-04-30T13:14:06.000Z",
+            "translation": null,
+            "author": {
+                "name": "Margarita Resto, Selling Specialist",
+                "id": "100063706826058"
+            }
+        },
+        "author": {
+            "name": "Margarita Resto",
+            "id": "1505852716"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "*Glencrest Flip FCFS Fort Worth, TX 76119*\nAsking Price: 170k\nARV 270k\n3/2, 1600 sqft, 1946 year built\nVacant on lockbox\nCosmetic Updates needed\nHVAC and Water heater recently updated\nDM for more info!",
+        "images": [],
+        "timestamp": "2024-05-01T14:56:13.000Z",
+        "id": "3390966001201107",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Fernando Palomo",
+            "id": "100090215737627"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "***OFF-MARKET CISCO TX 4 ACRES OUTSIDE CITY LIMITS***\n\nPURCHASE PRICE: ***$49,990***\n\nLOT SIZE: 4 ACRES (WITH SURVEY)\n\nZONING: E3 VACANT NON AG LAND\n\nCALL ME: 214-842-9410 | EMAIL: ssmith@diamondacquisitions.biz\n\nOFF MARKET cheap TAX VALUE 4 acres in Cicso, TX (Eastland). You are right off HWY 6 with tons of road frontage. Outside city limits (as per CAD).",
+        "images": [
+            "https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/440740729_7630293140361802_6328351661911681496_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=5f2048&_nc_ohc=uJrVHp8-2h0Q7kNvgEUzj-A&_nc_ht=scontent-dfw5-2.xx&cb_e2o_trans=t&oh=00_AfDfS98fHnVbpO1R6LtVeWaBFhnSrLF_SuohiIP4w_T1wA&oe=6639AF3C"
+        ],
+        "timestamp": "2024-05-01T15:50:09.000Z",
+        "id": "3390994814531559",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Slater Smith",
+            "id": "100001435751938"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "😻 South Dallas TX. Zip Code: 75203 😻 \n\n4 Beds | 2 Bath | Year: 1928 | Living: 2,278 sf | Lot: 11,870 sf | Vacant Walk Today \n\n**ASKING : $215k | ARV : 380k**",
+        "images": [
+            "https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/441053943_10161627557064558_8286184299512556673_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=5f2048&_nc_ohc=der0LAstSp8Q7kNvgGCu_NH&_nc_ht=scontent-dfw5-2.xx&cb_e2o_trans=t&oh=00_AfC30CKGEaw43Cg3RT35NbENGkYgIfFoOhWjpDyCOTjYtQ&oe=66399602",
+            "https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/440933195_10161627557114558_7047034022774047693_n.jpg?stp=cp6_dst-jpg&_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_ohc=uLftYquc32gQ7kNvgFqIGFa&_nc_ht=scontent-dfw5-1.xx&cb_e2o_trans=t&oh=00_AfAbcb266Wqr7suxqLCjZ8qH_08yFb1vcugXXNPSmT6Xig&oe=6639A35E",
+            "https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/440934692_10161627557119558_2649469226633782753_n.jpg?stp=cp6_dst-jpg&_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_ohc=x9IPj4W64kUQ7kNvgGb009I&_nc_ht=scontent-dfw5-1.xx&cb_e2o_trans=t&oh=00_AfDNqOkBb5XPlMd5nEGtfIgMSD3aoEbi3UZSe-nXYlplug&oe=6639A6EE"
+        ],
+        "timestamp": "2024-05-01T15:17:26.000Z",
+        "id": "3390982364532804",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Leila Hassan-Chavez",
+            "id": "713194557"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "Assignment of Contract | Arlington 76016\nPrice: $432,000\nARV: $765,000\nBedrooms: 4\nBathroom: 2.5\nYear Built: 1983",
+        "images": [
+            "https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/441022933_7494001400684497_699245046138333949_n.jpg?stp=dst-jpg_s640x640&_nc_cat=107&ccb=1-7&_nc_sid=5f2048&_nc_ohc=bx87fAX6408Q7kNvgGM_Hsp&_nc_ht=scontent-dfw5-2.xx&cb_e2o_trans=t&oh=00_AfBv5uZ6J9vOoEHdQJf7FeiZnOQuw9Z0evz29la6Kih_ZQ&oe=66399E69"
+        ],
+        "timestamp": "2024-05-01T15:14:07.000Z",
+        "id": "3390961534534887",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Andrew Margolies",
+            "id": "100002241335614"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "👋👋 Tyler TX. Zip Code: 75702 👋👋 \n\n3 Beds | 1 Bath | Year: 1951 | Living: 1,070 sf | Lot: 10.498 sf \n\n**ASKING : $75k | ARV : 150k**",
+        "images": [
+            "https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/441051755_10161627548199558_7023217202926843539_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=5f2048&_nc_ohc=EmniHd4Cys0Q7kNvgFn650u&_nc_ht=scontent-dfw5-2.xx&cb_e2o_trans=t&oh=00_AfBYwW38tF4BUa6867aNZV1XuVKuGaad71bAehmPfGC7zQ&oe=6639A10D",
+            "https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/440958155_10161627548259558_148068822479426499_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=5f2048&_nc_ohc=E6uhUkoke3cQ7kNvgG5AawF&_nc_ht=scontent-dfw5-2.xx&cb_e2o_trans=t&oh=00_AfBRyW1yvBUnw6_LebRpAoYFgLXnr6cM3Z_o5GsK8akgHA&oe=66399EAC",
+            "https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/440942995_10161627548234558_4525925213528379885_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=5f2048&_nc_ohc=EZgDvWrJoZAQ7kNvgGtByZo&_nc_ht=scontent-dfw5-1.xx&cb_e2o_trans=t&oh=00_AfDsiVX_ZOddKodMjar4nMO9HTp6mDyS4gZShAaWhIkQgA&oe=6639983A"
+        ],
+        "timestamp": "2024-05-01T15:08:29.000Z",
+        "id": "3390977851199922",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Leila Hassan-Chavez",
+            "id": "713194557"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "**PURCHASE PRICE: $59,990 | LOCATION: TROUP, TX (SMITH)**\n\n**BED: 4 | BATH: 1**\n\n**SQFT: 1,632 | LOT SIZE: 19,333 SQFT**\n\n**YR BUILT: 1920 | CALL: 214-991-2333**\n\nWe have 3 comps that are less than a quarter of a mile away, all built before 1935! A 2/2 at 1,100 sqft sold for 213k at $194 per sqft. A 3/2 at 1,500 sqft sold for 203k at $135 per sqft. A 3/3 at 1,476 sqft sold for 212k at $143 per saft. All of these comps are smaller than us and are not recently rehabbed.",
+        "images": [
+            "https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/440562224_25321414664171390_7920776852781505690_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=5f2048&_nc_ohc=JH2jfZDs80YQ7kNvgGcMDs2&_nc_ht=scontent-dfw5-1.xx&cb_e2o_trans=t&oh=00_AfDjBNC6OShgkNvAIkj-EJCpOI3-BR9Zatz_cay8YYacdQ&oe=6639A694",
+            "https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/440589043_25321414680838055_2415624671993272047_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_ohc=t9MfXA0WIkEQ7kNvgGjLcZ9&_nc_ht=scontent-dfw5-1.xx&cb_e2o_trans=t&oh=00_AfA11rqsX23kVmhm8C3CVGxis1MGBjW9-uZLxiq3A7eG8A&oe=6639A604",
+            "https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/440410295_25321414520838071_6917187691078483131_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_ohc=WmgmHKVQtdAQ7kNvgG4PseA&_nc_ht=scontent-dfw5-2.xx&cb_e2o_trans=t&oh=00_AfBqAO9n5q55HNbHDz7gDEA9vg_BTv7fSQC4TFnfqESXmg&oe=663983CE",
+            "https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/440584158_25321414534171403_1715819087161471493_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=5f2048&_nc_ohc=oEwQLZXG8uUQ7kNvgGwVhej&_nc_ht=scontent-dfw5-1.xx&cb_e2o_trans=t&oh=00_AfAZCfwcdOiSj8tBmbMYZv0wklgmBaJkIwZ0UkuaI19WMw&oe=66399EA6",
+            "https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/440567661_25321414514171405_4667158881020419275_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=bhD3ahgDHbYQ7kNvgEjPjJ6&_nc_ht=scontent-dfw5-1.xx&cb_e2o_trans=t&oh=00_AfAz7QY0IoyU7muy6Oohuax-ZPB6gaZwNLNGAwGoUCv-kg&oe=66399947"
+        ],
+        "timestamp": "2024-05-01T14:16:25.000Z",
+        "id": "3390943607870013",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Connor Limpert",
+            "id": "100001886130453"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "Kaufman TX house vending 2bed 1bath $95k, 2miles from Kaufman County",
+        "images": [],
+        "timestamp": "2024-05-01T13:56:33.000Z",
+        "id": "3390932677871106",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Mia Teran",
+            "id": "100069844157600"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "🔐🏡 Calling all Woman Real Estate Prodessionals🏡🔐\n\nIn the world of real estate, safety is paramount. That’s why we’re organizing a special session for all woman involved in anything real estate  interested in obtaining their concealed weapons license.\n\nAs professionals who often work alone and in unfamiliar settings, having the knowledge and skills to protect ourselves is crucial. Join us as we navigate the process of getting our concealed weapons licenses together.\n\nWe’ll cover everything from firearm safety to legal considerations, providing you with the tools and confidence to prioritize your safety while serving your clients.\n\nDate: June 8th\nTime: 9:30am-2pm\nLocation: 10751 Luna Rd Dallas 75220\n\nDon’t miss this opportunity to invest in your safety and peace of mind. Together, let’s ensure that we’re equipped to handle any situation that may arise. See you there! 🔫💼 #RealtorsSafety #ConcealedCarry #EmpoweredRealtors #dallasinvestors #dallaswholesalers #titlecompany #realtors #notary #womanempowerment #dallasrealtors #friscorealtors #planorealtors #realtors\n\nRegister here:\n\nhttps://www.eventbrite.com/e/concealed-weapons-class-for-women-in-real-estate-tickets-891912633697?aff=oddtdtcreator",
+        "images": [
+            "https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/440885869_10211387668805264_4542466694912830937_n.jpg?stp=dst-jpg_p526x296&_nc_cat=107&ccb=1-7&_nc_sid=5f2048&_nc_ohc=JDxW95BcayMQ7kNvgFhmTzP&_nc_ht=scontent-dfw5-2.xx&cb_e2o_trans=t&oh=00_AfCgXv9ZdR7q3l71yq9Nfy0ti1r263ih9vuntuOXKkFtpQ&oe=6639B3CF"
+        ],
+        "timestamp": "2024-05-01T13:41:59.000Z",
+        "id": "3390930204538020",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Daychell Bridges",
+            "id": "1768060791"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "Carrollton 75007 END BUYERS\nI have a 3/2/2 |  1724 sq/ft  |   Built 1973\nGreat investment home with strong rental comps, low rehab budget and in a great area. \n\nAsking $300k ARV $415K END CASH BUYERS reach out",
+        "images": [],
+        "timestamp": "2024-04-30T18:48:00.000Z",
+        "id": "3390391237925250",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Chris Pierre",
+            "id": "61556849452780"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "Amazing Subject To In **Dallas, TX 75232**\n\n**Subdivision: **OAKLAND HILLS\n\nDetails: 3 Bedrooms/ 2 Bathrooms (1630sqft)\n\nHouse has Been Fully Renovated (No Repairs)\n\n**How much total payoff: (Current Principal Balance) $241,173.79**\n\n**ARV: $300k**\n\n**Interest Rate: 5.125%**\n\n**Monthly dues (PITI): previously $2,131.94 now $3,008.87 starting May 1st**\n\n**Maturity Date: 30yr**\n\n**What kind of loan: Conventional**\n\n**Any second mortgages? No**\n\n**Low Entry Fee: $35,000 + Closing Cost**\n\n**DM For more information on showing instructions!!!**",
+        "images": [
+            "https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/440358245_7497891110300687_1221359628673893280_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=s6o_sEkP02QQ7kNvgGuk6o1&_nc_ht=scontent-dfw5-1.xx&cb_e2o_trans=t&oh=00_AfC_KteUmDI6C_RLvy28p5hiYGFDvU5GVGT1t7QugWKKjg&oe=66399D9C",
+            "https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/440325686_7497891096967355_7996418567346584332_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=5f2048&_nc_ohc=B9GNlSKJHWYQ7kNvgEkCHyT&_nc_ht=scontent-dfw5-2.xx&cb_e2o_trans=t&oh=00_AfCKZY8HT69Adx3KLDVkPm2QslQdNyO-JNTyg9XUtNj4wA&oe=66399B9E",
+            "https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/440258001_7497891146967350_2629204100681822199_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=5f2048&_nc_ohc=Bo4cEyzbpA0Q7kNvgEBrQ7x&_nc_ht=scontent-dfw5-2.xx&cb_e2o_trans=t&oh=00_AfB13j5i0DoNSU6upC7dnEaB2Lh2BTBswhiNlLntvpfcrA&oe=6639A56E",
+            "https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/440108713_7497891190300679_610207789667498639_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=5f2048&_nc_ohc=SAfO4Q77Qp0Q7kNvgELA3Z1&_nc_ht=scontent-dfw5-2.xx&cb_e2o_trans=t&oh=00_AfBjmNSTrppjiwi9yYFogSnVw9ofefUJ_B3t6vy_aZIbaQ&oe=663999B7",
+            "https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/440161184_7497891180300680_5474921407147582639_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=5f2048&_nc_ohc=UjVGrh5IjesQ7kNvgHalpQ3&_nc_ht=scontent-dfw5-2.xx&cb_e2o_trans=t&oh=00_AfCaAUkUsJv10I1S090hQZ146y3SjDGDWo37DY41VxiFhg&oe=6639AA15"
+        ],
+        "timestamp": "2024-04-30T20:17:03.000Z",
+        "id": "3390453694585671",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "John Okeke",
+            "id": "100002396182133"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "Dallas 75217 \nPleasant Grove area\n2Bd / 1Bth , 776 Sqft  , 7270 sqft lot\nAsking 150k \n\nSimilar comps selling for 235k\nEND BUYERS ONLY, CLOSE IN 30 DAYS\n\nHouse is cleaned out ready for rehab for a rental or flip.",
+        "images": [],
+        "timestamp": "2024-05-01T02:54:37.000Z",
+        "id": "3390616457902728",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "David Revilla",
+            "id": "100002513117631"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "I have a property that needs a full remodel in Grand Prairie 75050.  Will be asking $145,000.",
+        "images": [],
+        "timestamp": "2024-04-30T08:30:02.000Z",
+        "id": "3390074377956936",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "James Price",
+            "id": "100001760435958"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "🏡 Sub 2 Deal in Plano Texas..\n\nJabbet Cir, Plano TX 75025 | Lot Size: .26 Acres |\n\nARV:\n$420,000.00\nAsking Price:\n$415,000.00\nArea rent: 2700-2800\n\nEntry:\n$40,000.00 \n\nProperty Details:\n3 bed / 2 bath SFR\n1,930 SQFT",
+        "images": [
+            "https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/439874176_3643816812570026_3322966294223027112_n.jpg?stp=cp6_dst-jpg&_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_ohc=bI4HsT7bRPMQ7kNvgGKfEbP&_nc_ht=scontent-dfw5-1.xx&cb_e2o_trans=t&oh=00_AfAABGJalg7DqdQ3cfHE1-NYZnIqqXveJ4QglGAUk071fg&oe=6639AA5A",
+            "https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/440756136_3643816882570019_2175639618339023261_n.jpg?stp=cp6_dst-jpg&_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_ohc=cCInYJcElKkQ7kNvgHxnnsI&_nc_ht=scontent-dfw5-1.xx&cb_e2o_trans=t&oh=00_AfCC8gyMv-08e-PLDPp5iMsasw-CaDaKPjHhIas-_o_nyA&oe=663980FF",
+            "https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/440778063_3643816945903346_7944889137024202626_n.jpg?stp=cp6_dst-jpg&_nc_cat=106&ccb=1-7&_nc_sid=5f2048&_nc_ohc=ExTqM9Fqw_AQ7kNvgGqlrej&_nc_ht=scontent-dfw5-2.xx&cb_e2o_trans=t&oh=00_AfAYF6HxXhibDrcqqRJtEi0HOzWqf2fRwoRLw9nmLyzDmw&oe=66399C9C",
+            "https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/440786038_3643816915903349_333684232443105811_n.jpg?stp=cp6_dst-jpg&_nc_cat=102&ccb=1-7&_nc_sid=5f2048&_nc_ohc=6hl5kpU4v9gQ7kNvgFv8Pbj&_nc_ht=scontent-dfw5-2.xx&cb_e2o_trans=t&oh=00_AfAUpuNR-sp1HC4lsOawx7W30jBUTvkpGkb9RmsQoXMkjw&oe=663995F4",
+            "https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/440784340_3643816832570024_2666184227813295410_n.jpg?stp=cp6_dst-jpg&_nc_cat=102&ccb=1-7&_nc_sid=5f2048&_nc_ohc=tAitjozXaIsQ7kNvgGC5nRG&_nc_ht=scontent-dfw5-2.xx&cb_e2o_trans=t&oh=00_AfB4hem7nNYYs0Jks7M2v396oOnjSeUi3UjksSyVi_SHWA&oe=6639877E"
+        ],
+        "timestamp": "2024-04-30T15:51:20.000Z",
+        "id": "3390317224599318",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Corey Rogers",
+            "id": "100008252291023"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "Contractor needed in Fort Worth for a flip. Must be able to pull permits.",
+        "images": [],
+        "timestamp": "2024-05-01T05:48:46.000Z",
+        "id": "3390696164561424",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Sido Nupa",
+            "id": "543892370"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "Any recommendations for a lender who can fund quickly? On or before 5/06",
+        "images": [],
+        "timestamp": "2024-04-30T03:00:23.000Z",
+        "id": "3389930061304701",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Alex Cifelli",
+            "id": "100000501520679"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "Red Oak buyers! 75154\nAsking 349K\nARV 433K\n3/2\n2,566 Sqft\nLot size .576 Acres\nVery clean. Just needs some minor cosmetics!!\nPm for more info!",
+        "images": [
+            "https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/441058926_1020460729749624_2395314075856956442_n.jpg?stp=dst-jpg_s960x960&_nc_cat=107&ccb=1-7&_nc_sid=5f2048&_nc_ohc=7TTBu5vG89wQ7kNvgG8jbM1&_nc_ht=scontent-dfw5-2.xx&cb_e2o_trans=t&oh=00_AfD_RdFuBxfkAtaQ_1IRRKwUqUIuYKtCAB5TcCEsvW4V5w&oe=6639937B"
+        ],
+        "timestamp": "2024-05-01T01:28:46.000Z",
+        "id": "3390577691239938",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Blake Stevenson",
+            "id": "100053571192397"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "Discounted 228 Acre Ranch in Freestone County. 3,200’ of paved road frontage, with access to public water.",
+        "images": [
+            "https://scontent-dfw5-2.xx.fbcdn.net/v/t45.5328-9/434878421_1209616880203102_3824415836150412100_n.jpg?stp=c13.44.500.261a_dst-jpg_p526x296&_nc_cat=106&ccb=1-7&_nc_sid=b8e0be&_nc_ohc=ScLm2VQ-pK4Q7kNvgFql5Mg&_nc_ht=scontent-dfw5-2.xx&cb_e2o_trans=t&oh=00_AfARyEfkSHJHrrc01LO3QQ-9m4qADfbHIt1YdTbbZxw-AA&oe=6639B3E7"
+        ],
+        "timestamp": "2024-04-30T14:24:39.000Z",
+        "id": "3390265857937788",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Logan Chatigny",
+            "id": "100001347887063"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "Roanoke, TX 76262\n4 Bed(s) / 3 Bath(s) / Attached Garage\n2195 sf Living Area\n0.18-acre Lot Size\n2007 Year Build\nRoof new 3yrs\nUpdates all permitted\nTurnkey! Very clean! \n\nPrice: $305,000\nAfter Repair Value: $405,000\n\n*temporary leaseback while house they're moving to is built\n\nPm for more info/pics",
+        "images": [],
+        "timestamp": "2024-04-30T22:45:57.000Z",
+        "id": "3390514024579638",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Blake Stevenson",
+            "id": "100053571192397"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "New deal in Dallas! 75231\ncondo 2/2\n2 car garage\n1738\n.67 acres\n1979\nVacant\nAsking:165,000\nPM ME FOR INFO! NO JV OR RE Wholesalers",
+        "images": [],
+        "timestamp": "2024-04-30T22:16:22.000Z",
+        "id": "3390492907915083",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Harold Ewunes",
+            "id": "61553249075877"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "SHOWING FRI @1-2pm \n…Dr., Carollton, TX 75007\n\n4/3.5 built-in 2001 with 3373 ft.²\n\nASK 545K ARV 750K RENT 3600 \n\nRoof had some leaks, but was repaired. Just need some sheet rock repaired. Foundation no issues noticed. HVAC age unknown but in good working order he said OK well \n\nTo hit 750K ARV you’re most likely just looking at cosmetic updates\n\nOffers due 5/3 @2:30pm \n\nZtorres@myershomebuyers.com",
+        "images": [
+            "https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/438239132_7542867499122105_8082932290428840690_n.jpg?stp=cp6_dst-jpg&_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_ohc=xph56BT3-YYQ7kNvgEe2HoE&_nc_ht=scontent-dfw5-1.xx&cb_e2o_trans=t&oh=00_AfAKbhDngqV-8wapw7euSpJtHGNoodyO7UH9H5kcrO4yXA&oe=6639946C",
+            "https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/438196636_7542867779122077_9157459781945857912_n.jpg?stp=cp6_dst-jpg&_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_ohc=FJoOWzU4gKAQ7kNvgERRHfW&_nc_ht=scontent-dfw5-1.xx&cb_e2o_trans=t&oh=00_AfBG-B0vvmCpcAbMJ0O2UyXH0Oc9qJiTqweI9Ch3XqPk9g&oe=6639A8E9",
+            "https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/438262887_7542867599122095_5728868201228106621_n.jpg?stp=cp6_dst-jpg&_nc_cat=106&ccb=1-7&_nc_sid=5f2048&_nc_ohc=NY8R2VuDnVsQ7kNvgGi70D4&_nc_ht=scontent-dfw5-2.xx&cb_e2o_trans=t&oh=00_AfCMSNq12jiugI8a-N6Uz9-d4kiWRK6TrM-WfMkcYzy_mA&oe=6639A6CE",
+            "https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/438196718_7542867525788769_5697397397064470888_n.jpg?stp=cp6_dst-jpg&_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_ohc=qe9zKHfQIIUQ7kNvgEqzE99&_nc_ht=scontent-dfw5-1.xx&cb_e2o_trans=t&oh=00_AfCdToiiLq8UBEPGkp16O2GDV6kOssd9230wZT1gtWAYFg&oe=66399AAF",
+            "https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/438262979_7542867745788747_5713026697625496329_n.jpg?stp=cp6_dst-jpg&_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_ohc=WE5Z4ZxGoeQQ7kNvgFGkk9-&_nc_ht=scontent-dfw5-2.xx&cb_e2o_trans=t&oh=00_AfDIY-AfwuPlrBlqaw_ggfnY9ZRns8gz5a87XDSasW5Rvw&oe=663989B9"
+        ],
+        "timestamp": "2024-04-30T21:30:21.000Z",
+        "id": "3390484687915905",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Zach Torres",
+            "id": "100001967906042"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "🚨Showing tomorrow🚨  2006 build \nTurnkey Dallas rental opportunity!\nDallas TX 75253\n\nProperty Type: Single Family\n-Bed/Bath: 3/2/2\n-Year Build: 2006\n-Living SQFT: 1,471\n-Lot Size: 6,054 sqft\n\nAsking 195K\n\nPM for more information",
+        "images": [],
+        "timestamp": "2024-04-30T21:26:02.000Z",
+        "id": "3390483027916071",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Blake Stevenson",
+            "id": "100053571192397"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "***OFF-MARKET TROUP TX 4/1 1,632SQFT ON A 20,000SQFT LOT***\n\nPURCHASE PRICE: ***$59,990***\n\nBED: 4 | BATH: 1\n\nSQFT: 1,632 | LOT SIZE: 19,333 SQFT | YR BUILT: 1920\n\nCALL: 214-842-9410 | EMAIL: ssmith@diamondacquisitions.biz",
+        "images": [
+            "https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/440961027_7626654937392289_8285538339947859229_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=5f2048&_nc_ohc=2vmzsWlco34Q7kNvgF50p0n&_nc_ht=scontent-dfw5-2.xx&cb_e2o_trans=t&oh=00_AfAf7BB02bue81PL4I1vu1ZiTLZQUoFB2Oa3v0pbC707cg&oe=663985F0",
+            "https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/440961311_7626654554058994_3500492352501548701_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_ohc=0RjCkHys3woQ7kNvgGzSl6V&_nc_ht=scontent-dfw5-1.xx&cb_e2o_trans=t&oh=00_AfCLg3jNgAexOR1BSZ_6njWDHMuwFFt8k3SvsbEIhO5l5w&oe=66399E0A",
+            "https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/441150615_7626654694058980_464111373768676317_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=5f2048&_nc_ohc=L1Jb8UT1-rMQ7kNvgGnzgGd&_nc_ht=scontent-dfw5-2.xx&cb_e2o_trans=t&oh=00_AfDhgC9W9RUc7KyY4pSY2QKbSCBdpY5cYWbC00srNJ4Blg&oe=66399D96",
+            "https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/441048827_7626654617392321_1715681095349866527_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_ohc=f6NrAZcs5MAQ7kNvgFtnwwG&_nc_ht=scontent-dfw5-2.xx&cb_e2o_trans=t&oh=00_AfDAGs__g8cpC_fGPuXVjUNbw-Huv7Kd-DhNDXKhTaDhEA&oe=66399469",
+            "https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/440962423_7626655000725616_1266010848743512630_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=MVM3A-NI3D8Q7kNvgGW3YM1&_nc_ht=scontent-dfw5-1.xx&cb_e2o_trans=t&oh=00_AfD6gYpvnkaPBERILNDJYgRlsEMvGhugfhau6LYY61E6WQ&oe=6639829C"
+        ],
+        "timestamp": "2024-04-30T21:00:07.000Z",
+        "id": "3390469334584107",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Slater Smith",
+            "id": "100001435751938"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": null,
+        "images": [],
+        "timestamp": "2024-04-30T01:03:48.000Z",
+        "id": "3389868097977564",
+        "translation": null,
+        "attachedPost": {
+            "text": "☀️🏡 3/2/2 BRICK in Grand Prairie TX 🏡☀️\n\n✅ Great Location\n✅ Majors Good\n✅ Foundation Good\n✅ Rent meets 1% Rule\n✅ Full detail & photos available",
+            "images": [
+                "https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/438253484_10229459293720073_7304850356140792076_n.jpg?stp=dst-jpg_p180x540&_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_ohc=ldk3r5aLraUQ7kNvgFROB6g&_nc_ht=scontent-dfw5-1.xx&cb_e2o_trans=t&oh=00_AfDh-2pzJkNZtvG_-KgdFFo9boDz7sAqYdKuM23a66HFNw&oe=6639894C"
+            ],
+            "timestamp": "2024-04-29T21:42:19.000Z",
+            "translation": null,
+            "author": {
+                "name": "Jose A Berlanga",
+                "id": "1032477387"
+            }
+        },
+        "author": {
+            "name": "Jose A Berlanga",
+            "id": "1032477387"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "🐳(High End)Buyers!! Check Out This Turn Key Discounted 5bd 5.5ba 3car 5,142 sqft (4-Master Suites home) located in a highly sought out community in The Colony with very close proximity to W. Frisco. This Is A Must See!👀Asking 930K \nARV 1.25M No JV's-Just High-End Buyers please. \nSchedule a showing today!",
+        "images": [
+            "https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/438254620_960483662125282_7003074164579370641_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_ohc=rICSg2BkjGMQ7kNvgHS5Uwx&_nc_ht=scontent-dfw5-1.xx&cb_e2o_trans=t&oh=00_AfDih6SgLFTWF0JqbIccf2pboG8Awci0AzKXL0WwB-Z04A&oe=6639A298",
+            "https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/438301447_960483678791947_1237981009051932272_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_ohc=yfvdOP4ceaIQ7kNvgH_Bcan&_nc_ht=scontent-dfw5-1.xx&cb_e2o_trans=t&oh=00_AfBKr6OPldXjE37xxoacr8owLDWsgrs6__ZdM5Qj8sYdnA&oe=66398D5C",
+            "https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/438240012_960483708791944_4850219215016536855_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_ohc=spIxel1Tt90Q7kNvgH1PH8G&_nc_ht=scontent-dfw5-1.xx&cb_e2o_trans=t&oh=00_AfAet_dEynvPppjzLxPfDUyS_9QdxfC_ZWn-tYUzfV43DA&oe=6639B0C1",
+            "https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/438259871_960483695458612_7349133839687089215_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_ohc=urnf4lHSL44Q7kNvgEks_sl&_nc_ht=scontent-dfw5-1.xx&cb_e2o_trans=t&oh=00_AfDMIRWKwLTkISVi1Be-RLlVEF3H-ccpjOTFtkUEhrdwGg&oe=66397FE9",
+            "https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/440983913_960492752124373_5999784992652287616_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=5f2048&_nc_ohc=rFvLDCQ1D_0Q7kNvgHjh3aj&_nc_ht=scontent-dfw5-2.xx&cb_e2o_trans=t&oh=00_AfAcOwY1_KtFS6tLQF0OIwcol8Po8IaPEqRdaDYGFxKWww&oe=6639A961"
+        ],
+        "timestamp": "2024-04-30T19:53:38.000Z",
+        "id": "3390439474587093",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Darryl Woods",
+            "id": "100044909714062"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "🔥** House For Sale | Dallas, TX | 75216**\n\n🏡** 3 Bed | 1 Bath | 1,144 Sq. Ft. | 2007 Build**\n\n💰** Asking: $120K (Or Best Offer)**\n* (Eviction Court date: May 6) Buyer will need to remove squatter!\n* Roof is in good condition\n* Foundation is Slab\n* Lot Size: 10,359 Sq. Ft. (0.24 Acres)\n\n**DM for more details **(*Serious End Buyers Only Please)*",
+        "images": [
+            "https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/440030444_2015589315524948_925478302545506618_n.jpg?stp=cp6_dst-jpg_p851x315&_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=1Uk-JpZBCAYQ7kNvgEbIcWI&_nc_ht=scontent-dfw5-1.xx&cb_e2o_trans=t&oh=00_AfDPr2IloDjUHY5Ql46A_-iFW7cujW960vPEGrw2JrZtIA&oe=6639B541"
+        ],
+        "timestamp": "2024-04-30T19:51:16.000Z",
+        "id": "3390438177920556",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Robert Ramirez",
+            "id": "100012216970799"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "3/2 and detached 2 car garage. 700 feet at 5321 S. Malcom X Blvd Dallas Tx \nOpen Tuesday 4/30. Last chance to buy in April 2024\nOpen 1pm Tuesday $113,500",
+        "images": [],
+        "timestamp": "2024-04-30T01:42:27.000Z",
+        "id": "3389887531308954",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Mark Maginnis",
+            "id": "1270760308"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "Off Market Residential Infill lot in Dallas 75210 with utilities and approach , Asking 69k",
+        "images": [],
+        "timestamp": "2024-04-30T17:01:55.000Z",
+        "id": "3390328917931482",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Jose Gomez",
+            "id": "100001795417867"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "Off Market 4/1 in Troup, TX\nPurchase Price: $59,990\nBed/Bath: 4/1\nSqft: 1632\nYr Built: 1920\nLot size: 19,333 sqft\nRight outside the city of Tyler in Smith County. We are right over 1600 sqft needing a full rehab. We have 3 comps that are less than a quarter of a mile away, all built before 1935! A 2/2 at 1,100 sqft sold for 213k at $194 per sqft. A 3/2 at 1,500 sqft sold for 203k at $135 per sqft. A 3/3 at 1,476 sqft sold for 212k at $143 per sqft. All of these comps are smaller than us and are not recently rehabbed. We should be able to sell significantly higher than these comps with complete rehab. We are priced to sell QUICK at 59k! Set to close 5/17",
+        "images": [
+            "https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/440963862_2162026267492956_5807892013742746578_n.jpg?stp=dst-jpg_p180x540&_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_ohc=ULzbYL4DpuMQ7kNvgEjCPVf&_nc_oc=AdiOr-il3C68Ow7x6Jr_HG2REBzJLYs0ciGEJF3MKRr0dxKFkGKQ_1VQ5dosDRKMJ5rcjzhqq4Rdf2No9Jul0x4L&_nc_ht=scontent-dfw5-2.xx&cb_e2o_trans=t&oh=00_AfBFxUMcFrekkSkKnDC4X6IpHfdfShUxxHwWIP5716WH2A&oe=6639A636"
+        ],
+        "timestamp": "2024-04-30T14:16:04.000Z",
+        "id": "3390255651272142",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Emma Clark",
+            "id": "100010568111225"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "Selling Carrollton Home 75006\nStarting Price 280K | ARV 450K\nThese houses can go quick so for the quickest response please Text/Call me 469 919 7735\nDON'T MISS OUT",
+        "images": [
+            "https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/440862606_10168805433355174_4662801087245485067_n.jpg?stp=dst-jpg_p180x540&_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_ohc=YTnnIBDxNuoQ7kNvgE24VlR&_nc_ht=scontent-dfw5-1.xx&cb_e2o_trans=t&oh=00_AfB8UPMEQPodv30jfRoRuwJYbS3RdqwJWspJXlJtwkO0-g&oe=6639AF30"
+        ],
+        "timestamp": "2024-04-30T01:03:52.000Z",
+        "id": "3389849071312800",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Cooper Woods",
+            "id": "774365173"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "Selling The Colony Home 75056\nBuy Now Price 299K | ARV 400K\nThese houses can go quick so for the quickest response please Text/Call me 469 919 7735\nDON'T MISS OUT",
+        "images": [
+            "https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/440871392_10168805448335174_5980165748133910198_n.jpg?stp=dst-jpg_p180x540&_nc_cat=103&ccb=1-7&_nc_sid=5f2048&_nc_ohc=9hE-Q_WrDZgQ7kNvgHvZUzp&_nc_ht=scontent-dfw5-1.xx&cb_e2o_trans=t&oh=00_AfBh_MP-rPgZESl0MGDHqYK24oa6QVu70kre0mPpo2Og-Q&oe=6639B3BD"
+        ],
+        "timestamp": "2024-04-30T01:03:50.000Z",
+        "id": "3389852234645817",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Cooper Woods",
+            "id": "774365173"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    },
+    {
+        "text": "BUY NOW @299K \n….Cir The Colony TX 75056 \n3/2 Built in 1977 With 1727 Sq Ft. \nARV 400K RENT 2200\n\nRoof needs to be replaced, foundation needs leveling, HVAC no issues but is older \n\n1st to submit 5K gets it \nPics:https://trelly.app.link/mc3KXVoFcJb\n\nZach Torres\nztorres@myershomebuyers.con",
+        "images": [
+            "https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/438301440_7538765469532308_8828287247228390740_n.jpg?stp=cp6_dst-jpg&_nc_cat=108&ccb=1-7&_nc_sid=5f2048&_nc_ohc=D0CYFASIaqoQ7kNvgEO4Cx8&_nc_ht=scontent-dfw5-2.xx&cb_e2o_trans=t&oh=00_AfBlp7HWjKJFQiu8sNQTrbojt_PXrjDT374XTnbjAInu_w&oe=6639A4B4",
+            "https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/438196915_7538765566198965_4525145665214036968_n.jpg?stp=cp6_dst-jpg&_nc_cat=106&ccb=1-7&_nc_sid=5f2048&_nc_ohc=wYBRsjFqfnsQ7kNvgHE9c9K&_nc_ht=scontent-dfw5-2.xx&cb_e2o_trans=t&oh=00_AfDuM8BIkCDa5Ys29kk3in2P_cyz0IYpeDShPuakUeFn_A&oe=6639937C",
+            "https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/438264376_7538765686198953_7077442977243291894_n.jpg?stp=cp6_dst-jpg&_nc_cat=103&ccb=1-7&_nc_sid=5f2048&_nc_ohc=RNEbctpIGl0Q7kNvgFZQ8P5&_nc_ht=scontent-dfw5-1.xx&cb_e2o_trans=t&oh=00_AfA639K3AQDsAuezK65jvsbWmJh3L1Ky9tQO9KwXwMLjQw&oe=6639A97B",
+            "https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/438171110_7538765626198959_6928928871714530986_n.jpg?stp=cp6_dst-jpg&_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_ohc=4T3Uv3o5HPwQ7kNvgFEGG2T&_nc_ht=scontent-dfw5-1.xx&cb_e2o_trans=t&oh=00_AfDYZFQmo-3EdySiktmN-rBjBnCqFyQ28v7S3ZVF304jSQ&oe=663981B0"
+        ],
+        "timestamp": "2024-04-30T00:20:37.000Z",
+        "id": "3389853031312404",
+        "translation": null,
+        "attachedPost": null,
+        "author": {
+            "name": "Zach Torres",
+            "id": "100001967906042"
+        },
+        "group": {
+            "name": "DFW Flips Property Marketplace - Only REAL Estate Wholesale Deals For Sale",
+            "id": "dfwflips"
+        }
+    }
+]

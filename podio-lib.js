@@ -116,31 +116,24 @@ export default class PodioApp {
 
 
     async addItem(fields) {
-        return new Promise(async (resolve, reject) => {
-            await this.getAccessToken()
+        await this.getAccessToken()
 
-            axiosInstance.post(`/item/app/${this.app_id}/`, {fields}, {
+        try {
+            return await axiosInstance.post(`/item/app/${this.app_id}/`, {fields}, {
                 headers: {
                     "Authorization": `Bearer ${this.accessToken}`
                 }
             })
-            .then(response => {
-                resolve(response.data.item_id)
-            })
-            .catch(error => {
-                if (error.response.data) {
-                    reject({
-                        message: 'Add Item Error',
-                        error: error.response.data
-                    })
-                } else {
-                    reject({
-                        message: 'Add Item Error',
-                        error
-                    })
-                }
-            })
-        })
+            .then(response => response.data.item_id)
+        } catch (error) {
+            if (error?.response?.data) {
+                error.message = `Podio API Error: ${error.response.data}`
+                delete error.response
+                error.method = 'addItem'
+            } else {
+                throw error
+            }
+        }
     }
 
 

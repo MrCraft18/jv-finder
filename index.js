@@ -23,7 +23,7 @@ const podioLeads = new PodioApp({
 
 async function main() {
     try {
-        const fb = await Facebook.login(process.env.FB_USER, process.env.FB_PASS, {headless: true}).catch(error => console.log(error))
+        const fb = await Facebook.login(process.env.FB_USER, process.env.FB_PASS, {headless: true})
 
         const groups = await fb.getJoinedGroups()
     
@@ -39,14 +39,14 @@ async function main() {
     
         // const groups = [{
         //     name: 'Bruh',
-        //     id: '2496735613945968'
+        //     id: 'dfwflips'
         // }]
 
         console.log('It Begins')
         
         //BEGIN LOOP
         listenForNewPosts(groups, async (post) => {
-            // console.log(post.author, post.group.name, new Date(post.timestamp).toLocaleString())
+            console.log(post.author, post.group.name, new Date(post.timestamp).toLocaleString())
 
             if (!keywordFilter(post)) return
             if (await isDuplicatePost(post)) return
@@ -125,7 +125,7 @@ async function main() {
                         .findOne({ id: group.id }, { projection: { lastScrapedPost: 1,  _id: 0 } })
                         .then(response => response.lastScrapedPost)
             
-                    console.log(JSON.stringify(group), new Date().toLocaleString())
+                    console.log('\n' + JSON.stringify(group), new Date().toLocaleString())
             
                     let allPosts
             

@@ -12,6 +12,8 @@ const client = new MongoClient(process.env.MONGODB_URI)
 const leadsCollection = client.db('JV-FINDER').collection('leads')
 const groupsCollection = client.db('JV-FINDER').collection('groups')
 
+const emailsCollection = client.db('EMAIL-FINDER').collection('emails')
+
 
 
 const podioLeads = new PodioApp({
@@ -48,39 +50,42 @@ async function main() {
         listenForNewPosts(groups, async (post) => {
             console.log(post.author, post.group.name, new Date(post.timestamp).toLocaleString())
 
-            if (!keywordFilter(post)) return
-            if (await isDuplicatePost(post)) return
-            if (keywordFilter(post) === 'maybe') {
-                if (!await gpt.posts('isPostVacantLandDeal', post).then(response => response.result)) return
-            }
-
             //EMAILS STUFF
 
             const uniqueEmailsMap = new Map()
 
             if (post.text) extractEmails(post.text).forEach(email => uniqueEmailsMap.set(email, post))
 
-            if (post.attachedPost.text) extractEmails(post.attachedPost.text).forEach(email => uniqueEmailsMap.set(email, post))
+            if (post.attachedPost?.text) extractEmails(post.attachedPost.text).forEach(email => uniqueEmailsMap.set(email, post))
 
             if (post.comments) {
                 post.comments.forEach(comment => {
                     extractEmails(comment.text).forEach(email => uniqueEmailsMap.set(email, post))
-        
+
                     processReplies(comment.replies)
-        
+
                     function processReplies(replies) {
                         replies.forEach(reply => {
                             extractEmails(reply.text).forEach(email => uniqueEmailsMap.set(email, post))
-                
+
                             processReplies(reply.replies)
                         })
                     }
                 })
             }
 
-            const emailsData = Array.from(uniqueEmailsMap, ([email, post]) => ({email, post, sold: false}))
+            const emailsData = Array.from(uniqueEmailsMap, ([email, post]) => ({ email, post, sold: false }))
 
             await addEmailsToDatabase(emailsData)
+
+
+
+
+            if (!keywordFilter(post)) return
+            if (await isDuplicatePost(post)) return
+            if (keywordFilter(post) === 'maybe') {
+                if (!await gpt.posts('isPostVacantLandDeal', post).then(response => response.result)) return
+            }
 
             // if (post.author.name.toLowerCase() === 'kelli epperson') {
             //     console.log('BLACKLISTED AUTHOR')
@@ -145,38 +150,39 @@ async function main() {
             let checkQueue = shuffleArray([...groups])
         
             while (true) {
+                const group = checkQueue.shift()
+
+                //Logic to Grab last post from group
+                const lastScrapedPost = await groupsCollection
+                .findOne({ id: group.id }, { projection: { lastScrapedPost: 1,  _id: 0 } })
+                .then(response => response.lastScrapedPost)
+    
+                console.log('\n' + JSON.stringify(group), new Date().toLocaleString())
+
                 try {
-                    const group = checkQueue.shift()
-        
-                    //Logic to Grab last post from group
-                    const lastScrapedPost = await groupsCollection
-                        .findOne({ id: group.id }, { projection: { lastScrapedPost: 1,  _id: 0 } })
-                        .then(response => response.lastScrapedPost)
-            
-                    console.log('\n' + JSON.stringify(group), new Date().toLocaleString())
-            
-                    let allPosts
-            
+                    let endDate
+
                     if (lastScrapedPost && differenceInHours(lastScrapedPost.timestamp, new Date()) < 24) {
-                        allPosts = await fb.getGroupPosts(group.id, { dateRange: { endAfter: lastScrapedPost.timestamp }, sorting: 'new' }, post => {
-                            callback(post)
-                        })
+                        endDate = lastScrapedPost.timestamp
                     } else if (lastScrapedPost && differenceInHours(lastScrapedPost.timestamp, new Date()) > 24 || !lastScrapedPost) {
-                        allPosts = await fb.getGroupPosts(group.id, { dateRange: { endAfter: new Date(Date.now() - (1000 * 60 * 60 * 24)) }, sorting: 'new' }, post => {
-                            callback(post)
-                        })
+                        endDate = new Date(Date.now() - (1000 * 60 * 60 * 24))
                     }
+
+                    const allPosts = await fb.getGroupPosts(group.id, { dateRange: { endAfter: endDate }, sorting: 'new', getComments: true }, post => {
+                        callback(post)
+                    })
+
+                    console.log('after getGroupPosts function')
             
                     if (checkQueue.length === 0) checkQueue = shuffleArray([...groups])
             
-                    // await new Promise(resolve => setTimeout(resolve, 5000))
-            
-                    await new Promise(resolve => setTimeout(resolve, Math.random() * (60000 - 30000) + 30000))
+                    await new Promise(resolve => setTimeout(resolve, 5000))
         
                     if (allPosts.length > 0) {
                         await groupsCollection.updateOne({ id: group.id }, { $set: { lastScrapedPost: allPosts[0] } })
                     }
                 } catch (error) {
+                    if (checkQueue.length === 0) checkQueue = shuffleArray([...groups])
                     console.error(error)
                 }
             }
@@ -269,6 +275,7 @@ async function addEmailsToDatabase(emailDataArr) {
 
         if (!existingEmailQuery) {
             await emailsCollection.insertOne(emailData)
+            console.log('Added Email:', emailData.email)
         } else {
             console.log('Email', emailData.email, 'Already Exists!!!')
         }

@@ -1,0 +1,9 @@
+NEGATIVE:
+
+need buyer(s)
+parking lot(s)
+(somebody|anybody) have
+(i|we) have a buyer
+no (wholesalers|jv)
+end buyers (only)
+(am|are) (buying|looking)

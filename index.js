@@ -25,7 +25,7 @@ const podioLeads = new PodioApp({
 
 async function main() {
     try {
-        const fb = await Facebook.login(process.env.FB_USER, process.env.FB_PASS, {headless: true})
+        const fb = await Facebook.login(process.env.FB_USER, process.env.FB_PASS, {headless: false})
 
         const groups = await fb.getJoinedGroups()
     
@@ -119,7 +119,7 @@ async function main() {
 
             await podioLeads.createTask({
                 text: `Review New Lead: ${post.author.name}`,
-                responsible: 19756250,
+                responsible: [19756250, 76875578],
                 ref_type: 'item',
                 ref_id: itemID
             })

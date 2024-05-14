@@ -1,0 +1,26 @@
+POSITIVE:
+brick
+garage
+bed(room)
+bath(room)
+built
+kitchen
+build
+arv
+
+
+MAYBE POSITIVE:
+off(-| )market
+home
+house
+rehab
+(num)/(num) OR (num)/(num)/(num)
+
+
+NEGATIVE:
+
+
+MAYBE NEGATIVE:
+plot
+land
+lot(s)

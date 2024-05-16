@@ -25,9 +25,9 @@ const podioLeads = new PodioApp({
 
 async function main() {
     try {
-        const fb = await Facebook.login(process.env.FB_USER, process.env.FB_PASS, {headless: false})
+        const fb = await Facebook.login(process.env.FB_USER, process.env.FB_PASS, {headless: true})
 
-        const groups = await fb.getJoinedGroups()
+        const groups = await fb.getJoinedGroups({retries: 3})
     
         const databaseGroups = await groupsCollection
             .find({}, { projection: { _id: 0 } })
@@ -159,31 +159,26 @@ async function main() {
     
                 console.log('\n' + JSON.stringify(group), new Date().toLocaleString())
 
-                try {
-                    let endDate
+                let endDate
 
-                    if (lastScrapedPost && differenceInHours(lastScrapedPost.timestamp, new Date()) < 24) {
-                        endDate = lastScrapedPost.timestamp
-                    } else if (lastScrapedPost && differenceInHours(lastScrapedPost.timestamp, new Date()) > 24 || !lastScrapedPost) {
-                        endDate = new Date(Date.now() - (1000 * 60 * 60 * 24))
-                    }
+                if (lastScrapedPost && differenceInHours(lastScrapedPost.timestamp, new Date()) < 24) {
+                    endDate = lastScrapedPost.timestamp
+                } else if (lastScrapedPost && differenceInHours(lastScrapedPost.timestamp, new Date()) > 24 || !lastScrapedPost) {
+                    endDate = new Date(Date.now() - (1000 * 60 * 60 * 24))
+                }
 
-                    const allPosts = await fb.getGroupPosts(group.id, { dateRange: { endAfter: endDate }, sorting: 'new', getComments: true }, post => {
-                        callback(post)
-                    })
+                const allPosts = await fb.getGroupPosts(group.id, { dateRange: { endAfter: endDate }, sorting: 'new', getComments: true, retries: 3 }, post => {
+                    callback(post)
+                })
 
-                    console.log('after getGroupPosts function')
-            
-                    if (checkQueue.length === 0) checkQueue = shuffleArray([...groups])
-            
-                    await new Promise(resolve => setTimeout(resolve, 5000))
-        
-                    if (allPosts.length > 0) {
-                        await groupsCollection.updateOne({ id: group.id }, { $set: { lastScrapedPost: allPosts[0] } })
-                    }
-                } catch (error) {
-                    if (checkQueue.length === 0) checkQueue = shuffleArray([...groups])
-                    console.error(error)
+                console.log('after getGroupPosts function')
+
+                if (checkQueue.length === 0) checkQueue = shuffleArray([...groups])
+
+                await new Promise(resolve => setTimeout(resolve, 5000))
+
+                if (allPosts.length > 0) {
+                    await groupsCollection.updateOne({ id: group.id }, { $set: { lastScrapedPost: allPosts[0] } })
                 }
             }
         

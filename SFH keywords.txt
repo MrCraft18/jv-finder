@@ -14,7 +14,7 @@ off(-| )market
 home
 house
 rehab
-(num)/(num) OR (num)/(num)/(num)
+(num)/(num) OR (num)/(num)/(num) FOR ROOMS
 
 
 NEGATIVE:

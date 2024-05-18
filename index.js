@@ -171,8 +171,6 @@ async function main() {
                     callback(post)
                 })
 
-                console.log('after getGroupPosts function')
-
                 if (checkQueue.length === 0) checkQueue = shuffleArray([...groups])
 
                 await new Promise(resolve => setTimeout(resolve, 5000))

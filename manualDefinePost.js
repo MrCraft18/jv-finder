@@ -1,4 +1,5 @@
 import inquirer from 'inquirer'
+import chalk from 'chalk';
 import { MongoClient, ObjectId } from 'mongodb'
 import { config } from 'dotenv'
 config()
@@ -7,7 +8,7 @@ const client = new MongoClient(process.env.MONGODB_URI)
 const postsCollection = client.db('JV-FINDER').collection('posts')
 
 let postsWithoutDefinitionCount = await postsCollection.countDocuments({'manualDefinition': {$exists: false}})
-console.log(postsWithoutDefinitionCount)
+// console.log(postsWithoutDefinitionCount)
 
 while (postsWithoutDefinitionCount > 0) {
     const post = await postsCollection.aggregate([
@@ -18,16 +19,28 @@ while (postsWithoutDefinitionCount > 0) {
     const questions = [{
         type: 'list',
         name: 'definition',
-        message: `POST ID: ${post.id} GROUP ID: ${post.group.id}\n${post.attachedPost?.text ? `\n${post.text}\n\n\n${post.attachedPost.text}\n` : `\n${post.text}\n`}`,
-        choices: ['None', 'SFH Deal', 'Land Deal']
+        message: `https://www.facebook.com/groups/${post.group.id}/posts/${post.id}` + '\n\n' + chalk.blueBright.bgWhiteBright.bold(`${post.text || ''}${post.attachedPost?.text ? `\n${post.attachedPost.text}` : ''}\n`),
+        choices: [chalk.blackBright.bgRedBright('None'), chalk.blackBright.bgGreenBright('SFH Deal'), chalk.blackBright.bgYellowBright('Land Deal')]
     }]
 
     await inquirer.prompt(questions).then(async answer => {
-        await postsCollection.updateOne({ id: post.id, 'group.id': post.group.id }, { $set: { manualDefinition: answer.definition } })
+        let definition
+        if (answer.definition.includes('None')){
+            definition = 'None'
+        } else if (answer.definition.includes('SFH Deal')) {
+            definition = 'SFH Deal'
+        } else if (answer.definition.includes('Land Deal')) {
+            definition = 'Land Deal'
+        } else {
+            throw new Error('Bruh')
+        }
+
+
+        await postsCollection.updateOne({ id: post.id, 'group.id': post.group.id }, { $set: { manualDefinition: definition } })
     })
 
     postsWithoutDefinitionCount = await postsCollection.countDocuments({ 'manualDefinition': { $exists: false } })
 
     const totalDefined = await postsCollection.countDocuments({ 'manualDefinition': { $exists: true } })
     console.log(totalDefined)
-}manualDefinition
+}

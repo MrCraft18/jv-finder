@@ -7,6 +7,7 @@ const postsCollection = client.db('JV-FINDER').collection('posts')
 
 const definitions = {
     names: [
+        'None',
         'SFH Deal',
         'Land Deal'
     ],
@@ -14,24 +15,106 @@ const definitions = {
 }
 
 const definitionKeywordFinders = [
-    {
-        regEx: /\bflips?\b/gi,
-        description: 'matches words flip or flips',
-        score: 3,
-        for: ['SFH Deal']
-    },
+    // {
+    //     regEx: /\bflips?\b/gi,
+    //     description: 'matches words flip or flips',
+    //     for: 'SFH Deal'
+    // },
     {
         regEx: /\barv|after[- ]retail[- ]value\b/gi,
         description: 'matches arv or after repair value',
-        score: 5,
-        for: ['SFH Deal']
+        for: 'SFH Deal'
     },
     {
-        regEx: /\b(?:asking|purchase|pp|price)(?:\sprice)?\b/gi,
-        description: 'matches price, purchase price, asking, etc.',
-        score: 5,
-        for: ['SFH Deal', 'Land Deal']
-    }
+        regEx: /\b(?:vacant\s(?:lot|land)|(?:lot|land)\savailable|(?:residential|commercial)\s(?:lot|land|acres?)|build\sready\slots?)\b/gi,
+        description: 'matches "(vacant or available) (lot or land) or (lot or land) available or (residential or commerical) (lot or land or acres(s))"',
+        for: 'Land Deal'
+    },
+    {
+        regEx: /\b(?:tear ?down|zoned)\b/gi,
+        description: 'matches tear( )down or zoned',
+        for: 'Land Deal'
+    },
+    {
+        regEx: /\b(?:build|builder)\sopportunity\b/gi,
+        description: 'matches build(er) oppurtunity',
+        for: 'Land Deal'
+    },
+    {
+        regEx: /\b(?:acre|sqft)\slots?\b/gi,
+        description: 'matches (sqft or acre) lot(s)',
+        for: 'Land Deal'
+    },
+    {
+        regEx: /\b(?:\d+(?:\+|[+-]\/[+-])?|an).acres?\s(?:for\ssale|in|near|of\sland)\b/gi,
+        description: 'matches (number(+) or an) acre(s)',
+        for: 'Land Deal'
+    },
+    {
+        regEx: /\b(?:(?:land|lot)\s(?:size|for\ssale)|flood\szone|utilities|sewer)\b/gi,
+        description: 'matches (land or lot) (size or for sale) or flood zone or utilities',
+        for: 'Land Deal'
+    },
+    {
+        regEx: /\boff.market\s(?:\w+,? +)+?lots?/gi,
+        description: 'matches off(any character)market (any amount of words) lots',
+        for: 'Land Deal'
+    },
+    {
+        regEx: /\bnew\sbuilds?\sarea\b/gi,
+        description: 'matches new build(s) area',
+        for: 'Land Deal'
+    },
+    // {
+    //     regEx: /\b(?:one|two|three|four|five|six|seven|eight|nine|ten|\d+|multi.use)\slots?\b/gi,
+    //     description: 'matches number lots',
+    //     for: 'Land Deal'
+    // },
+    {
+        regEx: /\bempty\slots?\b/gi,
+        description: 'matches empty lot(s)',
+        for: 'Land Deal'
+    },
+    {
+        regEx: /\b(?:0|zero)\s(?:beds|baths|bathrooms|bedrooms)\b/gi,
+        description: 'matches (0 or zero) (beds or baths or bedrooms or bathrooms)',
+        for: 'Land Deal'
+    },
+    {
+        regEx: /\blots?\sfor\ssale\b/gi,
+        description: 'matches lot(s) for sale',
+        for: 'Land Deal'
+    },
+    {
+        regEx: /\bnew\sbuilds?\sarv\b/gi,
+        description: 'matches new build(s) arv',
+        for: 'Land Deal'
+    },
+    {
+        regEx: /(?:^|i'?m\s|i\sam\s|we\sare\s|we'?re\s)looking\b/gi,
+        description: 'matches im looking for',
+        for: 'None'
+    },
+    {
+        regEx: /\bloans?|lender\b/gi,
+        description: 'matches loan(s) or lender',
+        for: 'None'
+    },
+    {
+        regEx: /\bapartment|mfh|multi.family\b/gi,
+        description: 'matches apartment or mfh or multi family',
+        for: 'None'
+    },
+    {
+        regEx: /\bparking.(?:site|lot)\b/gi,
+        description: 'matches parking (site or lot)',
+        for: 'None'
+    },
+    {
+        regEx: /\badjacent\s(?:lot|land)\b/gi,
+        description: 'matches adjacent (lot or land)',
+        for: 'Land Deal'
+    },
 ]
 
 const string = `
@@ -50,83 +133,117 @@ const string = `
     purchase
 `
 
-function findExpressionMatches(string, regExArr) {
-    return regExArr.reduce((accumulator, obj) => {
-        const matches = string.match(obj.regEx) || []
-
-        accumulator.results.push({
-            description: obj.description,
-            matches
-        })
-
-        accumulator.totalMatches += matches.length
-        return accumulator
-    }, {totalMatches: 0, results: []})
-}
-
-function getScores(string, comparatorArr, categoryNames) {
+function getCategory(string, comparatorArr, categoryNames) {
     const scoreMap = new Map()
 
     for (const name of categoryNames.names) {
         scoreMap.set(name, 0)
     }
 
-    for (const comparator of comparatorArr) {
-        const matches = string.match(comparator.regEx) || []
+    // if (categoryNames.default) scoreMap.set(categoryNames.default, 1)
 
-        if (matches.length > 0) {
-            for (const categoryName of scoreMap.keys()) {
-                if (comparator.for.includes(categoryName)) {
-                    scoreMap.set(categoryName, scoreMap.get(categoryName) + comparator.score)
-                } else {
-                    scoreMap.set(categoryName, scoreMap.get(categoryName) - comparator.score)
-                }
-            }       
+    for (const comparator of comparatorArr) {
+        const matches = string.match(comparator.regEx)
+
+        if (matches) scoreMap.set(comparator.for, scoreMap.get(comparator.for) + matches.length)
+    }
+
+    let maxKey = null
+    let maxValue = -Infinity
+
+    for (const [key, value] of scoreMap.entries()) {
+        if (value > maxValue) {
+            maxValue = value
+            maxKey = key
+        } else if (value === maxValue) {
+            maxKey = 'Tie'
         }
     }
 
-    return Object.fromEntries(scoreMap)
+    if (maxValue > 0) {
+        return maxKey
+    } else {
+        return categoryNames.default
+    }
 }
 
-const postsCursor = postsCollection.find({manualDefinition: {$exists: true}}, {limit: 1})
+const posts = await postsCollection.find({manualDefinition: {$exists: true}}).toArray()
+
+
 
 const postsResults = {
     correctlyMatchedPosts: [],
-    correctlyNotMatchedPosts: [],
     incorrectlyMatchedPosts: []
 }
 
-const definitionTest = 'SFH Deal'
 
-for await (const post of postsCursor) {
+
+for (const post of posts) {
     const textString = `${post.text || ''}${post.attachedPost?.text ? `\n${post.attachedPost.text}` : ''}`
 
     // console.log(textString)
 
-    const expressionMatches = getScores(textString, definitionKeywordFinders, definitions)
+    const category = getCategory(textString, definitionKeywordFinders, definitions)
 
-    console.log(expressionMatches)
+    post.filterDefinition = category
 
-    // if (post.manualDefinition === definitionTest && expressionMatches.totalMatches > 0) {
-    //     postsResults.correctlyMatchedPosts.push(post)
-    // } else if (post.manualDefinition !== definitionTest && expressionMatches.totalMatches === 0) {
-    //     postsResults.correctlyNotMatchedPosts.push(post)
-    // } else {
-    //     postsResults.incorrectlyMatchedPosts.push(post)
-    // }
+    if (post.filterDefinition === post.manualDefinition) {
+        postsResults.correctlyMatchedPosts.push(post)
+    } else {
+        postsResults.incorrectlyMatchedPosts.push(post)
+    }
 }
 
-// console.log('Correctly Matched:', postsResults.correctlyMatchedPosts.length)
-// console.log('Correctly NOT Matched:', postsResults.correctlyNotMatchedPosts.length)
-// console.log('Incorrectly Matched:', postsResults.incorrectlyMatchedPosts.length)
 
-// for (const post of postsResults.correctlyNotMatchedPosts) {
+const post = postsResults.incorrectlyMatchedPosts[0]
+
+const message = 
+`
+${definitionKeywordFinders.map(comparator => {
+    const string = `${post.text || ''}${post.attachedPost?.text ? `\n${post.attachedPost.text}` : ''}`
+
+    return `${comparator.regEx.toString()}: ${string.match(comparator.regEx)}`
+}).join('\n')}
+
+POST ID: ${post.id} GROUP ID: ${post.group.id}
+
+${post.text || ''}${post.attachedPost?.text ? `\n${post.attachedPost.text}` : ''}
+
+Filter Definition: ${post.filterDefinition}
+Manual Definition: ${post.manualDefinition}
+
+`
+
+console.log(message)
+console.log('Correctly Matched:', postsResults.correctlyMatchedPosts.length)
+console.log('Incorrectly Matched:', postsResults.incorrectlyMatchedPosts.length)
+
+// for (const post of postsResults.incorrectlyMatchedPosts) {
+//     const message = 
+// `
+// ${definitionKeywordFinders.map(comparator => {
+//     const string = `${post.text || ''}${post.attachedPost?.text ? `\n${post.attachedPost.text}` : ''}`
+
+//     return `${comparator.regEx.toString()}: ${string.match(comparator.regEx)}`
+// }).join('\n')}
+
+// POST ID: ${post.id} GROUP ID: ${post.group.id}
+
+// ${post.text || ''}${post.attachedPost?.text ? `\n${post.attachedPost.text}` : ''}
+
+// Filter Definition: ${post.filterDefinition}
+// Manual Definition: ${post.manualDefinition}
+
+// `
+
 //     const questions = [{
 //         type: 'list',
 //         name: 'definition',
-//         message: `POST ID: ${post.id} GROUP ID: ${post.group.id}\n\n${post.text || ''}${post.attachedPost?.text ? `\n${post.attachedPost.text}` : ''}\n`,
+//         message,
 //         choices: ['Next']
 //     }]
 
 //     await inquirer.prompt(questions)
 // }
+
+await client.close()

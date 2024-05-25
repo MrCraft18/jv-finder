@@ -28,7 +28,7 @@ const gpt = {
         // console.log(messages)
 
         const response = await openai.chat.completions.create({
-            model: "gpt-4-turbo-preview",
+            model: "gpt-4o",
             messages,
             temperature: 0,
             response_format: {

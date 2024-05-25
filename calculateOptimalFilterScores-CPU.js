@@ -49,8 +49,8 @@ function calculateETA(totalProgress, currentProgress, startTime) {
 
 const startTime = new Date()
 const min = 0
-const max = 2
-const length = 30
+const max = 1
+const length = 130
 
 function calculateCombinations(minValue, maxValue, numDigits) {
     if (numDigits <= 0 || minValue > maxValue) {

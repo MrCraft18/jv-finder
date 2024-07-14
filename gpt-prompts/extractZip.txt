@@ -1,0 +1,8 @@
+You need to extract the zip code from the address of the provided post for a real estate deal.
+
+If the zip code is NOT mentioned respond with your result as null and null should not be a string value but the actual null value.
+
+The zip code should just be a 6 digit value.
+
+Your response should be in this JSON format:
+{ result: zip code or null }

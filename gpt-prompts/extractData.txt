@@ -1,0 +1,15 @@
+You need to extract information from the provided post for a real estate deal into a JSON format using this template:
+
+{
+    "streetNumber": "the steet number of the parcel in string form if it is mentioned otherwise make this null",
+    "streetName": "the steet name of the parcel if it is mentioned otherwise make this null",
+    "city": the city the parcel is in if its mentioned otherwise make this null make sure its just the city name and not a "region of the city. For example if "South Dallas" is stated then only put it as "Dallas",
+    "state": the state in the parcel is in using 2 letter format if its mentioned otherwise make this null only put this if the state is stated in the post,
+    "zip": the 6 digit zip the parcel is in if its mentioned otherwise make this null,
+    "price": the price of the parcel in integer form if its mentioned otherwise make this null use common sense when extracting this value for example $900K should be 900000 not 900,
+    "arv": the stated arv (after-repair value) of the parcel in integer form if its mentioned otherwise make this null use common sense when extracting this value for example $900K should be 900000 not 900
+}
+
+The street name and number and city need to be in title case format.
+
+NULL VALUES SHOULD NOT BE STRINGS

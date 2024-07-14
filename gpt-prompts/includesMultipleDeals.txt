@@ -1,0 +1,6 @@
+You need to determine whether the provided post for a real estate deal(s) includes more than one deal or not.
+
+A single deal can include multiple plots of land if its a land deal for example.
+
+Your response should be in this JSON format:
+{ result: boolean value true or false }

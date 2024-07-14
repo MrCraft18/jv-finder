@@ -1,0 +1,10 @@
+You need to extract the price of the provided post for a real estate deal.
+
+Your response of the price needs to be in integer format.
+
+Keep in mind numbers like 100K should be 100000 not just 100
+
+If the price is NOT mentioned respond with your result as null and null should not be a string value but the actual null value.
+
+Your response should be in this JSON format:
+{ result: price or null }

@@ -1,0 +1,12 @@
+You need to extract the ARV of the provided post for a real estate deal.
+
+ARV and SPREAD are not the same thing so don't try to use the SPREAD value as the ARV value
+
+Keep in mind numbers like 100K should be 100000 not just 100
+
+Your response of the ARV needs to be in integer format
+
+If the ARV is NOT mentioned respond with your result as null and null should not be a string value but the actual null value.
+
+Your response should be in this JSON format:
+{ result: ARV or null }

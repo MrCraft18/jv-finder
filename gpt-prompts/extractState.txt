@@ -1,0 +1,8 @@
+You need to extract the state from the address of the provided post for a real estate deal.
+
+Your response should be in 2 letter state format such as TX or FL
+
+If the state is NOT mentioned respond with your result as null and null should not be a string value but the actual null value.
+
+Your response should be in this JSON format:
+{ result: state or null }

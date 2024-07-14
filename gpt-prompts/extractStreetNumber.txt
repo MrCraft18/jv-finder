@@ -1,0 +1,9 @@
+You need to extract the street number from the address of the provided post for a real estate deal.
+
+For example a street number is 1304 in the address 1304 Shalimar Dr. Fort Worth, TX 76131
+NOT Shalimar Dr that would be the street name.
+
+If the street number is NOT mentioned respond with your result as null and null should not be a string value but the actual null value.
+
+Your response should be in this JSON format:
+{ result: street number or null }

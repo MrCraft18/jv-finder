@@ -1,0 +1,316 @@
+The big explaination
+
+So heres an average vacant lot post:
+
+⚡️⚡️Vacant Lot Available, Corsicana, TX 75110, Only $29K⚡️⚡️
+PRICE: $29,000 OBO
+The lot had a 1950 property that was torn down
+Geographic location: C0000.00.06290.007.00.0 
+Parcel: 50382 
+Lot has access to all utilities
+Ready for a new house to be built on
+Please reach out for additional details.
+email anytime!
+Defiantdispo@outlook.com
+
+This is all of the data the system needs to run its logic for checking parameters:
+{
+    "category": "Land Deal",
+    "bundle": false
+    "parcels": [
+        {
+            "city": "corsicana",
+            "state": "tx",
+            "zip": "75110"
+            (Maybe in the future grabbing lot size and price. And using all of these parameters to calculate a good deal?)
+        }
+    ]
+}
+
+So an explaination of what each parameter is for:
+category is what type of deal it is
+bundle is if its more than one parcel and they are meant to be sold together as one deal
+parcels is each individual lot (or house if its an SFH Deal)
+
+The city or zip to make sure its within city whitelist. We check for both incase one or the other is missing.
+The State just in case someone is an idiot. We can rule that out first if the post includes a wrong state.
+
+
+We need to account for more than one lot meant to be sold together. So we keep track of them as one deal.
+
+I have 2 Lots (.32 ac) and (.27 ac) in Lancaster, TX 75146
+It is in a flood zone
+Both lots for $29K
+
+Might be:
+{
+    "category": "Land Deal"
+    "bundle": true,
+    "parcels": [
+        {
+            "city": "lancaster",
+            "state": "tx",
+            "zip": "75146"
+        },
+        {
+            "city": "lancaster",
+            "state": "tx",
+            "zip": "75146"
+        }
+    ]
+}
+Now we keep track of these together.
+
+
+
+Then theres these of course:
+
+# 🚨🚨🚨**Off-market deals Alert**🚨🚨🚨
+# **1) Waco, TX 76710**📍
+
+**3 Bedroom ~ 3 Bathroom~ 1 Car Garage **🏡** 2,483 sqft **📐
+
+**Sale price~ $269,999**✅
+
+**ARV ~$435,000~ Buyer to verify **🔔
+
+**Off-market brick on slab in the coveted Mountainview / Lake Oaks area of Waco feeding into Mountainview Elementary. Per seller, roof and hvac are 5 years old. We have great comps all around us and plenty of spread to make this one pop on the market this summer. Seller will need a leaseback to relocate but they already have a place to go.**
+# **2)Bedford, TX 76022**📍
+
+**3 Bedroom ~ 2 Bathroom~ Enclosed Garage**🏡**1,868 sqft **📐
+
+**Sale price~ $259,999**✅
+
+**Repairs- $50,000⚠️**
+
+**ARV ~$365,000~ Buyer to verify **🔔
+
+**Off-Market Bedford brick fix and flip ready for its new owner! The house is in pretty good shape overall and will need cosmetics and some foundation to reach peak market value. We have multiple garage conversion comps showing a high value in this desirable pocket of mid-cities.**
+# **3) Arlington, TX 76013**📍
+
+**3 Bedroom ~ 2 Bathroom~2 Car Garage**🏡 **1,766 sqft **📐
+
+**Sale price~ $199,999**✅
+
+**Off-market brick Arlington property in Briarwood Estates sitting on a large LOT. Great data nearby us and a very promising fully updated PENDING listing that once moved to sold should be your ideal end goal once flipped.**
+# **4)Richland Hills, TX 76118**📍
+
+**3 Bedroom ~ 1 Bathroom~ 2 Car Garage**🏡**1,397 sqft **📐
+
+**Sale price~ $198,000**✅
+
+**ARV ~$305,000~ Buyer to verify **🔔
+
+**Off-market brick Richland Hills investment property with your best comps right across the street. Property will need a complete facelift to 2024 but your layout is basic and you have a massive hall bath that can be split down the middle to easily create a 3/2/2 as it currently is a 3/1/2.**
+# **Reach out!!!**
+
+👇👇👇
+
+**For more info contact me @**
+
+**Kevin Almaraz "New Western Agent" #790923**
+
+**817-884-7509 **📲
+
+**Kevin.almaraz@newwestern.com**
+
+
+Yes I KNOW its new western but we can't assume posts like these will always be blocked because their from a big company.
+That's introducing a textbook vulerability into my system I'm resposible for maintaining so I won't to it.
+So I need to categorize this data into something along the lines of this:
+{   
+    "category": "SFH Deal"
+    "bundle": false
+    parcels: [
+        {
+            "city": "waco"
+            "state": "tx",
+            "zip": "76710",
+            "price": 269999,
+            "arv": 435000
+        },
+        {
+            "city": "bedford"
+            "state": "tx",
+            "zip": "76022",
+            "price": 259999,
+            "arv": 365000
+        },
+        {
+            "city": "arlington"
+            "state": "tx",
+            "zip": "76013",
+            "price": 199999,
+            "arv": null
+        },
+        {
+            "city": "Richland Hills"
+            "state": "tx",
+            "zip": "76118",
+            "price": 198000,
+            "arv": 305000
+        }
+    ]
+}
+Now since we have each deal in an array we can pick and choose which "parcels" we want to discard and keep based on our parameters.
+Because as you can see one of these doesn't have an ARV so we can just discard it and handle the rest.
+That's what's great about having ACTUAL program readable data. And why compromising it is never worth it.
+
+
+
+
+
+We also have to account for SFH bundle deals too.
+
+INVESTOR ALERT: 2 Single-Family PACKAGE DEAL Near DFW
+1️⃣ Investment Gem 1: High ROI Retreat
+
+    Location: 106 N 4th St, Celeste, TX 75423
+    Cash & Conventional Price: [$105,000]
+    Lease Option to Seller Finance conversion available.
+    Property Type: Residential
+    Condition: Cosmetic Fixer-Upper
+    SqFt: 972 / 2 Bed, 1 Bath
+    Lot size: 0.23 Acres
+    ARV : [$170,000]
+
+2️⃣ Investment Gem 2: Modern Cash Flow Haven
+
+    Location: 107 N 4th St, Celeste, TX 75423
+    Cash & Conventional Price: [$110,000]
+    Property Type: Residential
+    Condition: Cosmetic Fixer-Upper
+    SqFt: 1,012 / 2 Bed, 2 Bath
+    Lot size: 0.18 Acres
+    ARV : [$180,000]
+
+📊 Maximize Your Portfolio:
+
+    Both properties strategically priced for a quick ROI.
+    Celeste's growing market promises future appreciation.
+    Prime location for steady income.
+    Strong demand in the area.
+    Right off of highway 69.
+    New development all over the 75423 zip code.
+
+KINGS GAMBIT PROPERTY SOLUTIONS
+Michael J. Jeffery - Acquisition & Disposition's
+550 Reserve St. Suite 190 Southlake, TX 76092
+Jeffery@kingsgambitps.com
+(W) : 817.646.1245 - (M) : 817.247.7928
+
+
+And the data might look like this:
+{
+    "category": "SFH Deal"
+    "bundle": true,
+    "parcels": [
+        {
+            "city": "celeste"
+            "state": "tx",
+            "zip": "75423",
+            "price": 105000,
+            "arv": 170000
+        },
+        {
+            "city": "celeste"
+            "state": "tx",
+            "zip": "75423",
+            "price": 110000,
+            "arv": 180000
+        }
+    ]
+}
+
+
+So maybe this helps wrap your head around what needs to happen.
+Because for me to perform logic on anything thats inside a post it has to be assigned to variables and then I can plug those variables into logic I've made.
+For Example:
+
+dealJSON = {
+    "category": "SFH Deal"
+    "bundle": true,
+    "parcels": [
+        {
+            "city": "celeste"
+            "state": "tx",
+            "zip": "75423",
+            "price": 105000,
+            "arv": 170000
+        },
+        {
+            "city": "celeste"
+            "state": "tx",
+            "zip": "75423",
+            "price": 110000,
+            "arv": 180000
+        }
+    ]
+}
+
+arvThreshold = 0.65 //This is 65%
+dealJSON.parcels.forEach(parcel => {
+    //First it checks if the arv is not null
+    if (parcel.arv === null) {
+        parcel.withinARVThreshold = false
+        return parcel
+        //Function Ends Here if arv is null
+    }
+
+    //Otherwise it continues to make the calculation check
+
+    if ((parcel.arv*arvThreshold) > parcel.price) {
+        parcel.withinARVThreshold = true
+    } else {
+        parcel.withinARVThreshold = false
+    }
+
+    return parcel
+})
+
+This will convert the previous JSON into this:
+{
+    "category": "SFH Deal"
+    "bundle": true,
+    "parcels": [
+        {
+            "city": "celeste"
+            "state": "tx",
+            "zip": "75423",
+            "price": 105000,
+            "arv": 170000,
+            "withinARVThreshold": true
+        },
+        {
+            "city": "celeste"
+            "state": "tx",
+            "zip": "75423",
+            "price": 110000,
+            "arv": 180000,
+            "withinARVThreshold": true
+        }
+    ]
+}
+
+Now in that example that was a bundle deal and both happened to be within the threshold I used in the example so that would have been determined as good. (If they are on the city whitelist I didnt check.)
+But then say that bundle deal had one that was within the threshold and one not in the threshold we would've discarded that whole deal since it's a bundle.
+And if you have a deal with multiple parcels and they arent a bundle then we can filter out the ones not within our arv threshold and only keep the ones that are in.
+
+
+So after that explaination of how it should work I know that doesn't get us closer to actually being able to extract that data I need to run logic from the natual language in the post.
+
+2 Main reasons why I dont want to use GPT in production
+1. It's incredibly finicky and I have to subsidize logic because of how stupid it is. Like this:
+Does the post include multiple parcels? => Are the parcels implied to be sold together as a bundle or individually? => (Then I would have to do these next questions for each parcel) Is there a state included as a location for this parcel if so return the state if not return null. => Is there a city included as a location for this parcel? If so return the city if not return null. => Is there a zip code included as a location for this parcel? If so return the zip code if not return null. => Is there a price included for this parcel? If so return the price if not return null. => Is there an ARV (After Repair Value) included for this parcel? If so return the ARV if not return null.
+
+Yeah I doubt you even read all that. So thats like a lot of requests for each deal it finds.
+
+2. It costs money. Right now I use the API and it only costs like 10 - 20 cents a day that I just have been paying for but thats because I do one request for about a third of the post I get back from the facebook scraper.
+But after I'm using the new classification model in production this will go away.
+If we do it like this it will be running 3 - 6 requests on EACH Land Deal and SFH Deal it encounters.
+I would guess it would cost maybe around $1 a day which if its making money obviously isnt bad but the way I see is that we're paying money for a worse solution.
+
+I think the best way to go about this is to use the GPT API on the posts I already have in my database which I used to train the classifcation model.
+I'll use GPT to create training data for a new model that will extract the data I need.
+HOWEVER this will cost like $20-$50 since I'll have to run the API on quite a few posts. And as I stated above each post will have multiple requests to get each part of the data I need.
+And I legit cannot afford it right now especially since I spent like $30 a couple days ago on the API trying to get it to categorize posts for me but it was too stupid to do it in one prompt.

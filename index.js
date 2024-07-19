@@ -3,6 +3,7 @@ import Post from './schemas/post.js'
 import Deal from './schemas/deal.js'
 import cron from 'node-cron'
 import axios from 'axios'
+import fs from 'fs'
 import { MongoClient, ObjectId } from 'mongodb'
 import { configDotenv } from 'dotenv'; configDotenv()
 import PodioApp from './podio-lib.js'
@@ -19,6 +20,15 @@ const podioLeads = new PodioApp({
 
 let withinOperatingTime = false
 
+cron.schedule('30 8 * * *', () => {
+    scrapePostsLoop()
+}, { timezone: 'America/Chicago' })
+
+
+cron.schedule('30 16 * * *', () => {
+    withinOperatingTime = false
+}, { timezone: 'America/Chicago' })
+
 const currentTime = new Date().toLocaleTimeString('en-US', {
     timeZone: 'America/Chicago',
     hour: '2-digit',
@@ -31,24 +41,28 @@ const weekday = currentTime.split(' ')[0]
 const [hour, minute] = currentTime.split(' ')[1].split(':').map(Number)
 
 if ((hour > 8 || (hour === 8 && minute >= 30)) && (hour < 16 || (hour === 16 && minute <= 30))) {
-    withinOperatingTime = true
     scrapePostsLoop()
 } else {
-    console.log('Sleeping')
+    // console.log('Sleeping')
 
-    // withinOperatingTime = true
-    // scrapePostsLoop()
+    scrapePostsLoop()
+
+    setTimeout(() => {
+        withinOperatingTime = false
+    }, 60000)
 }
 
 async function scrapePostsLoop() {
     console.log('Starting Scraper Loop')
+
+    withinOperatingTime = true
 
     const fb = await Facebook.login(process.env.FB_USER, process.env.FB_PASS, { headless: true, defaultRetries: 5 })
 
     const groups = await fb.getJoinedGroups()
 
     for (const group of groups) {
-        await groupsCollection.findOneAndUpdate({ id: group.id }, { $set: {...group} }, { upsert: true })
+        await groupsCollection.findOneAndUpdate({ id: group.id }, { $set: { ...group } }, { upsert: true })
     }
 
     let checkQueue = shuffleArray([...groups])
@@ -85,15 +99,21 @@ async function scrapePostsLoop() {
                 await post.save()
 
                 if (post.metadata.associatedDeal) {
-                    console.log('yo')
                     const deal = await Deal.findOne({ _id: new ObjectId(post.metadata.associatedDeal) })
+
+                    const cities = fs.readFileSync('./keywords/cities.txt', 'utf-8').split('\n')
+
+                    if (!deal.address.city || !cities.find(city => city.toLowerCase() === deal.address.city.toLowerCase())) {
+                        console.log('Doesnt have or not in city list')
+                        continue
+                    }
 
                     if (deal.category === 'SFH Deal' && (!deal.priceToARV || deal.priceToARV > 0.60)) {
                         console.log('Not good enough')
                         continue
                     }
 
-                    const addressString = `${deal.address.streetNumber ? `${deal.address.streetNumber} ` : ''}${deal.address.streetName ? `${deal.address.streetName}, ` : ''}${deal.address.city ? `${deal.address.city}, ` : ''}${deal.address.state ? `${deal.address.state} `: ''}${deal.address.zip || ''}`
+                    const addressString = `${deal.address.streetNumber ? `${deal.address.streetNumber} ` : ''}${deal.address.streetName ? `${deal.address.streetName}, ` : ''}${deal.address.city ? `${deal.address.city}, ` : ''}${deal.address.state ? `${deal.address.state} ` : ''}${deal.address.zip || ''}`
 
                     console.log('Before podio logic')
 
@@ -125,8 +145,6 @@ async function scrapePostsLoop() {
 
                     console.log(itemID)
 
-                    console.log('create item')
-
                     // await podioLeads.createTask({
                     //     text: `Review New Lead: ${post.author.name}`,
                     //     responsible: [19756250, 76875578],
@@ -134,7 +152,7 @@ async function scrapePostsLoop() {
                     //     ref_id: itemID
                     // })
 
-                    console.log('Created Task')
+                    // console.log('Created Task')
                 }
             }
 
@@ -152,17 +170,30 @@ async function scrapePostsLoop() {
         }
     }
 
+    console.log('Done Looping')
+
     //Extract emails from posts that are 3 days old and havent been marked already extracted
     const threeDaysAgo = new Date()
     threeDaysAgo.setDate(threeDaysAgo.getDate() - 3)
 
-    const postsCursor = Post.find({ createdAt: { $lte: threeDaysAgo } }).cursor()
+    const postsCursor = Post.find({ 'metadata.checkedForEmails': false, createdAt: { $lte: threeDaysAgo } }).cursor()
+
+    console.log('Got Cursor for posts for emails')
 
     for await (const post of postsCursor) {
+        console.log('Checking post ' + post.id)
         post.comments = await fb.getGroupPostComments(post.id, post.group.id)
 
+        console.log('Got post comments')
+
         await post.extractEmails()
+
+        console.log('extracted potential emails')
+
+        await post.save()
     }
+
+    console.log('Done checking posts')
 
     await fb.close()
 
@@ -182,13 +213,3 @@ async function scrapePostsLoop() {
         return Math.abs(date2 - date1) / (1000 * 60 * 60)
     }
 }
-
-cron.schedule('30 8 * * 1-7', () => {
-    withinOperatingTime = true
-    scrapePostsLoop()
-}, { timezone: 'America/Chicago' })
-
-
-cron.schedule('30 16 * * 1-7', () => {
-    withinOperatingTime = false
-}, { timezone: 'America/Chicago' })

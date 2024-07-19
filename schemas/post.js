@@ -93,7 +93,7 @@ const postSchema = new mongoose.Schema({
     }
 })
 
-postSchema.methods.allText = function() {
+postSchema.methods.allText = function () {
     return `${this.text || ''}${this.attachedPost?.text ? `\n${this.attachedPost.text}` : ''}`
 }
 
@@ -130,7 +130,7 @@ postSchema.methods.checkIfDupilcate = async function () {
     return false
 }
 
-postSchema.methods.getDeal = async function() {
+postSchema.methods.getDeal = async function () {
     //Get Predicted Category
     const predictionResult = await py.call(predictCategoriesPyModule, 'predict_post_categories', [this.allText()]).then(results => results[0])
 
@@ -184,7 +184,7 @@ postSchema.methods.getDeal = async function() {
     }
 
     if (!this.metadata.extractedInfo.zip && !this.metadata.extractedInfo.state) {
-        const group = await groupsCollection.findOne({id: this.group.id})
+        const group = await groupsCollection.findOne({ id: this.group.id })
         this.metadata.extractedInfo.state = group.impliedState
     }
 
@@ -210,7 +210,7 @@ postSchema.methods.getDeal = async function() {
     await deal.save()
 }
 
-postSchema.methods.extractEmails = async function() {
+postSchema.methods.extractEmails = async function () {
     let searchText = this.allText()
 
     if (this.comments) {
@@ -235,12 +235,18 @@ postSchema.methods.extractEmails = async function() {
         const existingEmailDoc = await Email.findOne({ email })
 
         if (!existingEmailDoc) {
-            new Email({
+            const emailDoc = new Email({
                 email,
                 post: this._id
             })
+
+            console.log(`Found Email: ${email}`)
+
+            await emailDoc.save()
         }
     }
+
+    this.metadate.checkedForEmails = true
 }
 
 export default mongoose.model('Post', postSchema)
@@ -265,6 +271,5 @@ async function promptGPT(systemPrompt, userPrompt) {
         response_format: {
             type: 'json_object'
         }
-    })
-    .then(response => JSON.parse(response.choices[0].message.content))
+    }).then(response => JSON.parse(response.choices[0].message.content))
 }

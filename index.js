@@ -49,7 +49,7 @@ if ((hour > 8 || (hour === 8 && minute >= 30)) && (hour < 16 || (hour === 16 && 
 
     setTimeout(() => {
         withinOperatingTime = false
-    }, 60000)
+    }, 30000)
 }
 
 async function scrapePostsLoop() {
@@ -181,7 +181,7 @@ async function scrapePostsLoop() {
     console.log('Got Cursor for posts for emails')
 
     for await (const post of postsCursor) {
-        console.log('Checking post ' + post.id)
+        console.log('Checking post ' + post.id + ' ' + post.group.id)
         post.comments = await fb.getGroupPostComments(post.id, post.group.id)
 
         console.log('Got post comments')

@@ -246,7 +246,7 @@ postSchema.methods.extractEmails = async function () {
         }
     }
 
-    this.metadate.checkedForEmails = true
+    this.metadata.checkedForEmails = true
 }
 
 export default mongoose.model('Post', postSchema)

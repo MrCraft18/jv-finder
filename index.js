@@ -57,7 +57,7 @@ async function scrapePostsLoop() {
 
     withinOperatingTime = true
 
-    const fb = await Facebook.login(process.env.FB_USER, process.env.FB_PASS, { headless: true, defaultRetries: 5 })
+    const fb = await Facebook.login(process.env.FB_USER, process.env.FB_PASS, { headless: false, defaultRetries: 5 })
 
     const groups = await fb.getJoinedGroups()
 
@@ -176,19 +176,17 @@ async function scrapePostsLoop() {
     const threeDaysAgo = new Date()
     threeDaysAgo.setDate(threeDaysAgo.getDate() - 3)
 
-    const postsCursor = Post.find({ 'metadata.checkedForEmails': false, createdAt: { $lte: threeDaysAgo } }).cursor()
+    const posts = await Post.find({ 'metadata.checkedForEmails': false, createdAt: { $lte: threeDaysAgo } })
 
     console.log('Got Cursor for posts for emails')
 
-    for await (const post of postsCursor) {
-        console.log('Checking post ' + post.id + ' ' + post.group.id)
+    console.log(posts.length)
+
+    for (const post of posts) {
+        console.log('Checking post ' + post.id)
         post.comments = await fb.getGroupPostComments(post.id, post.group.id)
 
-        console.log('Got post comments')
-
         await post.extractEmails()
-
-        console.log('extracted potential emails')
 
         await post.save()
     }
